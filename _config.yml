@@ -13,7 +13,7 @@ title : Mike Tsao
 tagline: If all you have is a Bloom filter, everything looks like a set whose membership you wish to test with a possibility of false positives.
 author :
   name : Mike Tsao
-  email : mike.tsao@gmail.com
+  #email : mike.tsao@gmail.com
   github : sowbug
   twitter : sowbug
 
