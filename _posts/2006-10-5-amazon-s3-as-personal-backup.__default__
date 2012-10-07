@@ -1,0 +1,35 @@
+--- 
+title: Amazon S3 as personal backup
+mt_id: 267
+layout: post
+date: 2006-10-05 12:59:06 +00:00
+---
+<a href="http://jeremy.zawodny.com/blog/archives/007624.html">Jeremy</a> recently wrote about using Amazon's <a href="http://www.amazon.com/exec/obidos/tg/browse/-/16427261/sr=53-1/sr=53-1/qid=1160078115/ref=tr_291931/102-9887188-0243314">S3</a> service as a backup server for his personal data. I ran the numbers and figured the cost was acceptable for my use case (about 15GB of digital photos with a couple hundred MB added each month), so I looked into existing frontend technology for S3 backups. There's JungleDisk and s3sync (sorry, getting too lazy to convert to links; use your favorite search engine), but neither was quite right for my requirements.
+
+The principal problem is that my wife uses the file system (including filenames) as a <b>filing</b> system. This is probably what 98% of computer users on the planet do, too, but as I've written <a href="http://www.sowbug.org/mt/archives/000132.html">before</a>, adequate search and automated organization technology (such as you'd find in Google's <a href="http://picasa.google.com">Picasa</a>) make this work superfluous, so I don't do it -- I tend to dump poorly-named files into folders and let indexing software find them when I need them.
+
+But my wife does organize files, and that means that she moves files around on the filesystem and occasionally renames them. This wreaks havoc with programs like s3sync that identify an object by its path. If the path changes, the object at the old path ceases to exist, and the one at the new path must be uploaded all over again. If you're paying for bandwidth, as you do with S3, this means a single top-level folder rename could be quite expensive.
+
+I think the solution is a Venti-style layer over S3. It would work something like this:
+
+  - For every file in the directory to be backed up, compute a strong hash of the file contents.
+
+  - For each unique hash generated, upload the file corresponding to that hash, keyed by a hex representation of the hash. Rely on S3's built-in capability to avoid re-uploading objects whose contents haven't changed. <b>Update 10/6/2006: As Antony pointed out, this feature doesn't exist; it was just wishful thinking. I will have to first list the bucket contents, and use the result to skip the files already uploaded.</b>
+
+  - Upload a representation of the directory structure mapping paths to hashes, as well as whatever other metadata is needed to reconstitute the file at recovery time.
+
+  - Maintain a log of objects and refcounts to them in the directory structure. As objects are orphaned (meaning a file was deleted or revised), add them to a queue with timestamp. Once a certain amount of time has elapsed since addition to the queue, such as two weeks, remove them from the list. If they're still orphans, delete them.
+
+If I've thought this through correctly, then this backup system lets you rename (and move) files all you want, and doing so won't cause them to be sent over the wire again. The recovery process isn't too onerous in terms of backup file format; just reassociate paths and metadata with each object, and you're done. You get versioning of individual files for free via the delayed garbage-collection mechanism. And in fact you could set up the system to back up several home PCs and not worry about double-backups of identical files on each PC, assuming the hash store were a big shared soup.
+
+Disadvantages:
+
+- Compression window is limited to a single file. Probably not a horrible loss for the average home dataset, where files don't have much relationship to each other.
+
+- Granularity of versioning is per file. This would be expensive, for example, if you were making small daily edits to a giant Quark file that actually changed only a few well-localized bytes in the file. Perhaps a Bittorrent-style piece mechanism, or whatever rsync does, would address this issue.
+
+- Not entirely convenient backup format. For example, s3sync ends up mirroring your directory structure on S3. So with appropriate security measures you could use your web browser as a convenient filesystem browser. This proposal would give you the browser structure, but the moment you wanted to actually get a file, you'd have to copy and paste the hash key to generate the path to another part of the S3 bucket. 
+
+I think this is about 50 lines of Python (famous last words). Maybe I'll try to write it this weekend, unless someone out there beats me to it.
+
+<b>Update 10/6/2006: Looks like the Perl version of s3sync first lists the bucket and collects all the etags (MD5 hashes), and then it skips files already uploaded. If the Ruby port preserves this behavior of the Perl version, then it might handle the move-triggers-reupload issue. So it's possible that s3sync already does enough of what I want.</b>

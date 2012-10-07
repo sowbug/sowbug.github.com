@@ -1,0 +1,28 @@
+--- 
+title: Fixing Cygwin XWin/xterm launch problems
+mt_id: 348
+layout: post
+date: 2008-05-14 09:13:23 +00:00
+---
+For years now, I've been using Cygwin X for ssh sessions on Windows. I've learned to live with an odd problem where the startxwin.bat script supplied with the distribution successfully starts up an xterm maybe only 30% of the time, and the rest of the time it does nothing.
+
+Recently it got even worse with newer Cygwin versions, where the second and subsequent invocations of the script would complain about a prior instance of XWin.exe running. The dialog even taunts you by saying that the process was invoked with "-silent-dup-error."
+
+After a bit of sleuthing that inspired some targeted web searches, I found the following two solutions:
+
+1. Edit startxwin.bat to say this instead of the other XWin line:
+
+  tasklist | \WINDOWS\system32\find.exe "XWin.exe"
+  if errorlevel 1 %RUN% XWin -multiwindow -clipboard -silent-dup-error
+
+On Windows XP Home you won't have tasklist.exe. I leave it as an exercise to the reader to find a solution to that problem on the web.
+
+This solves the -annoyingly-loud-dup-error bug.
+
+2. Shut down all Cygwin processes, including especially XWin.exe. Then from your Windows command prompt, execute c:\cygwin\bin\ash. Then from the ash prompt that pops up, run /bin/rebaseall. That will take a few seconds, and then you can exit the ash shell and try your new startxwin.bat script again.
+
+#1 is straightforward: someone on the development team must have recently broken -silent-dup-error in Cygwin. So this is a workaround. Incidentally, I don't know how such a major bug like this could happen if the team actually <i>uses</i> its own product, but enough of snide comments for now.
+
+#2 is more obscure. Running startxwin.sh from a normal Cygwin shell produces "child_copy" errors, which is key search term leading to some web discussion from Cygwin developers about the rebaseall command. If this is anything like the rebasing I know from Windows development, then it means that the set of DLLs in your specific installation are modified to load more cleanly. I'm used to this being nothing more than a speed-of-loading thing, but perhaps the configuration of the distributed binaries was also triggering some subtle nondeterministic problem.
+
+Anyway, out of 20 trials so far, I'm at 100% success. Finally I can start treating xterm sessions like software again! (I used to keep them around on my desktop even if I didn't need them, because they were genuinely scarce entities.) 

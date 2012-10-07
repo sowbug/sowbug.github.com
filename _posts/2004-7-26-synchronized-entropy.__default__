@@ -1,0 +1,11 @@
+--- 
+title: Synchronized entropy
+mt_id: 102
+layout: post
+date: 2004-07-26 14:46:32 +00:00
+---
+We Linux users have a zillion screensavers to choose from, but many of my coworkers have winnowed their configurations down to the <a href="http://reallyslick.com/">really cool ones</a>. Sometimes my favorite, Helios, is running on a couple monitors side-by-side, and the effect is neat.
+
+This got me thinking: the random number generator in Helios should simply be Unix time div 60. Then on LANs where most computers are synced with NTP, they'd all show the same view. You'd actually want to make the Helios parameters all derived from the same seed, so that all the screens would be showing the exact same picture no matter when they kicked in. This would give the appearance that all the computers were communicating with each other to keep the screensaver in sync.
+
+I think this would look cool. Or maybe it wouldn't, I don't know.

@@ -1,0 +1,7 @@
+--- 
+title: Case-sensitive search
+mt_id: 30
+layout: post
+date: 2004-02-25 17:38:27 +00:00
+---
+To do a case-sensitive search in Emacs, type M-c while in the incremental search box. Emacs also guesses that you wanted a case-sensitive search if your search term contains at least one capital letter.

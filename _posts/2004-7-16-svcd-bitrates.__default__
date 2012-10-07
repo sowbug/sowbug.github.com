@@ -1,0 +1,23 @@
+--- 
+title: SVCD bitrates
+mt_id: 97
+layout: post
+date: 2004-07-16 09:31:45 +00:00
+---
+For a single 700MB CD, you can fit the following number of minutes of video encoded at a particular bitrate, assuming 224 Kbps audio.
+
+<ul>
+<li>42 min or less: 2,376Kbps, the maximum under the SVCD spec</li>
+<li>43 min: 2,329Kbps (2,553Kbps with audio)</li>
+<li>50 min: 1,971Kbps (2,195Kbps with audio)</li>
+<li>55 min: 1,772Kbps (1,996Kbps with audio)</li>
+<li>60 min: 1,605Kbps (1,829Kbps with audio)</li>
+<li>63 min: 1,518Kbps (1,742Kbps with audio)</li>
+<li>64 min or more: don't bother; below 1,500Kbps looks awful</li>
+</ul>
+
+In general you can calculate this yourself by multiplying the number of megabytes on the CD by 156.8, and then dividing by the number of minutes you'd like to record on one CD. For example, for a 700MB CD and a 45-minute movie, (700 x 156.8 / 45) = 2,439.111. Subtract 224Kbps for audio and you have 2,215.111Kbps left for video.
+
+(The derivation of this formula comes from MB/CD x 1024 bytes/KB x 1024 KB/MB x 1/2048 sector/data byte x 2352 video bytes/sector x 8 bits/byte, and then solving the equation for a particular set of constants.)
+
+Note that CDs have a little more space than advertised. So these numbers are fairly conservative.

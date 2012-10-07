@@ -1,0 +1,10 @@
+--- 
+title: Build 111
+mt_id: 13
+layout: post
+date: 2004-01-17 14:47:30 +00:00
+---
+I finished the refactoring of WRouter. The reason for the refactoring was my observation that each time I wrote a new object in the system, the unit tests were getting harder and more complex to set up -- each new object required instantiation of at least one of all the previous objects in the system. This was a clue that I wasn't encapsulating things very well. 
+The main change was taking the knowledge of WSecureConnection out of WRouter. This wasn't too hard -- after all, the caller really just passed in a blob to WRouter representing one WSecureConnection, and from time to time WRouter would call back again with that blob, asking the caller to do something with it.
+
+Now the unit test for WRouter is really lean; it doesn't need to know anything about WSecureConnection, WRSA, networking, or even buffer objects. Finally the system is small enough again to fit in my little brain. Next I'll add the application-level commands to manage the routing table. Then WINW will really be a VPN. Yay!

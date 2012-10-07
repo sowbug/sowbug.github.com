@@ -1,0 +1,11 @@
+--- 
+title: Blocking an IP address
+mt_id: 358
+layout: post
+date: 2008-08-01 12:21:23 +00:00
+---
+For example, if a script kiddie is trying to ssh from address w.x.y.z as adam, betty, charlie, dan, ed, etc.:
+
+<code>iptables -I INPUT -s w.x.y.z -j DROP</code>
+
+The login attempts are generally harmless (unless they succeed, of course), but they can be distracting if you're debugging something related to processes (e.g., atop or ps). 

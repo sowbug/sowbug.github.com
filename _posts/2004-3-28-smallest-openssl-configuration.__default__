@@ -1,0 +1,14 @@
+--- 
+title: Smallest OpenSSL configuration
+mt_id: 40
+layout: post
+date: 2004-03-28 10:45:34 +00:00
+---
+These are the options I could strip from OpenSSL and still get it to build with RSA:
+
+no-md2 no-md4 no-mdc2 no-ripemd no-rc2 no-rc5 no-idea no-cast no-des no-krb5 no-ec no-engine no-hw no-err
+
+libeay32.dll is 572K.
+ssleay32.dll is 128K.
+
+Note that speed.c in the test suite wouldn't compile because DES was missing.

@@ -1,0 +1,7 @@
+--- 
+title: Gadgets for 2006
+mt_id: 213
+layout: post
+date: 2005-12-25 13:13:32 +00:00
+---
+<p>Here are some products/utilities/hacks I'd like to see this year. I've searched for them on Google, but I either didn't find anything or decided that what I found was too complicated.</p><ul><li>A daemon Tivo. It runs in the background on a PC with a PCI TV tuner card. All it does it record programs listed in an XML file and encodes them as MPEG-4s in AVI containers. No weird containers (MythTV NUV), no attempt at a frontend, no nothing. Just new stuff to watch appearing every day in a directory on my fileserver, and all I have to do is open them in Media Player Classic.</li><li>An ISO generator that takes one or more AVIs or DVD ISOs and spits out a bootable Knoppix ISO that plays the videos when you stick the DVD in any PC. Think of it as a virtual DVD player that you can throw away when you're done.</li><li>A utility that lets you plug a PCI card (I think it's called an "FXO" card) into your home server, then your phone line into your the card, and it emails you MP3s of the messages people leave for you. Asterisk was about 800 times too complicated for this simple answering-machine replacement.</li><li>A video <a href="http://www.slimdevices.com/"">Squeezebox</a>. Please don't make me get an MCE box.</li></ul>

@@ -1,0 +1,32 @@
+--- 
+title: CentOS 5.2 under Xen
+mt_id: 354
+layout: post
+date: 2008-07-13 00:08:48 +00:00
+---
+If the following are true:
+
+<ul>
+	<li>You have a working Xen Dom0 instance</li>
+	<li>You have downloaded the CentOS 5.2 image from <a href="http://jailtime.org/">jailtime.org</a></li>
+	<li>You can't get the image to boot up as a DomU instance because of missing directories such as /dev and /proc</li>
+</ul>
+
+Then you might be interested in knowing that the jailtime images expect certain Xen modules to be preloaded in the ramdisk. So run something like this on your Dom0:
+
+<code>mkinitrd -v -f --with=ext3 --preload=xenblk --with=xennet /boot/initrd-2.6.18-92.1.6.el5xen-xenblk.img 2.6.18-92.1.6.el5xen</code>
+
+Note that I added "-xenblk" to the ramdisk filename to distinguish it from the standard Dom0 file that came with my distro.
+
+Then put the resulting .img in your ramdisk= field in your Xen config file, and believe it or not, it will work. Here's my complete .cfg:
+
+<code>kernel  = "/boot/vmlinuz-2.6.18-92.1.6.el5xen"
+ramdisk = "/boot/initrd-2.6.18-92.1.6.el5xen-xenblk.img"
+memory = 256
+name = "myxen"
+vif = [ 'bridge=xenbr0' ]
+disk = ['file:/home/xen/myxen/centos.5-2.img,sda1,w',
+        'file:/home/xen/myxen/swap.img,sda2,w']
+dhcp='dhcp'
+root = "/dev/sda1 ro"
+extra = '4'</code> 

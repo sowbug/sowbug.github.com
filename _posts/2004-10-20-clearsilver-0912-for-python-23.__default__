@@ -1,0 +1,18 @@
+--- 
+title: Clearsilver 0.9.12 for Python 2.3, Windows
+mt_id: 130
+layout: post
+date: 2004-10-20 14:52:21 +00:00
+---
+I built this using the following tools:
+
+clearsilver-0.9.12.tar.gz
+MinGW-3.1.0-1.exe
+MSYS-1.0.10.exe
+Python 2.3.3 (#51, Dec 18 2003, 20:22:39) [MSC v.1200 32 bit (Intel)] on win32
+
+MD5 sum of neo_cgi.pyd is bdbedfe1a27fbeda7f39ec8a4973b2bf.
+
+<a href="/mt/archives/neo_cgi.zip">download neo_cgi.pyd</a> (79K zipped)
+
+You should unzip this and throw neo_cgi.pyd in c:\Python23\lib\site-packages\.

@@ -1,0 +1,7 @@
+--- 
+title: GE G-35 Color Effects lights
+mt_id: 441
+layout: post
+date: 2011-12-05 10:46:59 +00:00
+---
+I've been hacking pretty hard on these Christmas lights lately. Here's my <a href="http://github.com/sowbug/G35Arduino">GitHub repository</a>, which several people have reported they're using happily on their own homes. My own installation is based on a <a href="http://www.pjrc.com/store/teensy.html">Teensy</a> that I've updated with the <a href="http://arduino.cc/">Arduino</a> <a href="https://github.com/arduino/Arduino/tree/master/hardware/arduino/bootloaders/diskloader">Leonardo bootloader</a>. I'm running two strings directly from a USB power source (an old Kodak Zi8 wall adapter). My G35Arduino library is able to synchronize multiple strings of lights, and that's what I'm doing on my house. I'll post videos later. 

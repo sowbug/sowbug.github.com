@@ -1,0 +1,11 @@
+--- 
+title: NaNoWriMo Extension for Firefox
+mt_id: 331
+layout: post
+date: 2007-11-05 09:54:45 +00:00
+---
+If you've found your way here because of NaNoWriMo, then you're probably wondering why <a href="http://www.sowbug.org/nanowrimo_meter/">my Firefox extension</a> started on November 2 rather than November 1. I reprint here <a href="https://addons.mozilla.org/en-US/firefox/discussions/?AddOnID=1432">my response in the Mozilla discussion</a>:
+
+<code>Hey everyone, I'm the author of this extension. As pointed out in the discussion, the start date for 2007 was incorrect. It was miscalculated to be November 1, 2007 *as of the current time*, and because that was always not-later-than now on November 1, the extension thought that NaNoWriMo hadn't started yet. On November 2 and beyond, it works correctly. I realized this just as NaNoWriMo was starting and quickly submitted 0.4, which fixes the problem. However, the Mozilla extension reviewers appear to be far behind on their extension-reviewing queue, so they haven't approved 0.4 yet, and that's why it doesn't appear on the site. Meanwhile, I have put 0.4 on my personal website at (link). Note that you should generally not install random extensions you find out on the web; if you're uncomfortable doing this, just wait until the Mozilla folks approve 0.4, and you'll get prompted for an update. Sorry for the distraction. Get back to your novel!</code>
+
+<b>Updated 11/9/2007: The official Mozilla site now has 0.4.</b> 

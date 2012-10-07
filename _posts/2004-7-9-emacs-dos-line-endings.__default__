@@ -1,0 +1,7 @@
+--- 
+title: Emacs & DOS line endings
+mt_id: 95
+layout: post
+date: 2004-07-09 22:19:11 +00:00
+---
+To convert an Emacs buffer from DOS line endings to Unix, type C-x [ENTER] f unix [ENTER].

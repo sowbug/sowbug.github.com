@@ -1,0 +1,15 @@
+--- 
+title: Digital TV
+mt_id: 279
+layout: post
+date: 2007-01-29 13:54:08 +00:00
+---
+If you believe the <a href="http://www.msnbc.msn.com/id/9924551/">hype</a>, then your old TV will stop working on April 7, 2009. This is because old-style broadcasts (analog) will be replaced with new-style (digital), and your old TV receives only analog. Digital broadcasts have been occurring for years, but most people aren't aware of them because (a) their TVs can't receive them, or (b) they have cable or satellite.
+
+This weekend I decided to look into what it takes to receive over-the-air digital TV broadcasts. I was optimistic because my setup is favorable: I live on the top of a hill in San Mateo, California, and gigantic <a href="http://en.wikipedia.org/wiki/Sutro_Tower">Sutro Tower</a> broadcasts several TV channels across the San Francisco Bay Area. So in theory it should work.
+
+I bought a $70 <a href="http://www.hauppauge.com/pages/products/data_hvr1600.html">digital TV tuner card</a> for my computer and a <a href="http://www.amazon.com/Philips-PHDTV1-Digital-HDTV-UHF-Antenna/dp/B0007XDI54/sr=1-3/qid=1170108060/ref=pd_bbs_sr_3/103-4536543-6493432?ie=UTF8&s=electronics">$25 passive antenna</a>. I plugged them in, put the antenna on the bookshelf in my office, and found I could tune in NBC, CBS, ABC, Fox, PBS, UPN, WB, and a bunch of independent stations. Moreover, many of them broadcast in high definition!
+
+And it gets better. Digital reception is perfect. There is no fuzz, static, snow, or distortion. Even after transcoding the programs to MPEG-4, the reception is obviously better than my analog cable TV.
+
+After some software twiddling, I now have a set of family favorites (Oprah for Mary, The Simpsons for me, and Sesame Street for the kids) recording automatically, after which they're recompressed and stored on my media server for later viewing. It's not as convenient as my Tivo, but the quality is better, and there's some satisfaction in knowing that I have the freedom to discontinue my cable TV service.

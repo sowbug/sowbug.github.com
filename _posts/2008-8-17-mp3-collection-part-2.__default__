@@ -1,0 +1,13 @@
+--- 
+title: MP3 Collection, Part 2
+mt_id: 361
+layout: post
+date: 2008-08-17 21:57:19 +00:00
+---
+To summarize <a href="http://www.sowbug.org/mt/2005/03/mp3-collection.html">Part 1</a>: back in 2005 I ripped my whole CD collection to MP3 at VBR level 5. I picked this medium-quality compression level because I couldn't hear the difference between it and higher levels.
+
+As it turns out, I can hear the difference, but not in a way that A/B testing would have easily revealed. I still don't think I can consistently distinguish 10 seconds of VBR5 from pure 44.1KHz PCM. Perhaps I never could have, even when I was younger. But today, depending on the encoding, listening to a 40-minute album can be either enjoyable or exhausting. VBR5 makes my ears tired after a while.
+
+Aside from sound quality, file size matters. I might want to drop a few songs onto an MP3 player for my car, or keep a copy of my whole collection on a laptop. In those cases, I do care about smaller file size, unlike at home where hard drive space is effectively infinite for albums that take up at most 650MB uncompressed.
+
+So it's time to re-rip and re-encode. But this time I think I have the right goal in mind: move the physical CD contents online using archive-quality compression, and then use those files as the source for just-in-time MP3s depending on the use case. This means single-file-per-album FLAC with MusicBrainz-aided tagging and embedded cuesheets. From this I have bit-for-bit equivalence with the original CD audio tracks, track-gap preservation, and reasonably correct and consistent metadata, all in a convenient package. I can easily reconstruct an audio CD (actually making it better than the original by adding CD-TEXT),  

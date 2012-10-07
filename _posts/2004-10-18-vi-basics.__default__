@@ -1,0 +1,19 @@
+--- 
+title: vi basics
+mt_id: 126
+layout: post
+date: 2004-10-18 10:34:07 +00:00
+---
+x - delete a character
+! - start of line
+$ - end of line
+dd - delete line
+i - go to insert mode
+a - go to append mode
+esc - go back to command mode
+u - undo
+:wq - write and quit
+:q! - just quit
+:e! - undo what you did to the file and start over
+
+<b>:q! emacs</b> - anything more complicated

@@ -1,0 +1,11 @@
+--- 
+title: One way to spend six hours
+mt_id: 211
+layout: post
+date: 2005-12-19 14:35:16 +00:00
+---
+Step 1. Create a new file called stdafx.cpp.
+Step 2. In that file, add one line: <code>#include &lt;stdafx.h&gt;</code>
+Step 3. Debug for many, many hours.
+Step 4. Change stdafx.cpp to this: <code>#include "stdafx.h"</code>. Note that the compiler now stops assuming you meant the stdafx.h buried deep inside the MFC source.
+Step 5. Go home and have a drink.

@@ -1,0 +1,30 @@
+--- 
+title: DestroyWindow
+mt_id: 49
+layout: post
+date: 2004-04-15 22:21:41 +00:00
+---
+This was a fun Windows bug to catch. ("fun" is a euphemism for "not fun.")
+
+Here's my pseudocode:
+
+<pre>HWND g_hwnd = NULL;
+main() {
+  // Spin off a thread that discovers other people on the network.
+  startDiscovery(myCallback);
+  ... do the main work in my app ...
+  // Cleanup.
+  if (IsWindow(g_hwnd)) {
+    DestroyWindow(g_hwnd);
+  }
+  assert(!IsWindow(g_hwnd));
+}
+
+myCallback() {
+  g_hwnd = CreateWindow("I found someone!!!");
+}</pre>
+
+Now, can you tell why the assertion fails? 
+The reason is that I created the window in a thread that was separate from the thread in which I tried to destroy it. The error returned by GetLastError() is ERROR_ACCESS_DENIED, and sure enough, MSDN documentation says "A thread cannot use DestroyWindow to destroy a window created by a different thread."
+
+This was a hard bug to find! I think I'm going to change my callback to post a message to the main window. That ought to work instead.

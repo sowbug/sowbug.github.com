@@ -1,0 +1,55 @@
+--- 
+title: Modeless Dialogs
+mt_id: 17
+layout: post
+date: 2004-01-19 22:20:44 +00:00
+---
+Why doesn't my modeless WTL dialog act like a dialog? This is old hat for any MFC programmer, but it took me a little bit to get it right. 
+First, start out with a dialog that works great as a modal dialog:
+
+<code>class CIMDialog : public CAxDialogImpl&lt;CIMDialog&gt;,
+&nbsp;&nbsp;&nbsp;&nbsp;public CDialogResize&lt;CIMDialog&gt;
+{ etc....</code>
+
+When it's created modelessly it doesn't behave quite right:
+
+<code>CIMDialog *d = new CIMDialog();
+d-&gt;Create(NULL);
+d-&gt;CenterWindow(m_hWnd);
+d-&gt;ShowWindow(SW_SHOWNORMAL);</code>
+
+When you press tab while one of its controls has focus, nothing happens. Accelerators don't do anything, either. The solution is to wire it into the main message loop:
+
+<code>class CIMDialog : public CAxDialogImpl&lt;CIMDialog&gt;,
+&nbsp;&nbsp;&nbsp;&nbsp;public CDialogResize&lt;CIMDialog&gt;<em>,
+&nbsp;&nbsp;&nbsp;&nbsp;public CMessageFilter</em>
+{ 
+&nbsp;&nbsp;&nbsp;&nbsp;...
+
+<em>&nbsp;&nbsp;&nbsp;&nbsp;virtual BOOL PreTranslateMessage(MSG* pMsg) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return IsDialogMessage(pMsg);
+&nbsp;&nbsp;&nbsp;&nbsp;}</em>
+
+&nbsp;&nbsp;&nbsp;&nbsp;...
+
+&nbsp;&nbsp;&nbsp;&nbsp;LRESULT OnInitDialog(UINT uMsg,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WPARAM wParam,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LPARAM lParam,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BOOL& bHandled)
+&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// register object for message filtering
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CMessageLoop* pLoop = _Module.GetMessageLoop();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ATLASSERT(pLoop != NULL);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pLoop->AddMessageFilter(this);</em>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+&nbsp;&nbsp;&nbsp;&nbsp;}
+
+<em>&nbsp;&nbsp;&nbsp;&nbsp;virtual void OnFinalMessage(HWND /*hWnd*/)
+&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CMessageLoop* pLoop = _Module.GetMessageLoop();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pLoop->RemoveMessageFilter(this);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delete this;
+&nbsp;&nbsp;&nbsp;&nbsp;}</em></code>

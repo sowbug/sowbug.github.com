@@ -1,0 +1,17 @@
+--- 
+title: iRiver Clix2
+mt_id: 299
+layout: post
+date: 2007-07-24 21:41:24 +00:00
+---
+<form mt:asset-id="5" contenteditable="false" class="mt-enclosure mt-enclosure-image"><img alt="" src="http://www.sowbug.org/mt/archives/clix2.jpeg" width="254" height="185" class="mt-image-center" style="text-align: center; display: block; margin: 0 auto 20px;"/></form>
+
+The <a href="http://www.amazon.com/gp/product/B000SKZJJE?ie=UTF8&tag=sowbug-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=B000SKZJJE">iRiver Clix2</a>, a.k.a. Clix second generation, is a 4GB MP3 player that also plays MPEG-4 movies. The screen is a 320x240 OLED display, and the moment I saw the hardware supported 30 fps, I wanted it. I picked one up a few weeks ago, and so far I'm very happy with it.
+
+As I've written before, my previous MP3 player was a Sandisk Sansa e260. The Sansa wins on form factor (it's smaller), but the Clix wins on features and implementation. The UI is so responsive it makes my Series 1 TiVo look like a turtle. The typefaces look nice, the colors are vivid but not distracting, and the animations are subtle and helpful. The Sansa's typefaces, by contrast, look blocky and primitive, and its animations are slow enough that they hurt the experience.
+
+Others have claimed that the sound on the Clix is noticeably better than that of other devices. I haven't done an A/B comparison, but my MP3s do sound brighter.
+
+The best feature by far is the video. Yes, it really does play 30 frames per second, and yes, it's possible for various encoding utilities on the market to produce compatible video (compared to the Motion-JPEG format on the Sansa, which is wasteful in size and not supported by any third-party converters I know of). The open-source iRiverter is an excellent program; it handles batch videos nicely and always produces compatible video. Fast-forward and reverse work just as well as your run-of-the-mill DVD player, and the OLED display is easy on the eyes; I've watched one-hour TV episodes on it without fatigue.
+
+My complaints are few. Obviously, I want 1TB of storage on the device rather than 4GB, but meanwhile 8 or 16GB would be nice (an 8GB version has been announced). As far as I can tell, the hardware is incapable of line-level outputs, so there will never be a cradle or dock worth buying -- though this also means that iRiver had no incentive to create yet another annoying proprietary connector, so I can use any of the dozens of mini-USB cables I have around the house for charging or loading the device. And finally, it's overpriced by about $50. The 4GB Meizu M6 is only around $100, and the 4GB iPod Nano is less than $150, but the Clix is $190. I'm sure the OLED adds a bit to the price, but the fact is that the top-selling device in the category costs less than the Clix, and as long as the iPod remains dominant, competitors will have to beat it both on features <i>and</i> on price. 

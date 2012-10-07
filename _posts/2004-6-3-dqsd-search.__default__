@@ -1,0 +1,87 @@
+--- 
+title: DQSD search
+mt_id: 83
+layout: post
+date: 2004-06-03 13:38:14 +00:00
+---
+This is a new <a href="http://notesbydave.com/toolbar/doc.htm">Dave's Quick Search Deskbar</a> search, cf (short for "clip file"), that takes either the search arguments or whatever text is on the clipboard and saves it on the desktop as an appropriately-named text file.
+
+Examples:
+
+cf dentist 555-1212
+cf [a snippet of text just copied from a web page]
+
+Note that you'll get an ActiveX warning the first time you run. This is probably a good thing. 
+<pre>&lt;search function="cf"&gt;
+ &lt;name&gt;Clip&lt;/name&gt;
+ &lt;description&gt;Save snippet to a text file on the desktop.&lt;br/&gt;
+   &lt;div class="helpboxDescLabels"&gt;Example:&lt;/div&gt;
+   &lt;table class="helpboxDescTable"&gt;
+     &lt;tr&gt;&lt;td&gt;cf remember to call mom tomorrow&lt;/td&gt;&lt;/tr&gt;
+     &lt;tr&gt;&lt;td&gt;cf [with friend's address on the clipboard]&lt;/td&gt;&lt;/tr&gt;
+   &lt;/table&gt;
+ &lt;/description&gt;
+ &lt;category&gt;Functions&lt;/category&gt;
+ &lt;contributor&gt;Mike Tsao&lt;/contributor&gt;
+ &lt;script&gt;&lt;![CDATA[
+   function cf(q) {
+     // First try getting stuff off the command line. If that fails,
+     // grab the text in the clipboard.
+     var clipboard = (q.length &gt; 0) ? q : window.clipboardData.getData("Text");
+     if (clipboard.length == 0) {
+       nullArgs("cf", q);
+       return false;
+     }
+     // Generate a semi-friendly filename.
+     var filename = clipboard.substring(0, 48).
+       replace(/[|/\\^=*]/g, "-").
+       replace(/[\[&lt;]/g, "(").
+       replace(/[\]&gt;]/g, ")").
+       replace(/[?]/g, "").
+       replace(/["]/g, "'").
+       replace(/[;]/g, ".").
+       replace(/\s+/g, " ").
+       replace(/[^A-Za-z0-9 ,()'.\-=_+$]/g, "");
+     filename = filename.replace(/^-/, "");
+     filename = filename.replace(/\.$/, "");
+     filename = "cf-" + filename;
+
+     // Figure out where the desktop folder is.
+     var wss = new ActiveXObject("WScript.Shell");
+     var dtp = wss.SpecialFolders("Desktop");
+
+     // Make sure the filename is unique.
+     var fso = new ActiveXObject("Scripting.FileSystemObject");
+     var dtfilename = fso.BuildPath(dtp, filename);
+     var appendage = 0;
+     var dtfilename_unique;
+     var found_unique = false;
+     while (!found_unique) {
+       dtfilename_unique = dtfilename;
+       if (appendage &gt; 0) {
+         dtfilename_unique += " (" + appendage + ")";
+       }
+       dtfilename_unique += ".txt";
+       if (!fso.FileExists(dtfilename_unique)) {
+         found_unique = true;
+       }
+       appendage++;
+     }
+
+     // Open a new temp file on the desktop and write to it.
+     var ForReading = 1;
+     var ForWriting = 2;
+     var TristateUseDefault = -2;
+     var f = fso.OpenTextFile(dtfilename_unique, ForWriting,
+       true, TristateUseDefault);
+     f.WriteLine(clipboard);
+     f.Close();
+   }
+ ]]&gt;&lt;/script&gt;
+
+ &lt;copyright&gt;
+ Copyright (c) 2004 Mike Tsao
+ Distributed under the terms of the
+ GNU Public License, Version 2 (http://www.gnu.org/copyleft/gpl.txt)
+ &lt;/copyright&gt;
+&lt;/search&gt;</pre>

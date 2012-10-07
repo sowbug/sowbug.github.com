@@ -1,0 +1,39 @@
+--- 
+title: CouchDB Cheat Sheet
+mt_id: 351
+layout: post
+date: 2008-06-16 21:30:54 +00:00
+---
+I've added/removed linefeeds for readability.
+
+<code>$ curl http://www.example.com:7777/
+{"couchdb":"Welcome","version":"0.8.0-incubating"}
+$ curl -X DELETE http://www.example.com:7777/test_db/
+{"ok":true}
+$ curl http://www.example.com:7777/test_db/
+{"error":"not_found","reason":"missing"}
+$ curl -X PUT http://www.example.com:7777/test_db/
+{"ok":true}
+$ curl http://www.example.com:7777/test_db/
+{"db_name":"test_db","doc_count":0,"doc_del_count":0,"update_seq":0,"compact_running":false,"disk_size":4096}
+$ curl -X PUT -d "{\"a\":\"b\"}" http://www.example.com:7777/test_db/foo
+{"ok":true,"id":"foo","rev":"666990838"}
+$ curl http://www.example.com:7777/test_db/foo
+{"_id":"foo","_rev":"666990838","a":"b"}
+$ curl -X PUT -d "{\"a\":\"b2\", \"_rev\":\"666990838\"}" http://www.example.com:7777/test_db/foo
+{"ok":true,"id":"foo","rev":"2431793718"}
+$ curl http://www.example.com:7777/test_db/foo
+{"_id":"foo","_rev":"2431793718","a":"b2"}
+$ curl http://www.example.com:7777/test_db/_all_docs
+{"total_rows":1,"offset":0,"rows":[{"id":"foo","key":"foo","value":{"rev":"2431793718"}}]}
+$ curl -d "{\"a\":\"b3\"}" http://www.example.com:7777/test_db/
+{"ok":true,"id":"4aa63f6ae005d2033da6c80c65252609","rev":"2168454103"}</code>
+
+At this point I struggled for about 30 minutes to get an ad-hoc view to work. This error message wasn't too helpful:
+
+<code>{"error":"error","reason":"{{nocatch,{map_process_error,{exit_status,136}}},\n [{couch_query_servers,readline,2},\n  {couch_query_servers,read_json,1},\n  {couch_query_servers,prompt,2},\n  {couch_query_servers,'-start_doc_map\/2-fun-0-',2},\n  {lists,foreach,2},\n  {couch_query_servers,start_doc_map,2},\n  {couch_view,view_compute,2},\n  {couch_view,update_group,1}]}"</code>
+
+<b>Update 6/17/2008: I tried again today and it worked. No idea what I did differently.</b>
+
+<code>$ curl -H "Content-Type: application/json" -d "{\"map\": \"function(doc) { emit(null, doc); }\"}" http://www.example.com:7777/test_db/_temp_view
+{"total_rows":3,"offset":0,"rows":[ <i>etc.</i> ]}</code> 

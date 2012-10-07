@@ -1,0 +1,18 @@
+--- 
+title: External configurations in Python
+mt_id: 387
+layout: post
+date: 2008-12-17 16:55:08 +00:00
+---
+Is there a standard way for Python apps to pick up stuff from well-known locations on a Linux machine? In Java we follow this idiom:
+
+
+
+
+Here's a problem and the solution I used. Your suggestions for better solutions would be quite appreciated.
+
+I have a Python/Django web app. It gets worked on by individual developers on their workstations. They check their changes into Subversion. The code is then rolled out to a development server. If that's successful, it's promoted to a staging server. Finally, it gets out to production.
+
+Each environment has a slightly different configuration -- in particular, the app talks to different backend servers in each environment. As much as possible, the production configurations aren't available to developers (because it contains secrets, and because we don't want developers hard-coding certain assumptions into their code). We use a configuration-management system, Puppet, to distribute and control each environment's configurations.
+
+Here's the problem: is there a standard way for a Python application to pick up  

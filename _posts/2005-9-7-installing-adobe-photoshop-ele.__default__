@@ -1,0 +1,16 @@
+--- 
+title: Installing Adobe Photoshop Elements on XP Home
+mt_id: 200
+layout: post
+date: 2005-09-07 17:42:33 +00:00
+---
+Published here for posterity, and adapted from a solution on the web to a similar problem with iTunes:
+
+Error 1406. Could not write value to key \Software\Classes\(some extension)\OpenWithList
+
+Run regedit. Navigate to the listed key in HKEY_LOCAL_MACHINE.
+
+Right click on "OpenWithList" folder. Select Permissions. Select Add Button. Select the Advanced button. Type "Everyone" in the "Enter the object name to select" field, and click the "Check Names" 
+The "Find Now" button should list all of the users, Select the "everyone" user. Hit OK. This closes this dialog. Hit OK in the dialog box now on top. This closes this dialog.
+
+On the Permissions for openwithList box now on top select "allow" checkbox in the "full control" row & hit OK.

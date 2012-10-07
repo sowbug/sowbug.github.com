@@ -1,0 +1,13 @@
+--- 
+title: .proto free at last!
+mt_id: 353
+layout: post
+date: 2008-07-07 19:47:37 +00:00
+---
+Google has <a href="http://googleblog.blogspot.com/2008/07/protocol-buffers-our-open-source-data.html">open-sourced</a> one of my mostest favoritest areas of the codebase: <a href="http://code.google.com/p/protobuf/">protocol buffers</a>!
+
+I can feel the commentary appearing in Atom feeds already: why another serialization format? Especially one that is clearly dwarfed by XML/JSON/bencoding/Hibernate/my company's dual-licensed ORM framework/my thesis? (Yes, I know protobuffers aren't an ORM framework, but ORM frameworks do of course provide object-mapping functionality.)
+
+My answer is that the protocol buffer implementation just works really, really well. It excels at handling version mismatches, it's tremendously efficient in terms of stream size (except for negative floats, if memory serves) and execution speed, and it has all the debugging features you could possibly want from a small library. By the way, the debugging features are for your application code; you might say it's already pretty well-tested.
+
+Protocol buffers aren't for every application. You'll still send JSON to your JavaScript, and to my knowledge it hasn't been optimized for code size. If there's any chance at all a human will ever want to read or edit the stream (for example, in the case of a preferences file), forget about it. But if you have two servers sharing information over the wire -- particularly two servers written in different languages -- and you are dreading writing another custom object mapper, protocol buffers might be just the ticket. 

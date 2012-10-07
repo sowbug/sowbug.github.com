@@ -1,0 +1,32 @@
+--- 
+title: Building an nginx RPM for Amazon Linux AMI
+mt_id: 431
+layout: post
+date: 2010-10-12 09:02:38 +00:00
+---
+The current Amazon Linux AMI Beta doesn't include nginx, which is a shame because it's a great frontend. Here's what I did to solve the problem. All these commands are on the EC2 instance, running as a normal user. And just to be clear what I'm providing here, it's nothing more than "how to build a specific source RPM."
+
+<ol>
+	<li>sudo yum install gcc rpm-build perl-ExtUtils-Embed</li>
+	<li>mkdir $HOME/rpm $HOME/rpm/SOURCES $HOME/rpm/SPECS $HOME/rpm/BUILD $HOME/rpm/SRPMS $HOME/rpm/RPMS $HOME/rpm/RPMS/i386</li>
+	<li>echo "%_topdir $HOME/rpm" >> $HOME/.rpmmacros</li>
+        <li>wget http://download.fedora.redhat.com/pub/epel/5/SRPMS/nginx-0.6.39-5.el5.src.rpm</li>
+	<li>rpm -Uvh nginx-0.6.39-5.el5.src.rpm</li>
+	<li>cd ~/rpm/SPECS/</li>
+	<li>rpmbuild -bb nginx.spec</li>
+	<li>cd ~/rpm/RPMS</li>
+	<li>sudo rpm  --nosignature --Uvh i386/nginx-0.6.39-5.amzn1.i386.rpm</li>
+</ol>
+
+Now you should have the latest EPEL version of nginx, which you can chkconfig and /sbin/service start to your heart's content. I might try using this specfile to build the latest nginx (0.8.52). Will update post if I do.
+
+<b>Update</b>: I did it. Here's what I did:
+<ol>
+	<li>Went to rpmfind.net and found a <a href="http://www.rpmfind.net//linux/RPM/fedora/devel/rawhide/src/nginx-0.7.67-1.fc14.src.html">reasonably current Fedora SRPM</a>. Downloaded and installed it.</li>
+	<li>Edited the specfile to change the 7.67 reference to 8.52.</li>
+	<li>Noted that the specfile downloads the nginx source directly from sysoev.ru, which at first looked a little scary but is actually the same site as the one referenced on the <a href="http://wiki.nginx.org/Install">Nginx wiki</a>.</li>
+	<li>Duplicated, twice, the two lines toward the bottom of the specfile that install fastcgi and fastcgi_default config files. Changed one of the copies to install scgi, and the other to install uwsgi. These seem to be newer config files introduced in 0.8, so we need to package them into the RPM, too.</li>
+	<li>Built the RPM following the same method described above.</li>
+</ol>
+
+This seems to be working just fine. Note that because your RPM is unsigned, you'll need to install with the --nosignature option. 

@@ -1,0 +1,7 @@
+--- 
+title: Slate, fix your RSS feed!
+mt_id: 204
+layout: post
+date: 2005-10-11 10:14:48 +00:00
+---
+One of the 134 feeds I subscribe to on Bloglines is Slate. They recently began including ads in their feeds, which is fine, except that they implemented it in a way that causes Bloglines to think that the article's been updated every time it crawls the feed. Specifically, the description tag for each item includes ad HTML whose href, img, and comments frequently change. The result is that Bloglines has a dozen or so "new" Slate articles every 10 minutes, and the mildly cute headlines ("QuagMier?" "Do Dogs Think?" "Doonesbury: Shock and awesome") have turned into my very own <a href="http://www.imdb.com/title/tt0107048/"><i>Groundhog Day</i></a>.

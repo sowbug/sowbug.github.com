@@ -1,0 +1,9 @@
+--- 
+title: hexdump
+mt_id: 85
+layout: post
+date: 2004-06-10 10:22:04 +00:00
+---
+This is the best I could come up with for printing out a bunch of bytes from a file into a format that you can put in a C program. I couldn't figure out how to get rid of the trailing junk:
+
+hexdump -e '8/1 "0x%02x, " "\n"' file_to_dump.bin

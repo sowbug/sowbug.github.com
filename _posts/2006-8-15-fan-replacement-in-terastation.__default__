@@ -1,0 +1,15 @@
+--- 
+title: Fan replacement in Terastation
+mt_id: 260
+layout: post
+date: 2006-08-15 14:31:02 +00:00
+---
+A couple months ago I bought a Buffalo Terastation. It's a bit on the expensive side for 750GB of storage (1TB in RAID-5 configuration), but it mostly satisfied my desire for a hassle-free, turnkey storage appliance.
+
+Mostly. Two weeks ago it started accessing the hard drives constantly, and loudly. I unplugged the network cable. Drive access sounds continued. Hmm. Was it doing a RAID array check? No. Did it, uh, like catch a virus or something? No.
+
+It turned out the power supply fan was rattling. This is a $1.99 part inside a $700 device. Since that device, moreover, was now holding hundreds of gigabytes of my precious data, I didn't really feel like mailing it back to Buffalo for repair.
+
+My only option was to replace the fan. I guessed that it was an 80x25mm case fan with a 3-pin power connector, so I bought one at my local grocery-store-turned-computer-retailer. I disassembled the Terastation, removing all 240 screws (OK, I exaggerate. There are only 180 screws). I took apart the power supply and discovered that the fan actually had a 2-pin power connector -- it was missing the yellow connector that I suspect is for speed monitoring. So I clipped the old fan's connector and soldered it to the new one. I reassembled everything (well, almost everything; I had one piece left over at the end that now sits next to the Terastation), plugged it back in, and it worked, quietly.
+
+So if your Terastation's fan starts acting up, and you're comfortable soldering wires together, this is a straightforward repair job. Other than the soldering, it's no more difficult than a drive replacement, which the user manual describes how to do.

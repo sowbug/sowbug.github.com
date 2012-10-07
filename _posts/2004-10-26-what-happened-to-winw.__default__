@@ -1,0 +1,14 @@
+--- 
+title: What happened to WINW?
+mt_id: 133
+layout: post
+date: 2004-10-26 13:11:03 +00:00
+---
+I last worked on the C version of WINW in April 2004. I'd been working on it for nearly a year and was starting to get frustrated with a lack of focus that expressed itself as an irresistible desire to continue to rewrite perfectly good parts of the code. This is expensive to do in C, and it wasn't making WINW any better. Nor was I coming any closer to the essential feature of the program: file sharing.
+
+So I quit for a while. I have continued to think about WINW, though, and have used it as an excuse to investigate and learn new technologies and methodologies, which is always fun. 
+I've started coding again after making some key decisions on the project. First, I'm prototyping in Python. I should have done that from the beginning, and I'm sure I would have if I had known Python back then. Second, the UI is Tkinter. Tkinter is relatively ugly compared to Windows, but that's good because it means there's no point in wasting time making the UI look nice during the prototyping phase.
+
+Third, and most important, <a href="http://www.beepcore.org/">BEEP</a> is now the framework for the WINW protocol. BEEP gives me one important feature that I was dreading having to design and implement on my own: efficient transmission of sideband data, such as chat text while downloading a big file, through multiplexing multiple channels over the same transport. There were other features I'd already implemented, such as tunneling over SSL, but BEEP is a better design than mine, and in theory it's an IETF standard, so I won't spend any more time arguing with myself about whether I should redesign the low-level aspects of the protocol.
+
+At the end of this phase of the project, I should have an ugly but fully-functional implementation of WINW. This will serve as the reference implementation. If I, or someone else, wants to write a flashy Windows or Linux client, then there will be an existing client against which to test.

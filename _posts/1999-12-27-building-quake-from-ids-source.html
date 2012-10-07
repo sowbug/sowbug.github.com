@@ -1,0 +1,96 @@
+--- 
+title: Building Quake from id's source
+mt_id: 3
+layout: post
+date: 1999-12-27 14:36:26 +00:00
+---
+ 
+<p>If you'd like to compile Quake under Linux, <a href="building_quake.html">here's
+another tutorial</a> from <a href="mailto:church@webzone.net">Ralph Churchill</a>.
+I haven't tried it myself so please e-mail questions and comments to him.
+Thanks, Ralph!</p>
+<p>Also, to solve the mathlib.c freezing problem under MSVC 5.0, try compiling
+the QuakeWorld version of the same file. That should work ok and you can just
+copy the file into the WinQuake project. Also try removing lines 178 and 287
+from the mathlib.c file (I haven't tried this myself so I don't know what these
+lines are, but I have been told this makes it work).</p>
+
+<h4>December 26, 1999</h4>
+<p>Several people have written me about trouble getting the source to compile
+and run using Visual Studio 5.0. The specific problems are:</p>
+<p>&nbsp;&nbsp;&nbsp; 1. Freezing during compilation of mathlib.c;</p>
+<p>&nbsp;&nbsp;&nbsp; 2. The QuakeWorld server freezes during runtime if
+compiled with the optimizations used in the VC6 project.</p>
+<p>I don't have Visual Studio 5 so I can't reproduce these problems, but it
+makes sense to create your own project (.dsp) and workspace (.dsw) files and
+recreate the projects from scratch, because there may be a new option in VC6
+that makes VC5 explode. Also make sure you have the latest Service Pack for VC
+5, which you can get <a href="http://msdn.microsoft.com/vstudio/sp/vs97/default.asp">here</a>.</p>
+<p>If you know how to solve these problems, please write me and I'll post the
+instructions here.</p>
+<h4>December 23, 1999</h4>
+<p>If you don't have MASM, <a href="http://www.telefragged.com">telefragged.com</a>
+has a <a href="http://qsg.telefragged.com/tut/misc/compile.shtml">link</a> on
+how to get it. Or just get it from <a href="http://www.microsoft.com/ddk/download/98/BINS_DDK.EXE">here</a>
+and find the file in the CAB file named BIN_WIN98_ML.EXE, and rename that to
+ml.exe. Then continue with step 1 below.</p>
+<p>This is how to get a fully functional copy of WinQuake working if you have
+MASM:</p>
+<p>1. Install MASM if you haven't already, and add the MASM611\bin path so that
+Visual Studio 6.0 can see it.</p>
+<p>2. Open the WinQuake workspace and set to the debug configuration. <u>This is
+important because both the release and debug configurations of WinQuake rely on
+the debug version of gas2masm!</u></p>
+<p>3. Compile. It should work just fine.</p>
+<p>4. Now switch to the release configuration of the WinQuake project. Compile.
+Done.</p>
+<p>I am working on a version of the .s files in WinQuake that will compile under
+<a href="http://www.web-sites.co.uk/nasm/">NASM</a>, but I haven't figured out how to integrate NASM with Visual Studio 6.0. If
+you know how to do this, please <a href="mailto:sowbug@sowbug.org">let me know</a>.
+The next step, of course, is getting it to compile under a totally free
+development environment, but I know <a href="http://www.inside3d.com/qip/home.shtml">lots</a>
+of people are already working on that.&nbsp;</p>
+<h4>December 22, 1999</h4>
+<p>This is how to get a marginally functional copy of WinQuake working without
+MASM (but I don't think there's any reason to do this since you can get MASM for
+free <a href="http://www.microsoft.com/ddk/download/98/BINS_DDK.EXE">here</a>):</p>
+<p>1. Download the <a href="ftp://ftp.cdrom.com/pub/idgames/idstuff/source/q1source.zip">source</a>
+from <a href="ftp://ftp.cdrom.com">ftp.cdrom.com</a> or wherever else and unzip
+into some directory somewhere.</p>
+<p>2. Open the WinQuake project from Visual Studio 6.0.</p>
+<p>3. In quakedef.h, modify line 65 which defines id386 to be 1. You want this
+constant defined as 0. This is the project-wide constant that says &quot;we are
+compiling for an Intel processor and we have provided hand-optimized code from
+Michael Abrash that must be compiled with an assembler.&quot;</p>
+<p>4. Move all the .s files within the project to a new project folder called
+&quot;Assembly files&quot; or something like that. Then right-click that project
+folder, select &quot;settings...,&quot; and check the box that says
+&quot;Exclude file from build.&quot; These are all the files that you need MASM
+to compile, so what we're doing here is setting them aside for now but not
+actually removing them from the project.</p>
+<p>5. Add nonintel.c to the project.</p>
+<p>6. In sys_win.c, comment out lines 273 and 291, which cause the following
+empty functions to be included: <font face="Courier New"> Sys_SetFPCW()</font>, <font face="Courier New">Sys_PushFPCW_SetHigh()</font>,
+<font face="Courier New">Sys_PopFPCW()</font>, <font face="Courier New"> MaskExceptions()</font>.
+These are some of the functions that would have been implemented in the .s files
+that we took out.</p>
+<p>7. In sys_win.c, add the following empty functions:</p>
+<p><font face="Courier New">void Sys_HighFPPrecision (void)<br>
+{<br>
+}<br>
+<br>
+void Sys_LowFPPrecision (void)<br>
+{<br>
+}</font></p>
+<p>8. Compile. You'll get a couple warnings about functions that might not
+return required results, but that's ok.</p>
+<p>9. Move the file WinQuake.exe that's now in the Release folder into some
+other folder on your drive, and copy the ID1 folder from your Quake 1 folder
+into that folder (this is just like how it already is in your Quake 1 folder).
+Run it. It should work. You'll see the textures wig out from time to time and
+draw gray instead of the right texture. Since the functions we stubbed out in
+steps 6 and 7 all deal with particular ways to round floating-point numbers and
+deal with NAN problems, I'm sure that the reason we're seeing buggy drawing code
+is because it relied on these functions.</p>
+<p>Note: After running WinQuake my Windows Start button turns blue and the
+taskbar doubles its height. Go figure.</p>

@@ -1,0 +1,65 @@
+--- 
+title: EM_STREAMIN
+mt_id: 7
+layout: post
+date: 2003-09-22 07:46:56 +00:00
+---
+<p>What do you usually do when you need to set text in a Windows control? You do one of the following:</p>
+<ul>
+  <li>SetWindowText()</li>
+  <li>SetDlgItemText()</li>
+  <li>SendMessage(WM_SETTEXT)</li>
+  <li>SendMessage(WM_SETTEXTEX)</li>
+</ul>
+<p>It's tempting to do the same for a Rich Edit control, and sure enough, this 
+will work on almost all versions of Windows.</p> 
+<p>On early '98 systems, however, it 
+won't always work. In cases where it doesn't, it either displays gobbledygook, 
+does nothing, or crashes -- pretty easy for this to slip by QA. Moreover, after 
+looking into the MSDN documentation on the subject, I don't actually see any 
+guarantee that simply setting text on a Rich Edit control will work on <i>any</i> 
+version of Windows.</p>
+<p>Instead, you must stream text into these controls. Doing so is a little more 
+cumbersome than a single function call, but it's simple boilerplate code. 
+Here is an example of how to do it:</p>
+<pre>static DWORD CALLBACK editStreamCallback(DWORD_PTR dwCookie,
+                                         LPBYTE pbBuff,
+                                         LONG cb,
+                                         LONG *pcb)
+{
+    esstruct *ess = (esstruct *)dwCookie;
+    if (NULL != ess) {
+        *pcb = cb;
+        if (*pcb &gt; ess-&gt;nSize) {
+            *pcb = ess-&gt;nSize;
+        }
+        if (*pcb &gt; 0) {
+            memcpy(pbBuff, ess-&gt;lpText, *pcb);
+            ess-&gt;lpText += *pcb;
+            ess-&gt;nSize -= *pcb;
+        }
+        return 0;
+    }
+    return ERROR_INVALID_PARAMETER;
+}
+
+void SetTextForMyControl(LPTSTR *text)
+{
+    esstruct ess;
+    EDITSTREAM es;
+
+    ess.lpText = text;
+    ess.nSize = (text-&gt;get_Length()) * sizeof(TCHAR);
+
+    es.dwCookie = (DWORD_PTR)&amp;ess;
+    es.dwError = 0;
+    es.pfnCallback = editStreamCallback;
+
+    SendMessage(GetDlgItem(hwnd, IDC_MYCONTROL),
+        EM_STREAMIN,
+        (WPARAM)(SF_TEXT /* optional: | SF_UNICODE*/),
+        (LPARAM)&amp;es);
+}</pre>
+<p>This performs extremely reliably on all Windows systems I have tested. I 
+strongly recommend that you use it whenever you want to set text on a Rich Edit 
+control.</p>

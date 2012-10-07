@@ -1,0 +1,15 @@
+--- 
+title: The big FLAC project
+mt_id: 369
+layout: post
+date: 2008-08-29 11:05:16 +00:00
+---
+<a href="http://www.sowbug.org/mt/2005/03/mp3-collection.html">I made a mistake a few years ago</a>. I've since learned that I can hear better than I thought. Thus begins the once-and-for-all CD archiving project. All my physical CDs will be see the light of a laser one last time, and then be put away forever, replaced by album-image FLACs with embedded cuesheets. These archive FLACs will then serve as source files for other audio formats (MP3 high quality, MP3 small size, audio CD ISOs, and so on).
+
+Step one: following <a href="http://blogs.phred.org/blogs/alex_wetmore/archive/2006/12/20/bulk-cd-ripping-part-one-hardware.aspx">Alex Wetmore's lead</a>, find a bulk CD ripper cheap on eBay.
+
+Step two: Get Alex's stuff working. (Yes, it really does work.) What I learned during this step: (1) turn off the Removable Storage service in XP, (2) don't try updating any software from Alex's zip archive; just treat it as a turnkey system; (3) turn off the Windows Update service unless you want to lose 10 hours to an automatic update restart; (4) set your computer's power settings to always-on; and (5) understand that to kick off the whole process, you need to first mount the Slot 0 disc, then launch REACT, then press alt-F5 to start the ripping.
+
+Step three: wait a long time. Excluding the Windows Update incident, I'm seeing about 12 minutes per disc, start to finish. Thus about two ideal days for a 200-CD batch.
+
+Future post-processing steps include adding album art, MusicBrainz tags, replay gain info, and embedded CUE and Vorbis data. I'll update this entry as I get there. 

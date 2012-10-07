@@ -1,0 +1,19 @@
+--- 
+title: nfs vs. smb
+mt_id: 363
+layout: post
+date: 2008-08-18 13:02:50 +00:00
+---
+350MB file on an Infrant ReadyNAS, copied to a generic Linux box. Same directory, same file, only difference is mounting over NFS vs. mounting over Samba:
+
+<code>$ time cp /mnt/nfs/file.bin .
+real    0m2.662s
+user    0m0.084s
+sys     0m2.504s</code>
+
+<code>$ time cp /mnt/smb/file.bin .
+real    0m57.294s
+user    0m0.008s
+sys     0m0.452s</code>
+
+<strong>Update a few hours later</strong>: I think caching fooled me. A new test for a different file that is 321MB shows NFS at 10.9 seconds versus SMB's 49.6 seconds. Still an extreme difference, but no longer uncomfortably close (over 130MB/sec) to the theoretical maximum speed of a typical SATA hard drive. 

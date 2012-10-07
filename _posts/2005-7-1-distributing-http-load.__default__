@@ -1,0 +1,15 @@
+--- 
+title: Distributing HTTP load
+mt_id: 186
+layout: post
+date: 2005-07-01 14:36:56 +00:00
+---
+Idea: for large static resources like JPEGs, installers, and ISOs, web servers include a <a href="http://www.faqs.org/rfcs/rfc1864.html">Content-MD5</a> header in their responses. Then altruistic Netizens run caching servers that store such resources recently downloaded by the servers' owners. These servers publish Bloom filters of their cache contents (using the MD5 fingerprint as the members of the Bloom filter set) so that peers don't need to constantly query them. These servers honor requests for resources using the MD5 fingerprint as the URI (e.g., http://foo.example.com/cache/2e075c56dcaf2397c1beb8f7be7fed15), and respect the Content-Range header so that a client can download parts from different servers and piece them back together again.
+
+Reasons why this idea sucks:
+
+<ul>
+<li>There's nothing like a .torrent file that lets you quickly verify that the server giving you chunks of a file is legit. You could download 2GB of stuff and then find the md5sum doesn't match. Possible solution: the Content-MD5 header is the fingerprint of such a file, which the server automatically generates and serves using a synthetic URL (e.g., /foo/installer.exe.torrent-like-file for /foo/installer.exe)</li>
+<li>Why would anyone run a server like this? I don't know. First I thought it might be interesting inside an intranet, but it's more likely a company would set up a squid proxy instead.</li>
+<li></li>
+</ul>

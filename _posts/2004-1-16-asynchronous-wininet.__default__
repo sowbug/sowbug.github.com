@@ -1,0 +1,18 @@
+--- 
+title: Asynchronous Wininet
+mt_id: 12
+layout: post
+date: 2004-01-16 11:36:59 +00:00
+---
+All the sample code I found on the net dealing with async Wininet uses globals for various items shared between the main flow and the callback function. The use of globals masks a problem. 
+Usually, sample code waits for INTERNET_STATUS_REQUEST_COMPLETE. Makes sense: you made a request, and it is now complete. At this point, if you're not using globals, you will ordinarily destroy the instance handling the callback, invalidating the memory it occupied:
+<code>
+Object *o = new Object();
+startProcess(o);
+waitToFinish(o);
+delete o;
+</code>
+
+Problem is, Wininet keeps calling your callback with other stuff like INTERNET_STATUS_CLOSING_CONNECTION, INTERNET_STATUS_CONNECTION_CLOSED, and INTERNET_STATUS_HANDLE_CLOSING. If your handler isn't in a state to handle these, you die. This won't happen if you use globals that live forever; that's why the sample code on the net seems to work OK.
+
+My solution: after each of my InternetCloseHandle()s, I wait for that handle's INTERNET_STATUS_HANDLE_CLOSING message. This seems to be the very last message. On my machine with <a href="http://www.intel.com/technology/hyperthread/">Hyper-Threading Technology</a>, race conditions are empirically easier to expose. I can't cause a message to arrive after INTERNET_STATUS_HANDLE_CLOSING, so I feel it's safe.

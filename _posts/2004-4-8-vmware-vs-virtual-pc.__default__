@@ -1,0 +1,16 @@
+--- 
+title: VMware vs. Virtual PC
+mt_id: 48
+layout: post
+date: 2004-04-08 08:41:39 +00:00
+---
+There are plenty of comparisons out there on the web, so I won't rehash that; I'll just relate my personal experience. 
+I've been using VMware for a long time at the various companies I've worked at, and I've found it indispensable. It feels like a little PC that's just a bit slower than my real one, running in a window -- exactly what you want.
+
+Last year I tried out the free evaluation version of Virtual PC right after Microsoft bought Connectix. It was dog-slow and missing many of the bells and whistles that make VMware great. It was so slow, in fact, that I concluded that the product must have been doing x86 emulation (i.e., a program written to behave like an x86) rather than using the x86's virtual machine capabilities. In other words, it was nearly useless.
+
+Well, I finally plopped down $400 to sign up for the Microsoft ISV program, which includes an MSDN Universal subscription. I decided to give Virtual PC a try again (this time "Microsoft Virtual PC 2004") and had nearly the same experience as before: while setting up Windows XP on the virtual machine, it took forever -- each "minute" promised in setup took probably 15 real minutes.
+
+So I check on Google for benchmarks, and they're nowhere near what I'm seeing. They all show Virtual PC is slightly slower than VMware, but not 10-20x slower. Something's wrong. Then I find it: the default setting lowers Virtual PC's priority if it's not frontmost. As you can imagine, I left it in the background rather than stare at the XP setup screen for half an hour. Fixing that setting seemed to get things going at a reasonable clip.
+
+Best of all, Virtual PC is no extra cost to me now that I have the MSDN Universal subscription.

@@ -1,0 +1,19 @@
+--- 
+title: "Sine waves and alternating current "
+mt_id: 310
+layout: post
+date: 2007-08-19 18:30:34 +00:00
+---
+Every so often when I'm rearranging electronics at home and feeling overly fastidious, I run through a brief thought experiment about how to move something to another outlet without turning it off. The basic idea is something like this:
+
+1. Start with a device plugged into a power strip.
+2. Create an unholy power cable with male prongs on both ends.
+3. Plug a UPS into the power strip using the unholy cable.
+4. Now the device is running off both house current and the UPS!
+5. Unplug the power strip from the wall, then move the device.
+
+I've never had the guts to actually try this, and I think I've figured out why it will lead to misery, or at least unexpected behavior. The power from the grid is a sine wave, and DC devices depend on the oscillation to convert the AC to DC. If you introduce another power source into the mix, the waves won't be synchronized, and the device won't be able to convert sufficient power to keep going.
+
+I'm sure there are other problems that will lead to worse consequences, no doubt involving the fire department. But this seems to be at least one independently sufficient reason why Radio Shack doesn't sell male-to-male power cables. (I'd be happy to hear the whole story from an electrical engineer; please comment.)
+
+<b>Updated 11/06/2007: <a href="http://www.engadget.com/2007/11/06/wiebetech-hotplug-lets-cops-move-desktops-without-shutting-them/">Someone figured it out!</a></b> 

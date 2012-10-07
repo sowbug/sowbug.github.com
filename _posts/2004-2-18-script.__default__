@@ -1,0 +1,7 @@
+--- 
+title: script
+mt_id: 26
+layout: post
+date: 2004-02-18 09:33:08 +00:00
+---
+The Unix command script captures a terminal session to a file. It's useful when documenting how you did something in a shell.

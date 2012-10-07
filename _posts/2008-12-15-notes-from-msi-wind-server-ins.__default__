@@ -1,0 +1,38 @@
+--- 
+title: Notes from MSI Wind server installation
+mt_id: 364
+layout: post
+date: 2008-12-15 10:55:39 +00:00
+---
+<em>December 15, 2008: I wrote this post back in August but never got around to editing it. The server has been running perfectly since then.</em>
+
+The <a href="http://www.amazon.com/MSI-Intel-945GC-200Pin-Barebone/dp/B001E71IE0?tag=sowbug-20">MSI Wind PC</a> is a barebones Atom-based PC. The case is small but not tiny. With shipping and sales tax from NewEgg, the cost was $165.34.
+
+The goal is to make this box into a simple but capable home Linux server. I already have an Infrant ReadyNAS, which is a fantastic file server, but just too slow to serve any other function such as a Squeezecenter server. I figure the two machines together will handle most of my home hacking needs, and most of the day they'll together consume less than 50 watts.
+
+Step one: install required hardware. I plugged in a 512MB SO-DIMM from an old laptop, and then a 2GB CompactFlash card for the OS. I had to take apart the entire thing to get the CF card plugged in, because the socket ridiculously abuts the case wall. Otherwise, no problem.
+
+Step two: install OS. The RTL8111C network adapter wasn't incorporated into the Linux kernel until 2.6.26 or so, which meant this would be challenging. I got a CentOS 5.2 DVD and put the RealTek driver source on a USB drive. The CF card's slow write speeds meant the installation was slow (45 minutes). After reboot, I copied the driver source to /root, then built and installed it. On reboot, sure enough, I had a working eth0. By the way, during the installation my Kill-A-Watt showed the box at a fairly constant 20W.
+
+Step three: tuning. Added a few quick ramdisks to take care of most unnecessary CF writes in /etc/fstab:
+
+<code>tmpfs /tmp tmpfs defaults,mode=1777 0 0
+tmpfs /var/cache tmpfs defaults,mode=1777 0 0
+tmpfs /var/log tmpfs defaults,mode=1777 0 0
+tmpfs /var/run tmpfs defaults,mode=1777 0 0
+tmpfs /var/tmp tmpfs defaults,mode=1777 0 0
+tmpfs /var/lib/squeezecenter/cache tmpfs defaults,mode=1777 0 0</code>
+
+(It seems like there must be a better way to do this, but I didn't want to muck with too much on the system that yum would then unravel.)
+
+In order to get the system to boot after this, I had to switch SELinux to permissive; otherwise, it seems like all the startup scripts that wanted to write to the tmpfs filesystems during boot failed because the filesystems were read-only. And thus I blow right through another New Year's resolution to learn SELinux instead of being lazy.
+
+Then yum -y update, and once again rebuilt the RealTek driver for the updated kernel.
+
+Over the next couple days I'd occasionally do a query like this to see whether anything was being unexpectedly written to flash:
+
+<code>find /etc /var /tmp -type f -and -mmin -45</code>
+
+Based on these results, I configured ntpd to write its drift file to /var/tmp/ntp_drift. Otherwise, everything looked about right.
+
+You might notice that I configured Squeezecenter to store its "cache" data -- which includes the MySQL database where it stores music metadata -- in ramdisk. Yes, this means that it does a full-library rescan on every reboot. I'll see whether this works in practice, but I expect this server to reboot very rarely. I had a home server a few years ago whose uptime was close to a year, so it seems realistic. 

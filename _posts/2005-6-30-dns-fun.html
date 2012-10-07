@@ -1,0 +1,24 @@
+--- 
+title: DNS fun
+mt_id: 182
+layout: post
+date: 2005-06-30 14:05:05 +00:00
+---
+<p>Diagnosing DNS trouble is especially fun because of caching. If you keep doing <code>dig sowbug.org</code> over and over, all you're usually doing is reading the cached value from your local DNS server, rather than confirming that the changes you've made at your registrar are taking effect. So I came up with the following method to try to trace exactly what was happening. It might be wrong, but it seems to make sense.</p>
+<ol>
+<li><code>dig sldfkjalfkajdfldsj.com</code>: The hope in doing this was that I'd get an NXDOMAIN error from the highest possible authority (i.e., farthest from my local DNS). This returned the following:<pre>
+;; AUTHORITY SECTION:
+com.      10800   IN  SOA     a.gtld-servers.net. \
+nstld.verisign-grs.com. 1120164931 1800 900 604800 900</pre></li>
+<li><code>dig @a.gtld-servers.net sowbug.org</code>: In other words, ask a.gtld-servers.net what it thinks about sowbug.org:<pre>;; AUTHORITY SECTION:
+.         172800  IN      NS      k.root-servers.net.
+.         172800  IN      NS      d.root-servers.net.</pre></li>
+<li><code>dig @k.root-servers.net sowbug.org</code>: Lather, rinse, repeat:<pre>
+;; AUTHORITY SECTION:
+org.      172800  IN      NS      tld1.ultradns.net.</pre></li>
+<li><code>dig @tld1.ultradns.net sowbug.org</code>: Ah, now we're getting somewhere:<pre>
+;; AUTHORITY SECTION:
+sowbug.org.   86400   IN  NS  park4.secureserver.net.
+sowbug.org.   86400   IN  NS  park3.secureserver.net.</pre></li>
+</ol>
+<p>At this point I figured out that the root nameservers had the wrong nameservers listed for my domain. So I continued to fiddle with the registrar's self-service web page, and eventually got it right.</p>

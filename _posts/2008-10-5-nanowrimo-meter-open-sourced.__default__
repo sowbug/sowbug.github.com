@@ -1,0 +1,9 @@
+--- 
+title: NaNoWriMo Meter open-sourced
+mt_id: 377
+layout: post
+date: 2008-10-05 21:05:57 +00:00
+---
+A couple years ago, I wrote a <a href="https://addons.mozilla.org/en-US/firefox/addon/1432">little Firefox add-on</a> for my wife to help her track her progress on her novel during <a href="http://www.nanowrimo.org/">National Novel Writing Month</a>. The add-on seemed useful enough to publish, and sure enough, it ranks #1 in downloads for Firefox extensions... that track writing progress... for NaNoWriMo.
+
+Anyway, I just put the source under GPL on <a href="http://code.google.com/p/nanowrimo-meter/">code.google.com</a>. Have fun! 

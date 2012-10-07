@@ -1,0 +1,29 @@
+--- 
+title: GPS devices are dumb
+mt_id: 292
+layout: post
+date: 2007-07-03 10:44:18 +00:00
+---
+Today's GPS devices remind me of CD-ROM encyclopedias.
+
+If you were living on the cutting edge of technology in the early 1990s, you remember the excitement of being able to look up <i>anything</i> on your computer and, after a short delay and maybe swapping a disc or two, seeing a few paragraphs about it.
+
+Then along came the web in the mid-1990s, and suddenly CD-ROMs looked like dinosaurs nearing extinction. Not only didn't you have to pay $99.99 for a static copy of one company's encyclopedia, but the web version was actually better. You got a dozen different viewpoints on the topic. The information was fresh. If you didn't like how someone had organized a web page, that's OK; search engines would help you find specifically what you wanted.
+
+Today, of course, we have Wikipedia and search engines with contextual ads, all of which nicely align business interests with data freshness. If you're looking for something on the web, many forces come together to make sure you find it.
+
+But GPS devices act like CD-ROM encyclopedias from 1992. Buy a Garmin GPS and you get a static copy of maps from many months ago. Unless you pay for map updates, your GPS device will <i>never</i> know about the new overpass constructed along your daily commute. Some trim lines of the Toyota Prius include a GPS, along with the privilege of getting to pay $200 for each map update.
+
+"Point of Interest," or POI data, make this problem even more frustrating. It's possible to ask a GPS device to tell you where the nearest Peet's Coffee is. And it will tell you where the nearest Peet's Coffee was, as of September 2006. Unless you pay for map updates (around $100 from Garmin), your GPS will never tell you about the closer one that opened in May 2007.
+
+Don't you think Peet's Coffee would be willing to pay a few cents to get your map data updated to tell you about its newest stores? Don't you think Starbucks and Peet's and Coffee Bean would be willing to compete for placement on my GPS device when I pressed the "coffee" icon on the screen? In other words, shouldn't the people being mapped get to be in charge of making sure the maps are accurate? If there's an error in a map, who's more likely to fix it: the store that's invisible because of the error, or the would-be customer who never knew the store existed?
+
+No doubt, existing technology explains why the wrong people (users) instead of the right people (advertisers) are being asked to pay to keep the advertising medium up to date. GPS devices generally don't have any sort of networking capability. So they physically can't update themselves.
+
+So build a WiFi chip into each GPS. Let it associate with your home network to trickle map updates each night while the car's parked in the driveway. In communities with public WiFi, let it connect. And let it connect promiscuously to any open WiFi network while you're parked elsewhere. (Security issues? That's exactly what SSL is for. In fact, with appropriate security in place, GPSes can connect by P2P to share authentic map updates.)
+
+At this point GPSes are capable of updating their map data daily, and I'd be happy to trust my GPS manufacturer to be sensible about updating the data frequently with hotlinks between every retail chain in the country that's interested in letting drivers know that they just opened a new store down the road.
+
+But why stop there? Now that my GPS is on the web, can't it subscribe to RSS feeds listing local weather and traffic? How about weekend sales at Fry's Electronics and my neighborhood grocery store? Or how to get to the gas station within 2 miles from my current location with the lowest prices for unleaded? How about downloading my Google Calendar for the day and planning my route for me (reminding me that I am driving by Home Depot between two points and have been meaning to pick up a new trash can)?
+
+GPSes are incredibly useful. They have fundamentally changed the way I drive around town, especially in unfamiliar towns. But they're isolated islands in a connected world, and GPS manufacturers are leaving a lot of money on the table as a result.

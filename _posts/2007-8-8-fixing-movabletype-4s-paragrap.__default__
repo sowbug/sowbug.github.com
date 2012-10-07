@@ -1,0 +1,12 @@
+--- 
+title: Fixing MovableType 4's paragraph bugs
+mt_id: 306
+layout: post
+date: 2007-08-08 19:58:18 +00:00
+---
+Two problems:
+
+1. The CSS just ain't right, as far as I can tell. Go to Design -> Templates -> base_styles.css. Find the p element and copy it into its own separate block. Change <code>padding</code> to <code>0px 0px 20px 0px</code> and rebuild.
+
+2. Thanks to Joe Siegler on the Movable Type forums for this: change <code>convert_breaks="0"</code> to <code>convert_breaks="1"</code> in the three places it appears in the RSS/Atom feed templates.
+ 

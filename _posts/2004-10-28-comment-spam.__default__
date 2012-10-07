@@ -1,0 +1,9 @@
+--- 
+title: Comment spam
+mt_id: 135
+layout: post
+date: 2004-10-28 12:28:26 +00:00
+---
+Blog comment spam is like death by a thousand cuts. In fact it's worse because it lasts for months. Here was my solution:
+
+<pre>mysql> update mt_entry set entry_allow_comments=0;</pre>

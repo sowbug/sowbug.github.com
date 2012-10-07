@@ -1,0 +1,11 @@
+--- 
+title: Stuffing bytes into source code
+mt_id: 429
+layout: post
+date: 2010-06-11 11:06:28 +00:00
+---
+You're writing a test case, or you want to embed an Easter Egg into your app that your PM won't notice. Or whatever. I'm not judging you. You could write a 5-minute Python script, or you could do what I did and waste half an hour trying to understand the hexdump manual. Here's what I came up with:
+
+<code>$ hexdump -v -e '"(byte)0x" 1/1 "%02X" ", "' image.png</code>
+
+This will spit out something close enough to Java or C++ source code that you can mostly copy and paste it. 

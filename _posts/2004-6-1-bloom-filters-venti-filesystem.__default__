@@ -1,0 +1,10 @@
+--- 
+title: Bloom filters & Venti filesystem
+mt_id: 81
+layout: post
+date: 2004-06-01 11:09:55 +00:00
+---
+I was playing around with some ideas for WINW that involved identifying blocks of content by their SHA-1 hashes. That was what I was doing for peers, but I generalized it to all content. Then I stumbled across the <a href="http://www.cs.bell-labs.com/sys/doc/venti/venti.html">Venti</a> filesystem, which crystallized my vague thoughts very nicely. 
+Venti "tags" (or whatever you call the hashes) fit well with Bloom filters. If you have a lot of distributed volumes storing Venti content, then each volume can publish a Bloom array that serves approximately as an index of available content. SHA-1 makes a great hash function for Bloom filters (for example, dividing it up into ten sections of 16 bits each for a 64K index).
+
+So for WINW I'm now imagining that each peer's file store is a Venti store, and the initial handshake between peers involves an exchange of Bloom filters. If the store also includes some virtual directories that contain information like which peers you're connected to, then the Bloom filter is an all-purpose gateway for traffic between peers.

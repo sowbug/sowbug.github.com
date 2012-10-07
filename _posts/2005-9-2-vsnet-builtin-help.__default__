@@ -1,0 +1,9 @@
+--- 
+title: VS.Net Built-In Help
+mt_id: 196
+layout: post
+date: 2005-09-02 15:15:02 +00:00
+---
+Hey, Visual Studio .NET, pop quiz: <b>User searches for "RemoveDirectory." Does he want to see the documentation for RemoveDirectory() in the Platform SDK, or the documentation for "CFtpConnection::RemoveDirectory"?</b>
+
+You get two guesses.

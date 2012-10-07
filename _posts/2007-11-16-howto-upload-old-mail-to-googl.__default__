@@ -1,0 +1,103 @@
+--- 
+title: "HOWTO: upload old mail to Google Apps"
+mt_id: 334
+layout: post
+date: 2007-11-16 10:59:19 +00:00
+---
+The <a href="http://code.google.com/apis/apps/email_migration/developers_guide_protocol.html">documentation</a> showing how to upload mail to your Premiere (not Standard!) Google Apps account is good, but there are a few practical matters either implied or missing from it. Here's how to post an email from your Linux command line.
+
+First, let's assume you have a user test@example.com with a password 1234567890. Get your auth token as follows:
+
+<pre>$ echo -n "Email=test@example.com&Passwd=1234567890&accountType=HOSTED&service=apps" \
+| POST https://www.google.com/accounts/ClientLogin</pre>
+
+
+This will either ask you for a CAPTCHA (resolve <a href="http://code.google.com/support/bin/answer.py?answer=55394&topic=11282">as described here</a> and then repeat), or tell you the credentials:
+
+<pre>SID=a-long-string-of-characters
+LSID=another-long-string-of-characters
+Auth=yet-another-long-string-of-characters</pre>
+
+
+Now you should put a test RFC 822 message into a file called test_letter:
+
+<pre>From someone@somewhere.com  Sat Jul 15 19:00:40 2006
+Return-Path: <someone@somewhere.com>
+Received: from somewhere.com (localhost.localdomain [127.0.0.1])
+        by somewhere.com (8.13.4/8.13.4) with ESMTP id k6G20eq4024585
+        for <someone@somewhere.com>; Sat, 15 Jul 2006 19:00:40 -0700
+Received: (from someone@localhost)
+        by somewhere.com (8.13.4/8.13.4/Submit) id k6G20eBj024584
+        for someone; Sat, 15 Jul 2006 19:00:40 -0700
+Date: Sat, 15 Jul 2006 19:00:40 -0700
+From: Someone <someone@somewhere.com>
+Message-Id: <200607160200.k6G20eBj024584@somewhere.com>
+To: someone@somewhere.com
+Subject: hi
+
+hello</pre>
+
+
+Then you need to XML-escape it. I used this sed script, called escape-xml.sed:
+
+<pre>s/\&amp;/\&amp;amp;/g
+s/&lt;/\&amp;lt;/g
+s/&gt;/\&amp;gt;/g</pre>
+
+
+... and I performed the escaping with this command line:
+
+<pre>sed -f escape-xml.sed test_letter > escaped_test_letter</pre>
+
+
+Now wrap the whole thing in a full Atom request:
+
+<pre>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;feed xmlns="http://www.w3.org/2005/Atom"
+    xmlns:batch="http://schemas.google.com/gdata/batch"
+    xmlns:gd="http://schemas.google.com/g/2005"&gt;
+&lt;atom:entry xmlns:atom='http://www.w3.org/2005/Atom'&gt;
+  &lt;atom:category scheme='http://schemas.google.com/g/2005#kind'
+    term='http://schemas.google.com/apps/2006#mailItem'/&gt;
+  &lt;apps:rfc822Msg xmlns:apps='http://schemas.google.com/apps/2006'&gt;
+From someone@somewhere.com  Sat Jul 15 19:00:40 2006
+Return-Path: &amp;lt;someone@somewhere.com&amp;gt;
+Received: from somewhere.com (localhost.localdomain [127.0.0.1])
+        by somewhere.com (8.13.4/8.13.4) with ESMTP id k6G20eq4024585
+        for &amp;lt;someone@somewhere.com&amp;gt;; Sat, 15 Jul 2006 19:00:40 -0700
+Received: (from someone@localhost)
+        by somewhere.com (8.13.4/8.13.4/Submit) id k6G20eBj024584
+        for someone; Sat, 15 Jul 2006 19:00:40 -0700
+Date: Sat, 15 Jul 2006 19:00:40 -0700
+From: Someone &amp;lt;someone@somewhere.com&amp;gt;
+Message-Id: &amp;lt;200607160200.k6G20eBj024584@somewhere.com&amp;gt;
+To: someone@somewhere.com
+Subject: hi
+
+hello
+
+  &lt;/apps:rfc822Msg&gt;
+  &lt;apps:mailItemProperty xmlns:apps='http://schemas.google.com/apps/2006'
+   value='IS_STARRED'/&gt;
+  &lt;apps:mailItemProperty xmlns:apps='http://schemas.google.com/apps/2006' value='IS_UNREAD'/&gt;
+&lt;apps:label xmlns:apps='http://schemas.google.com/apps/2006' labelName='Event Invitations'/&gt;
+&lt;apps:label xmlns:apps='http://schemas.google.com/apps/2006' labelName='Friends'/&gt;
+&lt;/atom:entry&gt;
+&lt;/feed&gt;</pre>
+
+
+and put it in a file called xml_test_letter. At this point you have your credentials, and a file that constitutes the body of a valid Atom request to insert the mail into the account associated with the credentials. The problem I ran into here is that the POST tool won't let you use a Content-Type header of the form foo/bar+baz, but the Google API appears to accept only the type application/atom+xml. I found the POST tool on my local system (it's just a Perl script) and fixed it:
+
+<pre>        die "$progname: Illegal Content-type format\n"
+            unless $options{'c'} =~ m,^[\w\-]+/[\w<font color="#ff0000">+</font>\-]+(?:\s*;.*)?$,</pre>
+
+
+(note the new plus sign added into the regex). Now you're ready to do the request:
+
+<pre>$ cat xml_test_letter | \
+POST -H 'Authorization: GoogleLogin auth=yet-another-long-string-of-characters' \
+-c 'application/atom+xml' \
+https://apps-apis.google.com/a/feeds/migration/2.0/example.com/test/mail/batch</pre>
+
+
+This should return a result indicating that the new mail is in test@example.com's account. Unfortunately, in my case it told me that because I have a standard account, I can't bulk-upload mail. But I'm confident that if I had the right kind of account, then this process would have worked. 

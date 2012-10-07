@@ -1,0 +1,7 @@
+--- 
+title: Vertical column marker in Visual Studio
+mt_id: 149
+layout: post
+date: 2004-11-22 14:00:00 +00:00
+---
+Windows Registry Editor Version 5.00<p>[HKEY_CURRENT_USER\Software\Microsoft\VisualStudio\7.1\Text Editor]<br>&quot;Guides&quot;=&quot;RGB(255, 32, 32) 80&quot;</p><p>Add this to your registry and restart Visual Studio .NET 2003. You'll have a nice 80-column marker in your editor windows.

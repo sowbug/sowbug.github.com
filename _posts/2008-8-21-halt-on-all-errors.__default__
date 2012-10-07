@@ -1,0 +1,18 @@
+--- 
+title: Halt on all errors
+mt_id: 365
+layout: post
+date: 2008-08-21 09:58:19 +00:00
+---
+Why do BIOS default configurations specify that the boot process should die if a keyboard isn't attached? Right now, as you read this, I bet there are at least three people driving down the highway expecting to ssh into their new headless servers when they reach their destination. This is how it happens:
+
+1. Spend N hours getting the server just right.
+2. Reboot a few times to make sure it works.
+3. Unhook the monitor and keyboard.
+4. Shut down. Unplug.
+5. Put server in its permanent spot. Plug back in.
+6. Press power. See blinking light.
+7. Leave.
+8. #)(#$%*#@!@(!@!!!!!
+9. Drive back.
+10. Go back to step 1 for a slightly smaller value of N. 

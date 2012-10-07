@@ -1,0 +1,10 @@
+--- 
+title: Cygwin X
+mt_id: 105
+layout: post
+date: 2004-08-24 15:13:43 +00:00
+---
+A few weeks ago a coworker introduced me to <a href="http://x.cygwin.com/">Cygwin's X server</a>. This was in connection with my gripe that there is no dual-DVI USB KVM currently available that doesn't look like an <a href="http://www.machine-room.org/images/pictures/hires/160/16/Altair_8800_Unit_2.jpg">Altair 8080</a>. 
+Cygwin X works well enough that I no longer have to have an extra monitor and keyboard on my desk for my Linux box. I just ssh -Y to it in a Cygwin xterm, and run xemacs all day long.
+
+I haven't yet been successful running over anything but a LAN. I don't think it's a bandwidth issue, because X windows never come up.

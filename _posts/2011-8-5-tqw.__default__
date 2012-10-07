@@ -1,0 +1,14 @@
+--- 
+title: TQW
+mt_id: 440
+layout: post
+date: 2011-08-05 08:57:26 +00:00
+---
+Yipe! I discovered an orphan on my website. Rescuing now...
+
+<a href="/tqw/">The Quoting, Whirled</a> is a Burning Man project I did in 2002. It was a bunch of wooden paint-stirring sticks with LEDs attached to them, spinning ("whirling") around in the night and tracing out words using the persistence of vision illusion. I gathered the words ("quotings," get it?) through a webpage that friends and random strangers contributed to.
+
+The <a href="/tqw/dev/">development</a> was intense, because I didn't know anything about digital circuit design at the time. Coming from a software background, I found it odd to have the edit-compile-debug cycle measured in weeks rather than seconds. The circuit was based on the Atmel AVR ATMega microcontroller. I used a hall sensor to detect when the apparatus had completed a revolution, which allowed it to time the advancement of columns in the display. There was an IR receiver on the board, but I didn't have time to implement the RC5 decoding needed to let people in the field control the displays with universal remotes.
+
+Aside from the circuit design, the hardest tasks were sourcing parts and figuring out how to supply power to a rotating circuit. I solved the power problem by taking pairs of motors, taking one apart, and gluing its commutator-brush assembly onto the intact motor. That's the same approach that electric motors use to power up the electromagnets inside them.
+ 
