@@ -1,6 +1,7 @@
 ---
 layout: post
-title: Hello, World!
+title: Welcome to my GitHub page
+date: 2012-10-05 20:57:26 +00:00
 ---
 This GitHub page is an attempt to find a semi-permanent home for content formerly stored at [sowbug.org](http://www.sowbug.org/) and
 [sowbug.com](http://www.sowbug.com). At the moment, both those sites are
