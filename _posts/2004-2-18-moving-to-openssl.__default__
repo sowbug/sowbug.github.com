@@ -4,4 +4,4 @@ mt_id: 29
 layout: post
 date: 2004-02-18 10:05:10 +00:00
 ---
-Over the past couple of weeks I've been getting <a href="http://www.openssl.org/">OpenSSL</a> to build on Windows, and I've been writing test programs to explore the API. I have also removed all the custom encryption code in <a href="http://www.winw.org/">WINW</a>, which is a good thing. I like the BIO abstraction in OpenSSL; it's similar to what I was trying to do in WINW, but it's better. The similarities have also made it pretty easy to integrate WINW and OpenSSL.
+Over the past couple of weeks I've been getting <a href="http://www.openssl.org/">OpenSSL</a> to build on Windows, and I've been writing test programs to explore the API. I have also removed all the custom encryption code in WINW, which is a good thing. I like the BIO abstraction in OpenSSL; it's similar to what I was trying to do in WINW, but it's better. The similarities have also made it pretty easy to integrate WINW and OpenSSL.
