@@ -4,7 +4,7 @@ mt_id: 299
 layout: post
 date: 2007-07-24 21:41:24 +00:00
 ---
-<form mt:asset-id="5" contenteditable="false" class="mt-enclosure mt-enclosure-image"><img alt="" src="http://www.sowbug.org/mt/archives/clix2.jpeg" width="254" height="185" class="mt-image-center" style="text-align: center; display: block; margin: 0 auto 20px;"/></form>
+<form mt:asset-id="5" contenteditable="false" class="mt-enclosure mt-enclosure-image"><img alt="" src="/assets/img/clix2.jpeg" width="254" height="185" class="mt-image-center" style="text-align: center; display: block; margin: 0 auto 20px;"/></form>
 
 The <a href="http://www.amazon.com/gp/product/B000SKZJJE?ie=UTF8&tag=sowbug-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=B000SKZJJE">iRiver Clix2</a>, a.k.a. Clix second generation, is a 4GB MP3 player that also plays MPEG-4 movies. The screen is a 320x240 OLED display, and the moment I saw the hardware supported 30 fps, I wanted it. I picked one up a few weeks ago, and so far I'm very happy with it.
 
