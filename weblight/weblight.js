@@ -3,7 +3,7 @@ var webusb = {};
 (function() {
   'use strict';
 
-  webusb.getPorts = function() {
+  webusb.getDevices = function() {
     return navigator.usb.getDevices().then(devices => {
       return devices.map(device => new webusb.Device(device));
     });
@@ -72,6 +72,8 @@ var webusb = {};
 function start() {
   console.log("I am here");
   webusb.getDevices().then(devices => {
+    'use strict';
+
     if (devices.length == 0) {
       statusDisplay.textContent = "No device found.";
     } else {
@@ -82,6 +84,7 @@ function start() {
       rgb[1] = 0x00;
       rgb[2] = 0x00;
       device.controlTransferOut({}, rgb);
+    }
   });
 }
 
