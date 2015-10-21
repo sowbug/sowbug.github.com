@@ -1,5 +1,9 @@
 var webusb = {};
 
+function ab2str(buf) {
+  return String.fromCharCode.apply(null, new Uint8Array(buf));
+}
+
 (function() {
   'use strict';
 
@@ -14,34 +18,90 @@ var webusb = {};
     this.device_ = device;
   };
 
-  webusb.Device.prototype.controlTransferOut = function(setup, data) {
+  webusb.Device.prototype.connect = function() {
+    let readLoop = () => {
+      this.device_.transferIn(2, 64).then(result => {
+        this.onReceive(result.data);
+        readLoop();
+      }, error => {
+        this.onReceiveError(error);
+      });
+    };
+
+    return this.device_.open()
+        .then(() => this.device_.getConfiguration()
+            .then(config => {
+              if (config.configurationValue == 1) {
+                return Promise.resolve();
+              } else {
+                return Promise.reject("Need to setConfiguration(1).");
+              }
+            })
+            .catch(error => this.device_.setConfiguration(1)))
+        .then(() => this.device_.claimInterface(0))
+        .then(() => this.device_.controlTransferOut({
+            'requestType': 'class',
+            'recipient': 'interface',
+            'request': 0x22,
+            'value': 0x01,
+            'index': 0x00}))
+        .then(() => {
+          readLoop();
+        });
+  };
+
+  webusb.Device.prototype.disconnect = function() {
     return this.device_.controlTransferOut({
-      'requestType': 'vendor',
-      'recipient': 'device',
-      'request': 0x01,
-      'value': 0x00,
-      'index': 0x00}, data);
+            'requestType': 'class',
+            'recipient': 'interface',
+            'request': 0x22,
+            'value': 0x00,
+            'index': 0x00})
+        .then(() => this.device_.close());
+  };
+
+  webusb.Device.prototype.controlTransferOut = function(setup, data) {
+    return this.device_.controlTransferOut(setup, data);
+  };
+
+  webusb.Device.prototype.controlTransferIn = function(setup, length) {
+    return this.device_.controlTransferIn(setup, length);
   };
 
 })();
 
 function start() {
-  console.log("start");
   webusb.getDevices().then(devices => {
     'use strict';
 
     if (devices.length == 0) {
       console.log("no device found");
     } else {
-      device = devices[0];
+      let device = devices[0];
+      device.connect().then(() => {
+        device.controlTransferIn({
+          'requestType': 'standard',
+          'recipient': 'device',
+          'request': 6,
+          'value': 0x0302,
+          'index': 0x01}, 64).then(o => {
+            console.log("Found device calling itself", ab2str(o.data));
+          });
 
-      let rgb = new Uint8Array(3);
-
-      // red
-      rgb[0] = 0x80;
-      rgb[1] = 0x00;
-      rgb[2] = 0x00;
-      device.controlTransferOut({}, rgb);
+        let rgb = new Uint8Array(3);
+        // red
+        rgb[0] = 0x80;
+        rgb[1] = 0x00;
+        rgb[2] = 0x80;
+        device.controlTransferOut({
+          'requestType': 'vendor',
+          'recipient': 'device',
+          'request': 0x01,
+          'value': 0x00,
+          'index': 0x00}, rgb).then(o => {
+            console.log(o);
+          });
+      });
     }
   });
 }
