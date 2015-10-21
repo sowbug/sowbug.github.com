@@ -88,19 +88,48 @@ function start() {
             console.log("Found device calling itself", ab2str(o.data));
           });
 
-        let rgb = new Uint8Array(3);
-        // red
-        rgb[0] = 0x80;
-        rgb[1] = 0x00;
-        rgb[2] = 0x80;
-        device.controlTransferOut({
-          'requestType': 'vendor',
-          'recipient': 'device',
-          'request': 0x01,
-          'value': 0x00,
-          'index': 0x00}, rgb).then(o => {
-            console.log(o);
-          });
+        var cycle = 0;
+        var name = '';
+        var doLight = function() {
+          let rgb = new Uint8Array(3);
+
+          switch (cycle) {
+          case 0:
+            rgb[0] = 0x80;
+            rgb[1] = 0x00;
+            rgb[2] = 0x00;
+            name = 'red';
+            break;
+          case 1:
+            rgb[0] = 0x00;
+            rgb[1] = 0x80;
+            rgb[2] = 0x00;
+            name = 'green';
+            break;
+          case 2:
+            rgb[0] = 0x00;
+            rgb[1] = 0x00;
+            rgb[2] = 0x80;
+            name = 'blue';
+            break;
+          }
+          if (++cycle > 2) {
+            cycle = 0;
+          }
+          document.getElementById('color').innerText = name;
+          device.controlTransferOut({
+            'requestType': 'vendor',
+            'recipient': 'device',
+            'request': 0x01,
+            'value': 0x00,
+            'index': 0x00}, rgb).then(o => {
+              console.log(name);
+            });
+
+        };
+        doLight();
+
+        window.setInterval(doLight, 1000);
       });
     }
   });
