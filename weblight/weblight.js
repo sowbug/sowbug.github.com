@@ -5,6 +5,7 @@ var webusb = {};
 
   webusb.getDevices = function() {
     return navigator.usb.getDevices().then(devices => {
+      console.log(devices);
       return devices.map(device => new webusb.Device(device));
     });
   };
@@ -22,64 +23,21 @@ var webusb = {};
       'index': 0x00}, data);
   };
 
-  webusb.Device.prototype.connect = function() {
-    let readLoop = () => {
-      this.device_.transferIn(2, 64).then(result => {
-        this.onReceive(result.data);
-        readLoop();
-      }, error => {
-        this.onReceiveError(error);
-      });
-    };
-
-    return this.device_.open()
-        .then(() => this.device_.getConfiguration()
-            .then(config => {
-              if (config.configurationValue == 1) {
-                return Promise.resolve();
-              } else {
-                return Promise.reject("Need to setConfiguration(1).");
-              }
-            })
-            .catch(error => this.device_.setConfiguration(1)))
-        .then(() => this.device_.claimInterface(0))
-        .then(() => this.device_.controlTransferOut({
-            'requestType': 'class',
-            'recipient': 'interface',
-            'request': 0x22,
-            'value': 0x01,
-            'index': 0x00}))
-        .then(() => {
-          readLoop();
-        });
-  };
-
-  webusb.Device.prototype.disconnect = function() {
-    return this.device_.controlTransferOut({
-            'requestType': 'class',
-            'recipient': 'interface',
-            'request': 0x22,
-            'value': 0x00,
-            'index': 0x00})
-        .then(() => this.device_.close());
-  };
-
-  webusb.Device.prototype.send = function(data) {
-    return this.device_.transferOut(1, data);
-  };
 })();
 
 function start() {
-  console.log("I am here");
+  console.log("start");
   webusb.getDevices().then(devices => {
     'use strict';
 
     if (devices.length == 0) {
-      statusDisplay.textContent = "No device found.";
+      console.log("no device found");
     } else {
       device = devices[0];
 
       let rgb = new Uint8Array(3);
+
+      // red
       rgb[0] = 0x80;
       rgb[1] = 0x00;
       rgb[2] = 0x00;
