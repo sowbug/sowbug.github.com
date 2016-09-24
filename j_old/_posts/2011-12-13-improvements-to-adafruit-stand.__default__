@@ -1,7 +1,0 @@
---- 
-title: Improvements to Adafruit Standalone ISP
-mt_id: 442
-layout: post
-date: 2011-12-13 10:31:55 +00:00
----
-The <a href="http://www.adafruit.com/products/462">Adafruit Standalone AVR ISP Programmer Shield Kit</a> is a bit of a niche product. It converts an Arduino into an AVR in-system programmer that doesn't require a PC to supply the target hex image. I added some <a href="https://github.com/sowbug/adaStandalone">improvements to the firmware</a>: it no longer has the 2x space overhead for ASCII hex files, instead working with pure binary; it fixes a bug with certain kinds of hex files; and it has better sounds to report success and failure. 

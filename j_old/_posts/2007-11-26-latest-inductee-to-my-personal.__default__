@@ -1,9 +1,0 @@
---- 
-title: Latest inductee to my personal Developer Tool Hall of Fame
-mt_id: 342
-layout: post
-date: 2007-11-26 10:19:07 +00:00
----
-With apologies to <a href="http://www.somebits.com/weblog/">Nelson</a>, <a href="http://www.weitz.de/regex-coach/">The Regex Coach</a> is good software. It's an interactive regular expression authoring tool for Windows. Rather than typing a given regex directly into your Java/Python/Perl/C++-with-PCRE-library code and building your entire program, you type the expression into the top window, type a sample string in the bottom window, and if it matches, the matching part is highlighted. Such a time saver.
-
-My one feature request: menu items that copy the regex to the clipboard, but properly escaped to paste into less regex-aware languages like Java. E.g., <code>([A-Za-z]+)\\\.[0-9]?</code> would be copied for Java as <code>([A-Za-z]+)\\\\\\.[0-9]?</code> (at least, I think that's right). The version of the feature that copies into a Bash command line would emit something like <code>\\\\\\\\\\\\\\\\\\\\</code>. 

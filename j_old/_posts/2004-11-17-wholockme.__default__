@@ -1,7 +1,0 @@
---- 
-title: WhoLockMe
-mt_id: 147
-layout: post
-date: 2004-11-17 08:20:16 +00:00
----
-If you're trying to delete, move, or replace a file that's in use on Windows, install <a href="http://www.dr-hoiby.com/WhoLockMe/">this utility</a>, then right-click the file and it'll tell you who's using it! (Thanks, jam!)

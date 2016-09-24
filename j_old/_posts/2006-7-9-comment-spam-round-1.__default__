@@ -1,9 +1,0 @@
---- 
-title: Comment spam, Round 1
-mt_id: 252
-layout: post
-date: 2006-07-09 09:05:14 +00:00
----
-I spent the morning hacking on my Movable Type CMS. The goal is to make it a tiny bit harder for low-life comment spammers to fill this blog with crap (which is <i>my</i> job). It should be unnoticeable to human users.
-
-Help me test! If you're a well-intentioned human, please leave a non-spam comment on this entry. Otherwise, please don't leave a comment.

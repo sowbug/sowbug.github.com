@@ -1,9 +1,0 @@
---- 
-title: Next error in Emacs
-mt_id: 94
-layout: post
-date: 2004-07-07 10:36:18 +00:00
----
-Useful article: <a title="Compiling and Debugging C in Emacs" href="http://www.cs.hmc.edu/~smikes/emacs/compile.html">Compiling and Debugging C in Emacs</a>
-
-<blockquote>if you are coming up against real syntax errors in the code, such as missing semicolons and whatnot, compile-mode lets you jump to them quickly. Rather than using goto-line and typing the line number of a suspected error, just type C-x ` in the code window. (that's a back-tick, or back-quote, which is either in the upper left of your keyboard, or to the right of the single quote.) C-x ` jumps to the next compiler error, so you can keep typing C-x ` until you get to an error you know how to fix.</blockquote>

@@ -1,9 +1,0 @@
---- 
-title: Getting close
-mt_id: 333
-layout: post
-date: 2007-11-13 10:39:11 +00:00
----
-<pre>$ crontab -l
-0 0 15 11 * chmod -R 555 /music/holiday
-0 0 1 1 * chmod -R 0 /music/holiday</pre> 

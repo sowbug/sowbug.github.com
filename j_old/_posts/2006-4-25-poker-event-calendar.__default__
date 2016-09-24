@@ -1,9 +1,0 @@
---- 
-title: Poker event calendar
-mt_id: 232
-layout: post
-date: 2006-04-25 11:20:17 +00:00
----
-I'm trying a <a href="http://www.google.com/calendar/">Google Calendar</a> feature: tracking online poker tournaments that people like me might be interested in joining. You can subscribe to it, too, either through the <a href="http://www.google.com/calendar/feeds/5759kej9thsudh6jf2inblj4t0@group.calendar.google.com/public/basic">XML feed</a>, through the <a href="http://www.google.com/calendar/ical/5759kej9thsudh6jf2inblj4t0@group.calendar.google.com/public/basic">iCal feed</a>, or by searching for it in Google Calendar search.
-
-All times are Eastern, which matches the timezone that PokerStars uses. Unfortunately Google Calendar doesn't seem to do the right thing for people (like me) in other timezones. I'll look into whether that's user error or a to-be-implemented feature.

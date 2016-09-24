@@ -1,9 +1,0 @@
---- 
-title: How to kill all processes having a certain name
-mt_id: 28
-layout: post
-date: 2004-02-18 09:36:19 +00:00
----
-ps axwww | grep httpd | awk '{print $1}' | xargs -n1 kill -9
-
-<a href="http://www.math.yorku.ca/new/computing/advance.htm">More</a>

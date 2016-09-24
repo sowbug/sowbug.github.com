@@ -1,9 +1,0 @@
---- 
-title: WTL
-mt_id: 15
-layout: post
-date: 2004-01-17 23:11:13 +00:00
----
-I'm having fun this weekend with <a href="http://www.microsoft.com/downloads/details.aspx?familyid=1be1eb52-aa96-4685-99a5-4256737781c5">WTL</a>, the Windows Template Library. Feels a little like Java programming, oddly enough. All the code tends to get written in header files, inside the class declaration.
-
-There is a huge amount of sample code on <a href="http://www.codeproject.com/wtl/">Code Project</a>, often with helpful articles.

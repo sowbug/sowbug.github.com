@@ -1,9 +1,0 @@
---- 
-title: "Invention: the \"yes you locked your car\" indicator"
-mt_id: 305
-layout: post
-date: 2007-08-08 09:05:46 +00:00
----
-If you've bought a car in the last decade, you might have a remote control on your keychain that locks and unlocks the doors. This is convenient -- so convenient that the experience of locking the car is no longer memorable, and I often find myself wandering away from my car and then worrying that I forgot to lock it.
-
-Here's my invention, which I hereby dedicate to the public domain, that helps solve this problem. For 15 minutes after you press the lock button, a tiny green light on the remote control blinks every 5 seconds. Or maybe a little LCD says "Lock OK." Whatever the implementation, when you realize that you don't specifically remember pressing the lock button, you can find out by looking at the indicator. It doesn't guarantee that the car is actually locked, of course; it just confirms that you pressed the button recently, and that's generally good enough for worrywarts like me to relax. 

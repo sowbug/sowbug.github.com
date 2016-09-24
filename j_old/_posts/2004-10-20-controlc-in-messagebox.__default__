@@ -1,9 +1,0 @@
---- 
-title: Control-C in MessageBox
-mt_id: 128
-layout: post
-date: 2004-10-20 13:13:23 +00:00
----
-Thanks to Adam for this amazing tip:
-
-"A little-known Windows fact: you can press Ctrl+C in any dialog box generated with MessageBox() (or any of its variants) to copy the message text to the clipboard."

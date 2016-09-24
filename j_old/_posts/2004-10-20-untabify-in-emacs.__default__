@@ -1,9 +1,0 @@
---- 
-title: Untabify in Emacs
-mt_id: 131
-layout: post
-date: 2004-10-20 19:10:47 +00:00
----
-This one is very simple. To replace tabs with spaces, select a region and type:
-
-<pre>M-x untabify</pre>

@@ -1,7 +1,0 @@
---- 
-title: Home DNS
-mt_id: 122
-layout: post
-date: 2004-10-01 12:10:07 +00:00
----
-A few nights ago I got my Linksys WRT-54G router to do local DNS. This doesn't sound like much, but believe me, after spending an inexcusably long time working with raw IP addresses throughout my house, it's been positively intoxicating. Now I've got it all worked out so a particular MAC address gets a hostname and a fixed DHCP address, forward- and reverse-resolution works like a charm, mapped fileshares actually work, and I can use URLs with real hostnames in them instead of good old http://192.168.0.1/.

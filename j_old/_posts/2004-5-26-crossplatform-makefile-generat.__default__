@@ -1,9 +1,0 @@
---- 
-title: Cross-platform makefile generator
-mt_id: 79
-layout: post
-date: 2004-05-26 07:55:02 +00:00
----
-I want a cross-platform makefile generator.  It should take an easy-to-generate list of dependencies and emit the most natural file for the given platform. E.g., .vcproj files for Visual Studio .NET, .dsp files for Visual Studio 6, makefiles for Linux, and so on.
-
-I'm sure this exists already.
