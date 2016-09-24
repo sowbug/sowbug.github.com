@@ -1,0 +1,69 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-05-02-first-two-ok-wake-boards-i-assembled-them-and/" title="first two ok wake boards i assembled them and">first two ok wake boards i assembled them and</a></h1>
+  <p><img src="/tumblr_files/tumblr_m3bws8oKA11qly645o1_1280.jpg" alt="" /></p>
+
+<p>First two <a href="/post/21150945583/ok-wake">OK Wake</a> boards. I assembled them and
+wrote a quickie program to test that everything was wired up properly. I
+haven&rsquo;t yet run the PCF8523 real-time clock through its paces, but everything
+else is working properly.</p>
+
+<p>This board is going to require some nontrivial firmware, and I haven&rsquo;t ever
+worked with I2C (or the generic-brand TWI, or two-wire interface) on an AVR,
+which means this is going to be a significant opportunity to learn. Because I
+didn&rsquo;t have the space for an ISP header, I&rsquo;ll probably develop most of the
+firmware on an Arduino or Adafruit &lsquo;32u4 breakout board to avoid having to
+constantly unplug the ATtiny25. That will speed up development time, I hope.</p>
+
+<p>I did make one mistake in this circuit. I had a half-baked idea that a 10uF
+capacitor could power the RTC during battery changes. I have absolutely no
+basis for my belief that that capacitor is large enough to power the RTC
+during the 30 seconds it&rsquo;d take to change the battery, but even if it were, I
+neglected to put a diode in the circuit to stop the ATtiny from quickly
+draining the capacitor. This probably means that changing the battery will be
+disruptive. Fortunately, I expect the lifetime of the battery to exceed the
+useful lifetime of the board (remember, this is for a friend&rsquo;s children who
+aren&rsquo;t yet old enough to read a clock but are likely to respect a color-coded
+admonition to stay in bed, and I&rsquo;m sure that in a year they&rsquo;ll have grown out
+of that phase).</p>
+
+  <p class="small gray"><time datetime="2012-05-02">May 02, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

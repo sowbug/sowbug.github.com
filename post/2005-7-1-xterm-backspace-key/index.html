@@ -1,0 +1,57 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2005-7-1-xterm-backspace-key/" title="xterm &amp; backspace key">xterm &amp; backspace key</a></h1>
+  <p>If you&rsquo;re using xterm and hitting the backspace key doesn&rsquo;t do what you
+expect, add this to your .Xdefaults file:</p>
+
+<pre><code>xterm.*.backarrowKey: false
+</code></pre>
+
+<p>(Thanks, <a href="http://kellyfelkins.org/?c=emacs">Kelly Felkins</a>.) Another solution
+specific to Emacs is to add this to your .emacs file:</p>
+
+<pre><code>(define-key global-map &quot;\010&quot; 'backward-delete-char-untabify)
+</code></pre>
+
+<p>(Thanks, Ehud Karni.)</p>
+
+  <p class="small gray"><time datetime="2005-07-01">Jul 01, 2005</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

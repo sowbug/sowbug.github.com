@@ -1,0 +1,124 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-02-01-more-than-you-ever-wanted-to-know-about-electrical/" title="More than you ever wanted to know about electrical characteristics of JTAG">More than you ever wanted to know about electrical characteristics of JTAG</a></h1>
+  <p>A few days ago I posted a <a href="/post/16730593812/jtag-tck-
+active-low">very confused question</a> about JTAG signals. Here is my less confused answer.</p>
+
+<p><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Cup_or_faces_paradox.svg
+/300px-Cup_or_faces_paradox.svg.png" alt="Cup or
+Face?" /></p>
+
+<p>You&rsquo;ve surely seen the cup-or-face picture before, where some see two people
+looking at each other, and others see a single white chalice in the middle.
+Both groups are correct, and fortunately everyone can easily tell their brains
+to see the other image, too. That&rsquo;s what happened with me and JTAG signals. I
+saw this:</p>
+
+<ol>
+<li>Write TDI/TMS.</li>
+<li>Set TCK.</li>
+<li>Wait.</li>
+<li>Clear TCK.</li>
+<li>Wait.</li>
+<li>Read TDO.</li>
+</ol>
+
+<p>And the code I originally wrote probably would have worked just fine like
+this. But it didn&rsquo;t, so I scoured the web looking for working examples (none
+of which was both working and targeted toward the Arduino, unfortunately).
+Most were some variation of this:</p>
+
+<ol>
+<li>Read TDO, write TDI/TMS.</li>
+<li>Clear TCK.</li>
+<li>Set TCK.</li>
+</ol>
+
+<p>Which seemed to be out of whack with the spec (if not the spec then
+<a href="http://www.xilinx.com/support/documentation/application_notes/xapp058.pdf">XAPP058</a>).
+I conformed my code; it still didn&rsquo;t work. I permuted the bit-banging code
+madly. It still didn&rsquo;t work. I found subtle logic bugs that didn&rsquo;t matter,
+because it still didn&rsquo;t work after I fixed them. I was ready to see five
+fingers when <a href="http://en.wikipedia.org/wiki/1984">O&rsquo;Brien</a> held up his hand.</p>
+
+<p>As you already know from prior entries, the <a href="/post/16828497482/5-0-3-3">voltage
+fiasco</a> was the answer. My code would never have
+worked with the hardware running at 5 volts instead of the required 3.3. But
+in my experience, the nice thing about debugging code in an impossible
+situation is that by the time you figure out and solve the thing that was
+making it impossible, <em>the rest of the code is absolutely perfect</em> because
+you&rsquo;ve debugged the living daylights out of it.</p>
+
+<p>Now that I have working hardware and have been able to run some experiments,
+I&rsquo;ve started seeing the cup instead of the faces. It&rsquo;s not that TCK&rsquo;s signals
+are inverted (active-low); it&rsquo;s that the master divides the work into two
+categories:</p>
+
+<ol>
+<li>Stuff I care about.</li>
+<li>Everything else.</li>
+</ol>
+
+<p>Its job is to write out TDI/TMS before TCK goes high, and to read TDO after
+TCK goes low. But it&rsquo;s OK for the work relative to TCK&rsquo;s edges to overlap. For
+example, I can write TDI, then clear TCK, then set TCK, because <em>TDI was still
+set before TCK&rsquo;s rising edge</em>. It just looks weird because it seems like the
+code is saying &ldquo;set TDI before TCK&rsquo;s <em><strong>falling</strong></em> edge.&rdquo; Nope, TDI and TCK&rsquo;s
+falling edge have absolutely nothing to do with each other. Taking the
+transitive closure of dependencies, yes, TDI and TCK&rsquo;s falling edge are
+related in the sense that TCK&rsquo;s rising edge comes before its falling edge, but
+other than that, the code is free to rearrange itself in a sensible fashion as
+long as it respects those constraints. (There is one timing characteristic,
+TDOXZ, that I am still convinced is a typo in XAPP058.) Taking out the &ldquo;wait&rdquo;
+steps from the original sequence, looking at it as a circle rather than a line
+of steps, and reordering slightly in that &ldquo;sensible fashion,&rdquo; it ends up like
+this:</p>
+
+<ol>
+<li>Read TDO and write TDI/TMS, in any order.</li>
+<li>Set TCK.</li>
+<li>Clear TCK.</li>
+</ol>
+
+<p>… which is exactly what most implementations on the web do. <em>QED</em>.</p>
+
+  <p class="small gray"><time datetime="2012-02-01">Feb 01, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

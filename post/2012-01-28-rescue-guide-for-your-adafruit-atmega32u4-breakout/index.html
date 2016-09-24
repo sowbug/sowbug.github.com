@@ -1,0 +1,133 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-01-28-rescue-guide-for-your-adafruit-atmega32u4-breakout/" title="Rescue guide for your Adafruit ATmega32u4 breakout board">Rescue guide for your Adafruit ATmega32u4 breakout board</a></h1>
+  <p>The <a href="http://ladyada.net/products/atmega32u4breakout/">ATmega32u4 breakout
+board</a> is a beta product. The
+hardware is essentially perfect, but the firmware is wonky. At least once,
+I&rsquo;ve convinced myself that mine was broken, but I eventually figured it out.
+Here&rsquo;s how to get yours back in shape.</p>
+
+<p>Things required to get all the way through these steps:</p>
+
+<ul>
+<li>The board</li>
+<li>A USB cable to connect the board to your computer</li>
+<li>A working copy of avrdude. If you have the Arduino IDE on your system, then it&rsquo;s buried deep inside the IDE.</li>
+<li>_Possibly_ an in-system programmer. These instructions will work with any USBTiny-compatible programmer.</li>
+</ul>
+
+<p>Before we get going, a warning: the
+<a href="http://www.ladyada.net/learn/avr/fuses.html">fuses</a> and the bootloader must
+match, because the fuses tell the chip where the bootloader is. If you have
+the Leonardo bootloader on your board, beware! That one uses a different fuse
+combination (I think FCD5C3) from the Adafruit one (FCD0C3). Moreover, you
+need the ISP to change the fuses; an ATmega32u4 unfortunately can&rsquo;t change its
+own fuses. It&rsquo;s completely possible for you to flash the wrong bootloader to
+the board, leaving it in a zombie state, needing the ISP to fix it. This means
+that these steps might take you from a sort-of working board (e.g., an early
+Leonardo bootloader) to one that&rsquo;s completely broken (the Adafruit bootloader
+with the wrong fuses), and if you don&rsquo;t have an ISP to set the fuses, you&rsquo;ll
+be stuck. <strong>TL;DR: if you have a board that mostly works, and don&rsquo;t have an
+ISP, then stop now.</strong></p>
+
+<p>If your board is showing up as a serial device, we can learn a little from it
+directly, without the ISP. Run <strong>avrdude -c avr109 -p m32u4 -v -U lfuse:r:-:i
+-U hfuse:r:-:i -U efuse:r:-:i -P
+/dev/tty.usb_path_to_the_device_serial_port</strong>. A bunch of information should
+get spit out, ending with something like this:</p>
+
+<p><code>avrdude: safemode: lfuse reads as FC  
+avrdude: safemode: hfuse reads as D0  
+avrdude: safemode: efuse reads as C3  
+avrdude: safemode: Fuses OK</code></p>
+
+<p>If you get an error, it&rsquo;s possible your board is running the Leonardo
+bootloader, so you&rsquo;ll need to ask differently. Instead of <strong>avr109</strong> in the
+previous command, try <strong>arduino</strong>.</p>
+
+<p>Now you want to figure out what those fuses mean. Visit <a href="http://www.frank-zhao.com/fusecalc/fusecalc.php?chip=atmega32u4">Frank Zhao&rsquo;s AVR Fuse
+Calculator</a>
+(in fact, you might want to set that as your home page) and type the three
+into the &ldquo;Current settings&rdquo; fields at the bottom of the page. Apply values,
+then go back up to the top of the page and see what the &ldquo;Boot flash size&rdquo;
+dropdown is set to.</p>
+
+<p>If the size is 2048, this is GOOD because it matches the size of the known-
+good 2K-word (4096-byte) Adafruit build of the LUFA CDC bootloader. If this
+size is anything else (probably 512, for the 1024-byte Leonardo bootloader),
+then <strong>stop unless you have an ISP because you need an ISP to change the
+fuses</strong>. If the size is not 2048 but you do have an ISP, <strong>proceed to change
+the fuses</strong>.</p>
+
+<p>To change the fuses, plug your board into your ISP and run <strong>avrdude -v -c
+usbtiny -p m32u4 -U lfuse:w:0xFC:m -U hfuse:w:0xD0:m -U efuse:w:0xC3:m</strong>.
+Again, skip this step if your boot flash size is already 2048. (Note that
+these fuse values came from the <a href="https://github.com/adafruit/Atmega32u4-Breakout-
+Board/blob/master/makefile">Adafruit BootloaderCDC
+makefile</a>, but the F3 verifies as a C3 because not all 8
+bits of the extended fuse are writable. Check out the <a href="http://www.frank-zhao.com/fusecalc/fusecalc.php?chip=atmega32u4">fuse
+calculator</a>
+to see for yourself.)</p>
+
+<p>Next, flash the one true bootloader that today is known to work:
+<a href="https://github.com/adafruit/Atmega32u4-Breakout-Board">BootloaderCDC.hex</a>.
+Run either of these commands, depending on whether your board is connected to
+the ISP or directly to your machine:</p>
+
+<p>Directly connected: <strong>avrdude -c avr109 -p m32u4 -P
+/dev/tty.usb_path_to_the_board_serial_port -U flash:w:BootloaderCDC.hex</strong></p>
+
+<p>Connected to your ISP: <strong>avrdude -c usbtiny -p m32u4 -U
+flash:w:BootloaderCDC.hex</strong></p>
+
+<p>Note that, unlike in the previous step, <em><strong>I am not</strong></em> telling you to
+substitute <strong>arduino</strong> for <strong>avr109</strong> in this step. That&rsquo;s because doing so
+would kill your board and require the ISP to rescue it. If you wanted to
+follow that step, it means you misunderstood the earlier steps about current
+bootloader size.</p>
+
+<p>By this point, you should have BootloaderCDC on your board, and fuses for a
+2048-word bootloader. Plug the board via USB into your computer and press the
+reset button. You should see the pulsing green light as well as a new serial
+port on your computer. All should be well.</p>
+
+  <p class="small gray"><time datetime="2012-01-28">Jan 28, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

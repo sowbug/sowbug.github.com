@@ -1,0 +1,77 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-03-01-avr-programmer-is-off-to-laens/" title="AVR Programmer is off to Laen&#39;s!">AVR Programmer is off to Laen&#39;s!</a></h1>
+  <p>I reached a good 1.0 stopping point, so I poured the ground planes, fired up
+the CAM processor, churned out the gerbers, and emailed 1.46 square inches of
+high functionality to <a href="http://dementeddiode.org/blog/">Laen&rsquo;s</a> <a href="http://dorkbotpdx.org/wiki/pcb_order">DorkbotPDX PCB
+service</a>!</p>
+
+<p><img src="http://67.media.tumblr.com/tumblr_m06vseaaRE1qjj3vh.png" alt="" /></p>
+
+<p>Many thanks to DG who manually routed a interim version of the board, and
+shaved off all but four vias and about a half square-inch of PCB.
+Unfortunately I made a few more enhancements and added 14 more vias in the
+process. Here&rsquo;s the current feature set:</p>
+
+<ul>
+<li>ATmega8u2, 16MHz</li>
+<li>Will program any ISP6-capable AVR</li>
+<li>Will play XSVF via JTAG headers</li>
+<li>Powered by USB</li>
+<li>Mini-USB connector</li>
+<li>Buffered I/O</li>
+<li>Requires no 6-pin cable</li>
+<li>Will power the target board at 5V (about 450mA) or 3.3V (about 100mA)</li>
+<li>Target board can also be self-powered</li>
+<li>I/O logic levels will always match target VCC (unless user does something silly)</li>
+<li>Optional self-programming header</li>
+<li>Optional secondary ISP6 header if you _really_ want to use a cable, or need to connect to an ISP10 board, or just want to hack hard on the 8u2 and prefer flying leads.</li>
+</ul>
+
+<p>At this point all I can truly say is that _the hardware doesn&rsquo;t rule out any
+of this functionality._ I haven&rsquo;t written the software yet, so the board
+doesn&rsquo;t actually do anything. But it will.</p>
+
+<p><a href="https://github.com/sowbug/avr-programmer">Watch the project</a> on GitHub! And
+if you&rsquo;re interested in a prototype of the board, let me know!</p>
+
+  <p class="small gray"><time datetime="2012-03-01">Mar 01, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

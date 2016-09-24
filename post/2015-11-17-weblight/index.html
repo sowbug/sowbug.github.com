@@ -1,0 +1,72 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2015-11-17-weblight/" title="WebLight">WebLight</a></h1>
+  <p><img src="http://66.media.tumblr.com/ea687d95a3716da4797db82f947e00ec/tumblr_inline_nxzsmxjBBs1qjj3vh_540.jpg" alt="" /></p>
+
+<p><a href="https://github.com/sowbug/weblight/">WebLight</a> is a
+<a href="https://reillyeon.github.io/webusb/">WebUSB</a> blinky light device. You plug it
+in to a computer running a browser that supports the WebUSB standard
+(currently only recent Chrome builds that have certain chrome:flags enabled),
+and without requiring any driver installation, it just works. Each LED module
+is RGB and individually controllable.</p>
+
+<p>The first prototypes aren’t much to look at. I intend the final version to use
+micro-USB and fit comfortably in a plastic LED-candle holder. It needs to be
+plastic to make it possible to cut a slot for the USB cable.</p>
+
+<p><img src="http://65.media.tumblr.com/5944729ee4f0a504b85e6a77efec9138/tumblr_inline_nxzssdRsqw1qjj3vh_540.jpg" alt="" /></p>
+
+<p>When it’s done, it should make a good status light for broken builds or stock-
+price changes, and it should look reasonably nice on a desk at work.</p>
+
+<p>The circuit design was simple. I mostly copied the schematic from the
+<a href="https://learn.adafruit.com/introducing-
+trinket/introduction">Adafruit Trinket</a>. I originally used the WS2812B LED module, but recently
+replaced it with the APA102C, which works better with <a href="https://www.obdev.at/products/vusb/">bitbanged
+USB</a> on a small microcontroller.</p>
+
+<p>The device should cost about $2.50 to manufacture in quantity. It would be
+cool if <a href="http://www.aliexpress.com/">AliExpress</a> manufacturers started
+building it and selling it dirt-cheap; then everyone who wanted one would have
+a status light on their desk.</p>
+
+  <p class="small gray"><time datetime="2015-11-17">Nov 17, 2015</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-01-23-this-is-the-version-of-the-papilio-one-as-built-by/" title="this is the version of the papilio one as built by">this is the version of the papilio one as built by</a></h1>
+  <p><img src="/tumblr_files/tumblr_ly8jejz9XD1qly645o1_1280.jpg" alt="" /></p>
+
+<p>This is the version of the <a href="http://papilio.cc/">Papilio One</a> as built by
+<a href="http://www.seeedstudio.com/">SeeedStudio</a>. It&rsquo;s possible that versions built
+by other manufacturers are slightly different; it&rsquo;s open-source hardware, so
+in theory many people might build it. These notes are for Linux (Ubuntu 11.10
+in my case).</p>
+
+<ul>
+<li>The headers arrive separate from the board. You&rsquo;ll need to cut off sections with wire cutters, and you should expect and plan to sacrifice one pin per cut. Then if you&rsquo;re at all aesthetically motivated, sand down the rough edge with garnet sandpaper before soldering to the board.</li>
+<li>Attaching to a VGA monitor and USB is easy enough; no surprises there. But you&rsquo;ll immediately wish you had a DB9-friendly joystick (buy an old Atari 2600 joystick on eBay if you want the intended hardware).</li>
+<li>The first thing you&rsquo;ll want to do is put something on the Papilio/Arcade Wing. The <a href="https://github.com/GadgetFactory/Papilio-Arcade/">GitHub repository</a> contains the stuff you need, but if you want it to work on Linux, start with <a href="https://github.com/sowbug/Papilio-Arcade/">my fork</a>.</li>
+</ul>
+
+<p>The following instructions assume you&rsquo;re using my fork and are trying to get
+Pac-Man to run on your new Papilio Arcade Wing.</p>
+
+<ol>
+<li><strong>cd pacman_rel004_sp3e_papilio</strong>. All the remaining directories are relative to that one.</li>
+<li><strong>cd romgen_source</strong> and build the executable: <strong>g++ romgen.cpp -o romgen</strong></li>
+<li>Find Pac-Man ROMs matching those described in the top of the file scripts/merge_roms_pacman. You want the bootleg version that runs on Galaxian hardware, called Puckman. Put them in roms/.</li>
+<li><strong>cd scripts</strong></li>
+<li><strong>./merge_roms_pacman</strong></li>
+</ol>
+
+<p>Now you&rsquo;ve created a Xilinx bitfile that will run Pac-Man, and the next set of
+instructions loads it.</p>
+
+<ol>
+<li>Download <a href="https://github.com/GadgetFactory/Papilio-Loader/zipball/Papilio_Loader_V1.5">the loader</a> (that&rsquo;s a fragile link, sorry). We&rsquo;ll assume that you&rsquo;ve managed to put papilio-prog into your path (look in the zipfile in Helper_App/linbin).</li>
+<li><strong>sudo apt-get install libftdi-dev</strong>. This lets papilio-prog talk to the FTDI USB chip on the Papilio.</li>
+<li>Make sure your Papilio is plugged via USB and the VGA monitor it&rsquo;s connected to is on.</li>
+<li><strong>papilio-prog -f bit_files/pacman_on_pacman_hardware_p1_500K.bit</strong></li>
+<li>Within about 1500 milliseconds your VGA monitor will start running Pac-Man.</li>
+</ol>
+
+  <p class="small gray"><time datetime="2012-01-23">Jan 23, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

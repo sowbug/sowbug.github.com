@@ -1,0 +1,60 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-09-23-arduino-sketch-for-ws2801-non-clone-sm16716/" title="Arduino sketch for WS2801-non-clone SM16716">Arduino sketch for WS2801-non-clone SM16716</a></h1>
+  <p>I got a strand of 50 LED lights from &ldquo;someone in China.&rdquo; They were advertised
+as being WS2801-based, but they didn&rsquo;t work with Arduino sketches for that
+chip.</p>
+
+<p>So now I have a 49-light strand, a sacrificial light that I had to rip apart
+to find the chip identifier (&ldquo;SM16716&rdquo;), and <a href="https://github.com/sowbug/sm16716">an Arduino
+sketch</a> that proves that they work. Thank
+you, Google Translate, for help with the Chinese-only datasheet for the 16716.</p>
+
+<p><img src="http://67.media.tumblr.com/tumblr_mat8hnaDe51qjj3vh.jpg" alt="" /></p>
+
+<p>By the way, there is a probably great library,
+<a href="http://code.google.com/p/fastspi/">FastSPI</a>, that supports many chipsets
+including the 16716. Unfortunately, it just didn&rsquo;t work for my Uno/strand
+combination, and I&rsquo;m not sure why (the code looks right). I&rsquo;ll probably debug
+that code and submit a patch.</p>
+
+  <p class="small gray"><time datetime="2012-09-23">Sep 23, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

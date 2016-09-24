@@ -1,0 +1,81 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-01-26-found-a-good-base-for-an-xsvf-player/" title="Found a good base for an XSVF player">Found a good base for an XSVF player</a></h1>
+  <p><a href="https://github.com/ben0109/XSVF-
+Player">Found a good base for an XSVF player</a></p>
+
+<p>Small world. Ben over at the <a href="http://www.gadgetfactory.net/gadgetforum/index.php?topic=277">Papilio
+Forums</a> had
+almost the same needs as mine: wants to program an XC9572XL, prefers not to
+buy overpriced, single-purpose cables. So he adapted the XAPP058 reference
+code to a Papilio, cleverly using the desktop machine as a conduit between the
+potentially large xsvf file and the firmware.</p>
+
+<p>I didn&rsquo;t try to get Ben&rsquo;s code running on the Papilio, because I have a
+different strategy in mind. I have ported the device portion to the Arduino,
+and I&rsquo;m going to rewrite the tiny C-based desktop client in Python. It would
+be odd for someone to have a CPLD but _not_ have an Arduino within arm&rsquo;s
+reach, and while every hobbyist _should_ have a Papilio (hi Jack!), it&rsquo;s less
+common. As for the command-line tool, it&rsquo;s straightforward I/O, which means
+Python&rsquo;s the perfect choice to get Mac/Windows/Linux/wristwatch support for
+free. Last night I got the Arduino communicating with the C client just enough
+for the Arduino to start sending debug messages telling me it was very
+confused about its purpose in life. Tonight I hope to get it able to program
+something on the &lsquo;9572, and then I&rsquo;ll have a known-good toolchain against
+which to develop the Python client.</p>
+
+<p>Just a bit of pontificating about <strong>using the right tool for the job</strong>. It
+makes me sad when projects with a cross-platform audience use .BAT files, and
+it makes me sad any time I see C/C++ where cycle-for-cycle performance isn&rsquo;t
+an issue. For shell scripts, use Bash. Install <a href="http://cygwin.com/">Cygwin</a> if
+your favorite OS is one of the… one that doesn&rsquo;t know Bash. And for pretty
+much every other desktop tool you can think of, consider Python rather than C.
+People reflexively think of C as the go-to language for portability, but at
+the tool level where you care more about how to open a nonblocking serial port
+rather than the endianness of an int, Python remains portable where C starts
+spewing out #ifdefs.</p>
+
+<p>Anyway, back to the topic. When this project is done, any maker will be able
+to program a Xilinx CPLD with the hardware and OS he or she already has. No
+more ridiculous $50 cables.</p>
+
+  <p class="small gray"><time datetime="2012-01-26">Jan 26, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

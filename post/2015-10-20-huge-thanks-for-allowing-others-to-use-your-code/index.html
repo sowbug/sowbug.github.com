@@ -1,0 +1,54 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2015-10-20-huge-thanks-for-allowing-others-to-use-your-code/" title="Huge thanks for allowing others to use your code to run G35 Christmas lights. I do have one question I hope you can help me out with. I am unable to use six strings of 50 lights. They enumerate and complete a test pattern but the programs wont run correctly, usually just the first string will run. If I use just five strings everything works great. Tried an Arduino Uno and a Mega2560.">Huge thanks for allowing others to use your code to run G35 Christmas lights. I do have one question I hope you can help me out with. I am unable to use six strings of 50 lights. They enumerate and complete a test pattern but the programs wont run correctly, usually just the first string will run. If I use just five strings everything works great. Tried an Arduino Uno and a Mega2560.</a></h1>
+  <p>I’m 99% sure that the problem is that 50 x 6 is greater than 255, which is the
+highest value of an unsigned 8-bit octet. The G35 protocol wasn’t designed for
+really long strings.</p>
+
+<p>You’re next going to ask why the test patterns run. I’m 1% sure it’s because
+you’re hitting memory limits with the 328p. The test patterns are algorithmic
+and don’t consume per-light memory, but most of the patterns do allocate a
+certain number of bytes per light.</p>
+
+<p>Good luck!</p>
+
+  <p class="small gray"><time datetime="2015-10-20">Oct 20, 2015</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

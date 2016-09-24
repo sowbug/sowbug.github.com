@@ -1,0 +1,67 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2015-06-06-automatically-shutting-down-an-idle-minecraft/" title="Automatically shutting down an idle Minecraft server">Automatically shutting down an idle Minecraft server</a></h1>
+  
+
+<p>Put this in /etc/cron.hourly/check_minecraft_server or maybe cron.daily
+depending on how much you care about paying extra server-rental charges:</p>
+
+<blockquote>
+<p>#!/usr/bin/python</p>
+
+<h1 id="https-github-com-dinnerbone-mcstatus"><a href="https://github.com/Dinnerbone/mcstatus">https://github.com/Dinnerbone/mcstatus</a></h1>
+
+<h1 id="pip-install-mcstatus">pip install mcstatus</h1>
+
+<p>from mcstatus import MinecraftServer<br />
+import os</p>
+
+<p>server = MinecraftServer.lookup(&ldquo;your-minecraft-server.com:12345&rdquo;)</p>
+
+<p>status = server.status()</p>
+
+<p>if status and not status.players.online:<br />
+    print &ldquo;Server is empty.&rdquo;<br />
+    os.system(&ldquo;shutdown now -h&rdquo;)</p>
+</blockquote>
+
+  <p class="small gray"><time datetime="2015-06-06">Jun 06, 2015</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

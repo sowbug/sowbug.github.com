@@ -1,0 +1,95 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-02-04-the-top-screenshot-shows-a-perfect-qe-clock/" title="the top screenshot shows a perfect qe clock">the top screenshot shows a perfect qe clock</a></h1>
+  <p><img src="/tumblr_files/tumblr_lyv0nndsnv1qly645o1_1280.png" alt="" /><br />
+Saleae Logic: 1MHz Q/E from 4MHz
+clock<img src="/tumblr_files/tumblr_lyv0nndsnv1qly645o2_1280.jpg" alt="" /><br />
+XC9572XL connected to oscillator</p>
+
+<p>The top screenshot shows a perfect Q/E clock signal generated using a 4MHz
+clock source. No biggie; <a href="/post/15858741720/">we&rsquo;ve seen this before</a>. Right?</p>
+
+<p>The bottom photo shows what&rsquo;s interesting about this particular clock signal.
+The XC9572XL is using my very first VHDL that I wrote all by myself,
+programmed using <a href="https://github.com/sowbug/JTAGWhisperer">The JTAG
+Whisperer</a>! I found a <a href="http://en.wikibooks.org/wiki/VHDL_for_FPGA_Design/JK_Flip_Flop">JK flip-
+flop</a> out on
+the web, and wired up two of them using the recommended clock circuit in the
+6809E datasheet. Synthesized it, generated an XSVF, and pow! It worked!</p>
+
+<p>VHDL is turning out to be exactly as I&rsquo;d hoped: it&rsquo;s a text-based schematic
+entry language. Wire std_logic A to std_logic B, conjure up an imaginary
+signal here and there, proofread, and then call it all into existence. I&rsquo;m
+still finding some parts of the language confusing, and the XSVF step is
+certainly tedious, but I&rsquo;m already willing to declare the development process
+fun.</p>
+
+<p>Code follows.</p>
+
+<p>`entity QE_CLOCK is<br />
+  Port ( OSC : in  STD_LOGIC;<br />
+         Q_CLK : out  STD_LOGIC;<br />
+         E_CLK : out  STD_LOGIC);<br />
+end QE_CLOCK;</p>
+
+<p>architecture Behavioral of QE_CLOCK is<br />
+  component JK_FF_VHDL<br />
+    port( J,K: in  std_logic;<br />
+          Reset: in std_logic;<br />
+          Clock_enable: in std_logic;<br />
+          Clock: in std_logic;<br />
+          Q, NQ: out std_logic);<br />
+  end component;<br />
+  signal ff1_k : std_logic;<br />
+  signal ff1_nq : std_logic;<br />
+  signal q_clk_temp : std_logic;<br />
+  signal e_clk_temp : std_logic;<br />
+begin<br />
+  ff1: JK_FF_VHDL<br />
+    port map (e_clk_temp, ff1_k, &lsquo;0&rsquo;, &lsquo;1&rsquo;, OSC, q_clk_temp, ff1_nq);<br />
+  ff2: JK_FF_VHDL<br />
+    port map (q_clk_temp, ff1_nq, &lsquo;0&rsquo;, &lsquo;1&rsquo;, OSC, ff1_k, e_clk_temp);<br />
+  Q_CLK &lt;= q_clk_temp;<br />
+  E_CLK &lt;= e_clk_temp;<br />
+end Behavioral;`</p>
+
+  <p class="small gray"><time datetime="2012-02-04">Feb 04, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

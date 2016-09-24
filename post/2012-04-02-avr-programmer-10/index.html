@@ -1,0 +1,60 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-04-02-avr-programmer-10/" title="AVR Programmer 1.0">AVR Programmer 1.0</a></h1>
+  <p>Just sent off <a href="https://github.com/sowbug/avr-
+programmer/zipball/DORKBOT_1_0">DORKBOT_1_0</a> to Laen (yeah, we reuse version numbers around
+here). Interesting changes:</p>
+
+<ul>
+<li>Added an FTDI-cable-compatible header. This means the board has the hardware capability to do USB-TTL serial I/O, and it should be able to program Arduino Pros and other barebones Arduinos.</li>
+<li>Dropped the two ground pins on the VCC/3.<sup>3</sup>&frasl;<sub>5</sub>.0 header. The original idea was to make it possible for that header to act as a small power source, but it turned out to be a confusing opportunity for short circuits.</li>
+<li>Brought out the 4MHz emergency clock source that Dean&rsquo;s AVRISP source code already provides.</li>
+<li>Brought out XCK. In theory, with a couple external resistors connecting TXO and RXI to form the DATA line, TPI/PDI programming will be possible.</li>
+<li>Brought out two GPIO pins. They&rsquo;re buffered so they&rsquo;re output-only.</li>
+<li>Switched from the &lsquo;125 to a &lsquo;241 to accommodate the extra outs.</li>
+<li>Dropped the redundant pullup resistor on /RESET.</li>
+<li>Added a solder jumper for /HWB so it&rsquo;s easier to get the board into bootloader mode.</li>
+<li>Stopped sending MISO through the buffer. This was a curious design decision for USBtinyISP, and it also made ISP of the board itself more difficult than it should have been.</li>
+<li>Switched to larger-than-microscopic labels. Maybe they&rsquo;ll be readable this time!</li>
+</ul>
+
+  <p class="small gray"><time datetime="2012-04-02">Apr 02, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

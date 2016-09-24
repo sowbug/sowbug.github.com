@@ -1,0 +1,80 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-05-25-new-project-like-a-g35/" title="New Project: Like A G35">New Project: Like A G35</a></h1>
+  <p>Last year I took some good work by <a href="http://www.deepdarc.com/2010/11/27/hacking-christmas-lights/">Robert Sun
+Quattlebaum</a> and
+others and made an <a href="https://github.com/sowbug/G35Arduino">Arduino library</a>
+that controls GE G35 Color Effects Christmas lights. For the 2011 season I
+whipped up a quick perfboard using a <a href="http://pjrc.com/teensy/">Teensy</a>, and
+since then I&rsquo;ve wanted to build a more permanent board that I might leave up
+year-round; after all, plenty of evenings call for fancy lighting. Why let
+Christmas have all the fun?</p>
+
+<p>Thus, a few days ago I started my latest project: <a href="https://github.com/sowbug/like-a-g35">Like A
+G35</a>. It isn&rsquo;t much at the moment, but
+if I start prototyping now (in May), it ought to be ready to go by the time I
+want to deploy it (Halloween at the latest).</p>
+
+<p>The circuit will be my first based on the ATmega32U4. I&rsquo;ve worked on that chip
+quite a bit via <a href="http://www.ladyada.net/products/atmega32u4breakout/">Adafruit&rsquo;s breakout
+board</a>, but I&rsquo;ve never
+gotten around to a build with it. It&rsquo;ll be fairly simple:</p>
+
+<ul>
+<li>Micro-USB socket for programming and power.</li>
+<li>ISP6 header for initial programming (remember, the &lsquo;32U4 isn&rsquo;t available in DIP).</li>
+<li>Three 3-position terminal blocks to support up to three strands of lights.</li>
+<li>A second two-position terminal block for alternate power.</li>
+<li>A beefy voltage regulator (at least 6 amps if I want to support three strands).</li>
+<li>An infrared receiver to change programs.</li>
+<li>A PCF8523 real-time clock with battery backup to display different programs depending on time of year.</li>
+<li>Pinouts for whichever GPIO pins are left on the chip.</li>
+</ul>
+
+<p>In all likelihood I&rsquo;ll solder only the USB socket, the &lsquo;32U4, and two of the
+terminal blocks, because I have only two strands on my house, I prefer to
+power directly through USB, and I won&rsquo;t get around to any RTC or remote
+functionality. But in case other people want to build the board and use it for
+other purposes, it&rsquo;ll be nice to have those other features optionally
+available.</p>
+
+  <p class="small gray"><time datetime="2012-05-25">May 25, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

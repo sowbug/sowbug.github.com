@@ -1,0 +1,52 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2013-09-03-generating-elliptic-curve-keys-in-openssl/" title="Generating elliptic-curve keys in OpenSSL">Generating elliptic-curve keys in OpenSSL</a></h1>
+  <ul>
+<li>Generate a key: openssl ecparam -name prime256v1 -out new-ecdsa-key.pem -genkey -noout
+
+<ul>
+<li>Show the key just generated: openssl asn1parse -in new-ecdsa-key.pem</li>
+<li>Generate the public key corresponding to the given private one: openssl ec -in new-ecdsa-key.pem -pubout -text -noout</li>
+</ul></li>
+</ul>
+
+  <p class="small gray"><time datetime="2013-09-03">Sep 03, 2013</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

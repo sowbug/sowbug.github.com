@@ -1,0 +1,69 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-04-15-ok-wake/" title="OK Wake">OK Wake</a></h1>
+  <p><img src="http://66.media.tumblr.com/tumblr_m2j0uj7FM71qjj3vh.png" alt="" /></p>
+
+<p><a href="https://github.com/sowbug/ok-wake">OK Wake</a> is a project for a friend whose
+kids are old enough to get out of bed on their own, but not yet old enough to
+read clocks, meaning that they tend to start waking up the whole house at 4am.</p>
+
+<p>As it gets close to wake-up time, the device starts gently blinking red. At
+the designated hour, it changes to green. That&rsquo;s about it!</p>
+
+<p>The circuit is my first using a real-time clock. I&rsquo;ll be drawing on my power
+management experience from the <a href="https://github.com/sowbug/hypnagogo">Hypna Go
+Go</a>. I was going to use a surface-mount
+ATtiny, but I ran out of pins for ISP, so rather than trying to get clever
+with jumpers, I made it socketed instead.</p>
+
+<p>I want to keep the software insanely simple. I hope it requires zero
+configuration; it&rsquo;ll just do its thing every day for the couple years it will
+take before the kids learn to read. In the event the clock does need to be
+set, I think I can figure out something mildly inconvenient but simple
+involving the button (like pressing it for one second to reset it to 7pm,
+which takes care of timezones within the U.S., and handles any accuracy issues
+over the months and years). This scheme could take care of Daylight Saving
+Time; either you need to press the button twice a year, or else pressing it
+resets it to 7pm <em>of the current day</em>, and the RTC still tracks DST
+switchovers.</p>
+
+  <p class="small gray"><time datetime="2012-04-15">Apr 15, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

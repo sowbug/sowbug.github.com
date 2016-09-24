@@ -1,0 +1,69 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-01-21-board-sent-off-to-the-factory/" title="Board sent off to the factory">Board sent off to the factory</a></h1>
+  <p>No, not the replacement for the <a href="/post/16180992985/address-and-
+data-bus-lines-are-now-connected">Mess O&rsquo; Wires</a>. This is the <a href="http://dangerousprototypes.com/">Dangerous
+Prototypes</a> <a href="http://dangerousprototypes.com/docs/XC9500XL_CPLD_breakout_board">XC9500XL CPLD Breakout
+Board</a>. I&rsquo;ve
+ordered from <a href="http://dorkbotpdx.org/wiki/pcb_order">DorkbotPDX</a>, and my batch
+should be going to the fab today. (As a side note, I don&rsquo;t feel too bad about
+depriving DP of revenue. I own one of approximately every other thing they&rsquo;ve
+sold, and I couldn&rsquo;t wait for the many-week shipment time from
+<a href="http://www.seeedstudio.com/">SeeedStudio</a>.)</p>
+
+<p>As I investigate (naively) the capabilities of this device, I&rsquo;m pretty sure I
+ought to be able to duplicate all of Joust with the following:</p>
+
+<ul>
+<li>A Xilinx Spartan of some kind to reproduce the main chips (6809E, two 6821s, a 6808 for sound, and the &ldquo;special&rdquo; SC2) and a lot of the glue among them.</li>
+<li>One of these little CPLDs for things like the Q/E clock generator and other glue that might not fit on the Spartan. (Actually, I doubt it&rsquo;ll be necessary at all, but I&rsquo;m rationalizing it now so I can start working on programmable logic before the Spartan arrives.)</li>
+<li>An SRAM.</li>
+<li>An EEPROM to hold the game code.</li>
+<li>The 4MHz oscillator.</li>
+<li>An ATmega of some kind to load up the Spartan and maybe manage resets.</li>
+<li>A bunch of resistors for video, and capacitors for power decoupling.</li>
+</ul>
+
+<p>Unless I&rsquo;m missing something major, this will be a pretty tiny board, compared
+to the original five Joust boards!</p>
+
+  <p class="small gray"><time datetime="2012-01-21">Jan 21, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

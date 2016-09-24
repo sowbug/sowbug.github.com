@@ -1,0 +1,59 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2015-10-17-enabling-yubico-u2f-security-key-on-chrome-for/" title="Enabling Yubico U2F Security Key on Chrome for Ubuntu 15.04">Enabling Yubico U2F Security Key on Chrome for Ubuntu 15.04</a></h1>
+  <p>This works for the <a href="http://amzn.to/1jLwkVf">blue FIDO U2F key</a>.</p>
+
+<p>Create a new file called <strong>/etc/udev/rules.d/50-security-key.rules</strong>:</p>
+
+<p><code>**SUBSYSTEMS==&quot;usb&quot;, ATTRS{idVendor}==&quot;1050&quot;, OWNER=&quot;root&quot;, GROUP=&quot;plugdev&quot;,
+MODE:=&quot;0660&quot;**</code></p>
+
+<p>Once that file is saved, <strong>sudo udevadm control -reload-rules</strong> and then
+restart Chrome. Your security key, which previously was likely giving you a
+“An unexpected error occurred [retry]” message, will now work.</p>
+
+<p>I figured this out with the command <strong>udevadm info -n /dev/usb/hiddev0 -a</strong>,
+inspecting the output to determine that other solutions on the web were
+missing the S at the end of SUBSYSTEMS and ATTRS. For the assignment parts of
+the udev rule, the values root/plugdev/0660 were correct.</p>
+
+  <p class="small gray"><time datetime="2015-10-17">Oct 17, 2015</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-04-12-avr-power-management/" title="AVR Power Management">AVR Power Management</a></h1>
+  <p>I designed the <a href="https://github.com/sowbug/hypnagogo">Hypna Go Go</a> schematic
+and board quickly in one evening and sent it to be manufactured that night.
+The next day I realized I&rsquo;d forgotten to add a power switch, meaning I&rsquo;d have
+to remove the coin-cell battery every morning.</p>
+
+<p><em>Or I could solve the problem in software.</em> That&rsquo;s what I did.</p>
+
+<p>You can read the code for yourself, but I took advantage of the fact that I
+already had a momentary button between ground and PB4 on the ATtiny for
+switching immediately into dream mode. The updated firmware starts out by
+turning off all unneeded peripherals, such as the ADC and BOD, then turning on
+a pin-change interrupt on PB4. Then it switches to the PWR_DOWN sleep mode. In
+other words, putting in the battery starts up the device in a switched-off
+state.</p>
+
+<p>Pressing the button fires the interrupt, effectively turning on the device,
+and it does all the setup it would have done normally. I refactored the button
+code to manage all the relevant state inside the pin-change interrupt service
+routine. Tapping the button goes straight into STATE_DREAM as before, but
+holding it down for two seconds goes back into PWR_DOWN sleep mode, after a
+blink sequence to confirm that it&rsquo;s really shutting off.</p>
+
+<p>I haven&rsquo;t yet figured out how to measure microamp-level current draw in this
+circuit, but if I&rsquo;m doing it correctly, then I&rsquo;m probably drawing less than
+1uA in switched-off state. Even for a 40mAh CR1220 coin cell, that&rsquo;s a few
+years, and it easily outweighs the cost and complexity of adding a physical
+slider switch.</p>
+
+  <p class="small gray"><time datetime="2012-04-12">Apr 12, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-01-18-this-is-getting-ridiculous-its-time-to-make-a/" title="this is getting ridiculous its time to make a">this is getting ridiculous its time to make a</a></h1>
+  <p><img src="/tumblr_files/tumblr_lxvmzg7w9E1qly645o1_1280.jpg" alt="" /></p>
+
+<p>This is getting ridiculous. It&rsquo;s time to make a PCB or move to FPGA, because
+I&rsquo;m running out of breadboard space. On the near side of the breadboard are
+three &lsquo;595s, forming serial-to-parallel address and data latches to load up
+the SRAM. The data &lsquo;595 is leftmost, the low byte of the address is in the
+middle, and the high byte is on the right. To the right of the third &lsquo;595 is
+another ATtiny13a (my first project with two AVRs in a single circuit!). It&rsquo;s
+latching the bits into the &lsquo;595s, telling them it&rsquo;s OK to copy their registers
+to the outputs, and then when the three bytes are ready, setting a strobe
+signal that will tell the SRAM to use the address/data values to set a byte in
+itself. The two halves of the breadboard don&rsquo;t talk to each other yet. Next
+step is to hook the &lsquo;595s to the SRAM.</p>
+
+  <p class="small gray"><time datetime="2012-01-18">Jan 18, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

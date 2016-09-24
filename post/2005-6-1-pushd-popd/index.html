@@ -1,0 +1,69 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2005-6-1-pushd-popd/" title="pushd &amp;amp; popd">pushd &amp;amp; popd</a></h1>
+  <p>Yesterday I discovered the shell commands pushd and popd. For some reason
+every time I read the man pages I didn&rsquo;t grok what they were for, but this
+time it clicked.</p>
+
+<p>Suppose you&rsquo;re in some directory somewhere like
+~/src/main/project/module/test/data/, and you need to work with a file in your
+~/scraps directory. Without pushd and popd, you have three choices: open a new
+shell, cd to ~/scraps and then cd back again when you&rsquo;re done, or use path
+completion to type the full path to the file in ~/scraps.</p>
+
+<p>But what you really want is the hyperspace button, where you jump to the other
+directory, do your work, then jump back wherever you were before. This is what
+pushd/popd does:</p>
+
+<pre><code>[~/src/main/project/module/test/data] $ pushd ~/scraps
+[~/scraps] $ (work with the file)
+[~/scraps] $ popd
+[~/src/main/project/module/test/data] $ (I'm back here again!)
+</code></pre>
+
+<p>As you can guess from the command names, it&rsquo;s a stack. So you can push all the
+locations you want and then get back where you were when you&rsquo;re done.</p>
+
+<p>A belated thanks to my friend and partner in entrepreneurial endeavors, <a href="http://www.eak.com/"> Erik
+Kay</a>, who mentioned these commands to me two years ago.</p>
+
+  <p class="small gray"><time datetime="2005-06-01">Jun 01, 2005</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

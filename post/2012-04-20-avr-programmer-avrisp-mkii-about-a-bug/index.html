@@ -1,0 +1,96 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-04-20-avr-programmer-avrisp-mkii-about-a-bug/" title="AVR Programmer, AVRISP mkII: About a bug">AVR Programmer, AVRISP mkII: About a bug</a></h1>
+  <p>I had a good debugging session over the last few nights and want to write down
+my notes here.</p>
+
+<p>The <a href="/post/19682029334/the-programmer-works">AVR Programmer</a> initially worked
+with a target &lsquo;328p, but it hung when programming a second build of the board,
+and then again on a particular ATtiny13A that I was using for the <a href="/post/20906913903/the-hypna-go-go">Hypna Go
+Go</a>. Oddly, it worked for another &lsquo;13A that
+I was using on the same project. The board was flaky, and as a result, I
+couldn&rsquo;t keep my promise to myself to never again ISP-program another AVR
+without a programmer I&rsquo;d built myself.</p>
+
+<p>A few nights ago, while getting ready for the latest and greatest version of
+the board to arrive from the factory, I decided to take a look at what was
+going on. I got out my <a href="http://www.saleae.com/">Saleae Logic</a> and watched the
+SPI traffic. Perfect… except that the target &lsquo;13A never responded on MISO. I
+swapped in a known-good programmer, confirmed it worked, but then saw that the
+logic signal patterns were identical. <em>The target wasn&rsquo;t responding, but the
+known-good programmer was programming it!</em></p>
+
+<p>I suspected bad logic probe connections… nope. They were fine.</p>
+
+<p>Getting a bit frantic, I zoomed out in the Logic app, and immediately figured
+out why the target wasn&rsquo;t responding. The first cycle through the
+initialization sequence (the only cycle I&rsquo;d been examining), it always failed.
+But the second cycle succeeded, and I never saw this until I zoomed out.</p>
+
+<p>Next question: why was the known-good good? I re-read the datasheet for the
+&lsquo;13A and saw that if the programmer couldn&rsquo;t guarantee SCK was low on target
+powerup (which indeed applied in both my and the known-good programmer cases),
+an alternate way to get into programming mode was to pulse /RESET high for a
+bit. I could see the known-good doing this between the first bad and second
+good cycles, and my firmware was doing the same thing, so what was the
+difference?</p>
+
+<p>Back to my programmer under the logic analyzer. Zoom out… and see that in fact
+/RESET was staying low consistently. Aha! That&rsquo;s the problem. But why was it
+happening?</p>
+
+<p>It turns out that the LUFA code doesn&rsquo;t pulse /RESET by sending it high.
+Instead it <em>tristates</em> the pin. This makes sense because you want your
+programmer to disconnect from the target when you&rsquo;re done so that /RESET can
+go back high on its own. This is fine, except that my programmer has a
+74AHC125 buffer between the &lsquo;32u2 and the ISP outputs, and <em>a tristate output
+entering the buffer leaves as a low logic signal</em>. This is why my programmer
+wasn&rsquo;t pulsing /RESET, and it&rsquo;s why programming <em>sometimes</em> worked if the
+powerup sequence happened to be right, or if the chip in question (such as
+most 328p&rsquo;s or some 13A&rsquo;s) happened to be a more tolerant sample.</p>
+
+<p>Once I understood the problem, <a href="https://github.com/sowbug
+/lufa-lib/commit/258ecc31c993826bf5c520699c38b9d8183b00cb">the fix was easy</a>. Change LUFA to
+pulse /RESET with explicit logic levels, and insert buffer enable/disable code
+at the appropriate places. So far, it&rsquo;s been running flawlessly.</p>
+
+  <p class="small gray"><time datetime="2012-04-20">Apr 20, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

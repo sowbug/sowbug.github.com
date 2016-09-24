@@ -1,0 +1,63 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-01-27-i-feel-like-neo-when-the-plug-gets-yanked-out-of/" title="i feel like neo when the plug gets yanked out of">i feel like neo when the plug gets yanked out of</a></h1>
+  <p><img src="/tumblr_files/tumblr_lygws6N0jG1qly645o1_250.jpg" alt="" /></p>
+
+<p>I feel like Neo when the plug gets yanked out of his head: &ldquo;I know JTAG.&rdquo;
+Except I really don&rsquo;t, and it took three days instead of three seconds.</p>
+
+<p>JTAG is a little like SPI. You send bytes to the slave, the slave does
+something with them, and then you get bytes back. The protocol is clocked by
+the master, and you shift TDI bits out as you&rsquo;re reading in TDO bits. But as
+far as I can tell, the timing is intolerant compared to SPI, at least on the
+XC9572XL that I&rsquo;m trying hard not to destroy. The slightest change in clock
+pulse width gets the incoming TDO bits completely out of sync. <a href="http://www.sowbug.com/post/16531649193/found-a-good-base-for-an-xsvf-
+player">Ben&rsquo;s
+code</a> shows a lot of hard work on his part getting this timing exactly right
+for his Papilio, but the adjustments need to be redone for Arduino. I&rsquo;m
+getting more handy with a logic analyzer; my favorite trick to date is the
+&ldquo;debug line&rdquo; that sets an extra pin high when a certain interesting event is
+about to happen, making it very easy to scroll to the right part of the logic
+timeline. It&rsquo;s the equivalent to sticking a debug printf into software. I
+doubt I&rsquo;m the first person to invent that one.</p>
+
+  <p class="small gray"><time datetime="2012-01-27">Jan 27, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

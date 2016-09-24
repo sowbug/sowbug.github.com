@@ -1,0 +1,81 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2005-5-28-linkstation-145146147-password/" title="Linkstation 145/146/147 password">Linkstation 145/146/147 password</a></h1>
+  <p>I wanted to add a few features to my Linkstation HD-H120LAN, but the newer
+versions of the 1.4x firmware are password-protected and don&rsquo;t have the same
+vulnerabilities as earlier versions that allowed hobbyists to tinker with
+them.</p>
+
+<p>So this is what I did. <em>(These instructions assume you&rsquo;re already experienced
+with Linkstation/Kuro Box hacking.)</em></p>
+
+<ul>
+<li>Download the 145_13 firmware update and extract firminfo.txt, ramdisk.image.gz, and vmlinux.gz from the firmimg.bin in it.</li>
+<li>gunzip ramdisk.image.gz and mount it using <code>sudo mount -o loop ramdisk.image /mnt/linkstation/</code>.</li>
+<li>cd to /mnt/linkstation/bin, and move unzip to real_unzip.</li>
+
+<li><p>Add a new unzip with the following contents:</p>
+
+<pre><code> #!/bin/bash
+</code></pre>
+
+<p>echo &ldquo;$*&rdquo; &gt;&gt; /cmdline
+ <code>real_unzip $*</code></p></li>
+
+<li><p>chmod a+x unzip</p></li>
+
+<li><p>umount the image and gzip -9 it back up again.</p></li>
+
+<li><p>Using setsum from the Kuro/Linkstation GPL toolchain, create a new firmimg.bin: <code>linux-2.4.17_mvl21-sandpoint/arch/ppc/boot/utils/setsum/setsum firminfo.txt vmlinux.gz -r ramdisk.image.gz -o firmimg.bin</code></p></li>
+
+<li><p>Flash firmimg.bin to /dev/fl3.</p></li>
+
+<li><p>Replace the original firmimg.bin in the firmware update download and re-run HD-HLAN FWUpdate.exe.</p></li>
+
+<li><p>When the setup is done, telnet into the Linkstation and cat /cmdline.</p></li>
+
+<li><p>See the command line used to unzip image.dat: <code>-P NFM_TUPSBHFNFM_TUPSBHF /mnt2/image.zip -d /mnt2</code></p></li>
+</ul>
+
+<p>I confirmed the password works with 145_13, 146_10, and 147. Have fun.</p>
+
+  <p class="small gray"><time datetime="2005-05-28">May 28, 2005</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

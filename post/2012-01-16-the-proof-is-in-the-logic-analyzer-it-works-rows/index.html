@@ -1,0 +1,65 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-01-16-the-proof-is-in-the-logic-analyzer-it-works-rows/" title="the proof is in the logic analyzer it works rows">the proof is in the logic analyzer it works rows</a></h1>
+  <p><img src="/tumblr_files/tumblr_lxtgor3mz91qly645o1_1280.jpg" alt="" /></p>
+
+<p>The proof is in the logic analyzer: it works! Rows 0-4 are A0-A4, or the
+lowest-significance address-bus outputs. Row 5 (green) is the reset signal.
+The last two rows are the Q/E clocks.</p>
+
+<p>The story this capture tells is exciting! The Q/E clocks are doing their
+thing. Then reset goes high, telling the processor to grab the address at
+$FFFE, switch the program counter, and start running. So what I&rsquo;m actually
+seeing on the address lines (ignoring A4 so we can work with just the bottom
+nibble) is E, F, F, 0, 1, F, 0, F, 0, 2, 3, F, 0, F, 0, 4, 5, F, 0, F, 0, 6,
+7, F, 0, F, 0… which mostly matches our expectations (more to come in a full
+post). After I took this photo I figured out that Salae can do the bit-math
+for me, which is a pretty nice feature.</p>
+
+<p>I believe the reason for the hiccup at the point where reset rises is that the
+Salae Logic software is running a circular buffer even before it sees the
+start condition, and because I picked a fairly coarse granularity for sampling
+(2MHz), it scoots its capturing over a bit to match the rising edge. That&rsquo;s
+the only plausible explanation; hitting reset couldn&rsquo;t possibly affect the
+clock circuit.</p>
+
+  <p class="small gray"><time datetime="2012-01-16">Jan 16, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-01-29-the-jtag-whisperer/" title="The JTAG Whisperer">The JTAG Whisperer</a></h1>
+  <p>Available <a href="https://github.com/sowbug/JTAGWhisperer">here on GitHub</a>. The JTAG
+Whisperer turns your Arduino into a JTAG cable. <strong>Wow, sounds great!</strong> Here
+are the caveats:</p>
+
+<ul>
+<li>It&rsquo;s actually just an XSVF player. This is a tiny subset of what <a href="http://en.wikipedia.org/wiki/Joint_Test_Action_Group">JTAG</a> does. The current architecture has the desktop load the XSVF file, then send it over serial to the Arduino. Since serial is going to be limited to the kilobits-per-second range of speed, it&rsquo;s unlikely it&rsquo;ll be suitable for more ambitious interactive JTAG operations. But it&rsquo;d be interesting to see what could be accomplished with the newer Arduinos that have replaced the FTDI chip with the more flexible ATmega U-series chips.</li>
+<li>It has been tested only on a <a href="http://dangerousprototypes.com/docs/CPLD:_Complex_programmable_logic_devices">Xilinx XC9572XL breakout board</a> from Dangerous Prototypes, and the only function it has performed so far is asking the chip its device ID (spoiler: it&rsquo;s 0xf9604093). I would have happily used the <a href="http://dangerousprototypes.com/docs/Bus_Pirate">Bus Pirate&rsquo;s XSVF Player firmware</a>, but it hasn&rsquo;t yet been ported to my BPv4 hardware, and I wasn&rsquo;t willing to invest in learning PIC development.</li>
+<li>It doesn&rsquo;t work very well yet. The serial communication between the desktop and the PC frequently gets logjammed, and the Arduino sometimes has to ask repeatedly for the ID.</li>
+</ul>
+
+<p>I have high hopes for this project. Its immediate use will be to program the
+&lsquo;9572 so that I can start experimenting with replacing discrete logic 74xx
+chips. Eventually I hope it&rsquo;ll become a robust, reliable XSVF player for the
+Arduino.</p>
+
+<p>Please <a href="https://github.com/sowbug/JTAGWhisperer">give it a try</a>. I look
+forward to your pull requests!</p>
+
+  <p class="small gray"><time datetime="2012-01-29">Jan 29, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

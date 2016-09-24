@@ -1,0 +1,75 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-02-10-son-of-9572-is-alive/" title="Son of &#39;9572 is alive">Son of &#39;9572 is alive</a></h1>
+  <p>A good night&rsquo;s rest didn&rsquo;t help the &lsquo;9572. It remains destroyed. After
+talking it over with a few people, I believe any of the following is possible:</p>
+
+<ol>
+<li>It was close to death already from having powered it from 5 volts for so long, and it simply gave out.</li>
+<li>I was careless with a logic probe pin and briefly touched two opposing outputs.</li>
+<li>While juggling pins on the UCF, I uploaded a new program that caused Possibility #2 to happen. I don&rsquo;t think this was the case, because I think I would have noticed it when I rearranged the pins.</li>
+<li>Or the chip just died, maybe from ESD, maybe from cosmic rays. It does happen.</li>
+</ol>
+
+<p>No matter what the cause, I don&rsquo;t think it was the VHDL, and I don&rsquo;t think it
+was a currently-held misunderstanding on my part. So I&rsquo;m back in the saddle
+with one of the Dorkbot PCBs.</p>
+
+<p><img src="http://66.media.tumblr.com/tumblr_lz5xkkmerw1qjj3vh.png" alt="" /></p>
+
+<p>As you can see, the latch clock is tied to the 1MHz Q clock. I managed to
+flick the latch button for less than a millionth of a second during the
+clock&rsquo;s rising edge (it doesn&rsquo;t look right on this graph, but I think this is
+sample error or else a difference in opinion between the Saleae and the &lsquo;9572
+about when the level fell again). The high value is latched into D0 on the
+next rising edge, then it&rsquo;s shifted to D1 as D0 obtains the new low value,
+then it goes from D1 to D2, etc. Then about 21 clocks after that, we see it
+shift through A15. If I had more probe pins, we would have been able to see it
+go all the way from D0-D7, then A0-A15.</p>
+
+<p>There is a bug in this code. The shift into D0 doesn&rsquo;t happen until the rising
+edge <em>after</em> the one that should have latched it in. I will investigate.
+(<strong>Update: that was easy. I changed the REGISTER_TEMP vector from a signal to
+a variable so that it was evaluated in the order of the statements in the
+process block. There&rsquo;s probably a better way.</strong>)</p>
+
+  <p class="small gray"><time datetime="2012-02-10">Feb 10, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

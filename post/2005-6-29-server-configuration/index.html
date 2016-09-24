@@ -1,0 +1,62 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2005-6-29-server-configuration/" title="Server configuration">Server configuration</a></h1>
+  <p>Some of what I&rsquo;ve done to my new server so far. By the way, it&rsquo;s Fedora Core
+2. I&rsquo;m running Core 2 because Core 3 and later pretty much require yum rather
+than apt, and yum is a real resource hog and won&rsquo;t reasonably work in 64MB of
+DRAM.</p>
+
+<ul>
+<li>As root: crontab -e, then add <code>25 3 * * * apt-get update &amp;&amp; apt-get -y dist-upgrade</code>.</li>
+
+<li><p>Create a backup script on a different machine with several lines resembling this:<br />
+<code>rsync -az -vv --sparse --stats --delete --rsh=ssh root@&lt;hostname&gt;:/home .</code><br />
+I put the public key for the archiving machine in root&rsquo;s
+.ssh/authorized_keys2, so that the script can log in automatically without
+needing to know root&rsquo;s password.</p></li>
+
+<li><p><code>apt-get install ImageMagick ImageMagick-perl</code> (note that they&rsquo;re case-sensitive!)</p></li>
+</ul>
+
+<p>I&rsquo;ll update this entry as I do more stuff.</p>
+
+  <p class="small gray"><time datetime="2005-06-29">Jun 29, 2005</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

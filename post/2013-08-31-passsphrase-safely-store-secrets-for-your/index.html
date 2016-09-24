@@ -1,0 +1,72 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2013-08-31-passsphrase-safely-store-secrets-for-your/" title="paSSSphrase: safely store secrets for your successors">paSSSphrase: safely store secrets for your successors</a></h1>
+  <p>My latest GitHub project,
+<a href="https://github.com/sowbug/paSSSphrase">paSSSphrase</a>, was inspired by a recent
+<a href="http://www.instructables.com/id/A-Stainless-Steel-Bitcoin-Wallet/">Instructable about electroetching digital
+assets</a>.</p>
+
+<p><img src="http://66.media.tumblr.com/6800db9909caa2d59e75b187e3489eed/tumblr_inline_msffak5w7X1qz4rgp.jpg" alt="image" /></p>
+
+<p>The basic idea is to split a strong passphrase among multiple shares according
+to <a href="http://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing">Shamir&rsquo;s Secret Sharing
+algorithm</a>, then
+generate an inverted/mirrored image of the shares as QR codes. The image
+transformations make for an easy
+<a href="http://en.wikipedia.org/wiki/Electroetching">electroetching</a> stencil.</p>
+
+<p>So far I haven&rsquo;t actually done this process for a secret I care about. But I
+thought electroetching was interesting enough to want to spend a few evenings
+working on it. I wrote up what I learned from my experience in the project
+README.</p>
+
+<p>If you try this, let me know! (But don&rsquo;t send me pictures, please, unless you
+want to share your secrets with me.)</p>
+
+<p>_Update: The poor man&rsquo;s version is <strong>lines=( $( LC_CTYPE=C &lt;/dev/urandom tr
+-dc &lsquo;[:alnum:]&rsquo; | head -c32 | ssss-split -t3 -n5 -Q ) ) ; for line in
+&ldquo;${lines[@]}&ldquo;; do qrencode -o share-${line:0:1}.png $line; done</strong>. This
+version just spits out the shares as individual PNGs that you can print on
+regular paper. You can verify the results even if you don&rsquo;t have a QR-code
+scanner with _<em><strong>zbarimg -raw share-*.png | ssss-combine -t3 -q</strong>.</em></p>
+
+  <p class="small gray"><time datetime="2013-08-31">Aug 31, 2013</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

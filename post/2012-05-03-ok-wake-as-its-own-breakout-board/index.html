@@ -1,0 +1,75 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-05-03-ok-wake-as-its-own-breakout-board/" title="OK Wake as its own breakout board">OK Wake as its own breakout board</a></h1>
+  <p><img src="http://66.media.tumblr.com/tumblr_m3dj6d2Yz91qjj3vh.jpg" alt="" /></p>
+
+<p>I am not usually this smart. I was fretting about how to get accessible
+pinouts to the tiny SOIC-8 PCF8523 while developing the OK Wake firmware on an
+Arduino. I thought about dead-bug wires, or picking up an SOIC breakout board
+from a local store, or doing something ugly with perfboard. I briefly explored
+repurposing an old unpopulated PCB, like maybe the third Hypna Go Go PCB from
+Laen, which uses an SOIC-8 for its ATtiny13a.</p>
+
+<p>Then I realized that the OK Wake itself was the perfect board! Just connect
+the ATtiny socket&rsquo;s pins to the corresponding pins on the big brother Arduino.
+That&rsquo;s what I did, and it&rsquo;s working very nicely. And as a bonus, I didn&rsquo;t have
+to sacrifice any PCBs or extra PCF8523s.</p>
+
+<p>Kind of obvious in retrospect. But in mental cycles expended, I definitely
+earned it.</p>
+
+<p><strong>[Update from a couple hours later] </strong>I&rsquo;ve successfully done the following:</p>
+
+<ul>
+<li>Using the Arduino&rsquo;s Wire I2C library, read the seconds from the &lsquo;8523 and confirmed that they increment properly.</li>
+<li>Turned off the CLKOUT default settings, which were messing up /INT.</li>
+<li>Set SIE, which enables the once-a-second interrupt on /INT.</li>
+<li>Configured TAM to pulse the /INT interrupt so I don&rsquo;t have to clear it.</li>
+<li>Confirmed with my logic analyzer that the pulse is indeed <sup>1</sup>&frasl;<sub>64</sub> seconds long.</li>
+<li>Got the Arduino firing an interrupt routine when /INT goes active.</li>
+<li>Confirmed that the button and the &lsquo;8532 /INT signal don&rsquo;t interfere with each other.</li>
+</ul>
+
+<p>In other words, unless the ATtiny is weirdly different from the &lsquo;328, then the
+circuit is in perfect working order.</p>
+
+  <p class="small gray"><time datetime="2012-05-03">May 03, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

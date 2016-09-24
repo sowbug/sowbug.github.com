@@ -1,0 +1,64 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2016-02-02-latest-weblight-interesting-features-of-this-spin/" title="latest weblight interesting features of this spin">latest weblight interesting features of this spin</a></h1>
+  <p><img src="/tumblr_files/tumblr_o1xopt63tL1qly645o1_1280.jpg" alt="" /></p>
+
+<p>Latest <a href="https://github.com/sowbug/weblight">WebLight</a>.</p>
+
+<p>Interesting features of this spin are that it’s 2.0mm thickness (still a
+little thin but operational), and two-sided (<a href="http://electronics.stackexchange.com/questions/209941/two-sided-
+connectorless-usb-on-a-pcb/209949">thanks to Passerby for circuit
+tip</a>).</p>
+
+<p>There are two bugs. One, the board was too wide. I forgot to resize it after
+removing the metal connector from the layout. So I filed down the edges around
+the USB connector, and it’s fine. Two, part of the top ground plane got
+disconnected from the rest, so the left LED’s ground is floating. Weirdly
+enough, it works fine, except that it can’t communicate reliably with the
+right LED, so the right LED flickers. A bodge wire fixed that, and if I
+manufacture any more from this batch of boards, I think I can run that wire
+underneath the LED assemblies.</p>
+
+<p>Except for the two errors, which are now fixed in the latest layout, I think
+this version could be the one that gets produced at scale.</p>
+
+  <p class="small gray"><time datetime="2016-02-02">Feb 02, 2016</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

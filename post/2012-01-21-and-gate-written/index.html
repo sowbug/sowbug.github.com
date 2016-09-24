@@ -1,0 +1,63 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-01-21-and-gate-written/" title="AND gate written">AND gate written</a></h1>
+  <p>I got something to build in the Xilinx ISE:</p>
+
+<pre><code>library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity foo is
+    Port ( port0 : in  STD_LOGIC;
+           port1 : in  STD_LOGIC;
+           port_out : out  STD_LOGIC);
+end foo;
+
+architecture Behavioral of foo is
+begin
+ port_out &lt;= port0 and port1;
+end Behavioral;
+</code></pre>
+
+<p>All it does is (in theory) set a high voltage on one pin when a high voltage
+is set on two other pins. But it&rsquo;s a start.</p>
+
+  <p class="small gray"><time datetime="2012-01-21">Jan 21, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-03-10-xmega-breakout-board/" title="XMEGA Breakout Board">XMEGA Breakout Board</a></h1>
+  <p>(Yes, apparently Atmel spells it in all caps.)</p>
+
+<p>Because the <a href="https://github.com/sowbug/avr-programmer">AVR Programmer</a> will
+support SPI-based ISP, PDI for XMEGAs, and TPI for low-end &lsquo;tinys, I need to
+acquire test targets of each kind. Unfortunately, XMEGA isn&rsquo;t available as a
+DIP, which means it&rsquo;s breakout board time.</p>
+
+<p>I&rsquo;ve made a half-hearted resolution to design and build rather than buy tools
+where possible, because, well, because building is fun. That rules out buying
+the <a href="http://www.sparkfun.com/products/9546">SparkFun board</a> and Atmel&rsquo;s own
+<a href="http://www.atmel.com/xplain">XPLAIN series</a> (even though the Atmel boards are
+pretty reasonably priced for all the bells and whistles they include). But I
+can still build on others&rsquo; work. Current influences for my design:</p>
+
+<ul>
+<li>David Watson&rsquo;s <a href="http://david.neonquill.com/projects/xmega_breakout/">Xmega 4 breakout</a>. OSHW, and pretty good-looking for a homemade prototype (Laen&rsquo;s deep purple boards always help with the aesthetics). But it&rsquo;s missing USB and a voltage regulator, which I&rsquo;d really prefer to lower the cable count on my desk.</li>
+<li>Batsocks&rsquo; <a href="http://www.batsocks.co.uk/products/BreadMate/XMega%20PDI.htm">BreadMate XMega</a>. Pretty much perfect; gives you that &ldquo;ooh I want it&rdquo; feeling that you also get when you see the <a href="http://www.pjrc.com/teensy/">Teensy</a>. But like the Teensy, it&rsquo;s not OSHW, so I can&rsquo;t really do anything with it. (I&rsquo;d have been happy to buy at least one if the source were provided.) <strong>Update 5/23/2012: Nigel has open-sourced the USB version of the project. As promised I&rsquo;ve bought one; it&rsquo;s on its way from Batsocks now!</strong></li>
+<li><a href="http://dangerousprototypes.com/forum/viewtopic.php?t=3527&amp;p=35454">brendan0powers&rsquo; board</a>. This board mostly confirms that I want to steer clear of QFN. It has a good feature set (USB, vreg, missing a crystal).</li>
+</ul>
+
+<p>I want David&rsquo;s layout, Brendan&rsquo;s USB, no FTDI header, and Batsocks&rsquo;
+manufacturing chops. EAGLE, here I come!</p>
+
+  <p class="small gray"><time datetime="2012-03-10">Mar 10, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

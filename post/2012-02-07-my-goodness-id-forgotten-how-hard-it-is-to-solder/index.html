@@ -1,0 +1,67 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-02-07-my-goodness-id-forgotten-how-hard-it-is-to-solder/" title="my goodness id forgotten how hard it is to solder">my goodness id forgotten how hard it is to solder</a></h1>
+  <p><img src="/tumblr_files/tumblr_lz0h5gpID71qly645o1_1280.jpg" alt="" /><br />
+The three boards, before
+assembly.<img src="/tumblr_files/tumblr_lz0h5gpID71qly645o2_1280.jpg" alt="" /><br />
+WORST SOLDER BRIDGES
+EVER<img src="/tumblr_files/tumblr_lz0h5gpID71qly645o3_1280.jpg" alt="" /><br />
+Board #1 working, next to proud sibling</p>
+
+<p>My goodness I&rsquo;d forgotten how hard it is to solder surface-mount devices. But
+I did it, and one of three XC9572XL breakout boards is working. Rehash of
+experience in approximate order of occurrence:</p>
+
+<ul>
+<li>Wanted to work on a different, software project tonight, but the boards arrived in the mail and they were so purple that I had to work on them right away.</li>
+<li>I don&rsquo;t understand how any SMD component could be smaller than 0603. Seriously, they make 0204, but 0603 almost floats if I breathe in the same room as it.</li>
+<li>Dangerous Prototypes, you&rsquo;re good guys and all, but did you really put the three inline LEDs in different polarities? I burned up one and reworked four in the process of figuring that out.</li>
+<li>Despite triple-checking, I put the 10K resistors where the 2Ks go. More rework.</li>
+<li>To remove solder bridges from gull-wing QFP leads, clean the tip, flux the heck out of the bridge, and press gently on it. Bam! <a href="http://www.youtube.com/watch?v=eg2hxpy--gg">Ready to ship</a>.</li>
+<li>Did I say flux? Yes, flux is totally, utterly awesome for making solder just do the right thing.</li>
+<li>Your CPLD breakout board will kinda sorta accept an XSVF if the 3.3-volt IO jumper is off. In fact, the kinda sorta acceptance is exactly the same as if you&rsquo;d done a cold solder joint here or there, or maybe shorted a capacitor, or left some conductive flux on the board, or…. Anyway, after ruling all those things out you&rsquo;ll try the jumper and find that it programs perfectly well.</li>
+</ul>
+
+<p>I&rsquo;ll finish the other two some other time. Right now, I&rsquo;m so happy this first
+one works!</p>
+
+  <p class="small gray"><time datetime="2012-02-07">Feb 07, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

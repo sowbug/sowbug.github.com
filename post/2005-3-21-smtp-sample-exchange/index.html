@@ -1,0 +1,70 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2005-3-21-smtp-sample-exchange/" title="SMTP sample exchange">SMTP sample exchange</a></h1>
+  <p>Because I always forget, here&rsquo;s how to manually send a mail given a telnet
+client and an SMTP server in order to test and make sure the server&rsquo;s working:</p>
+
+<p><code>$ telnet mail.example.com 25  
+Trying 12.34.56.78...  
+Connected to mail.example.com (12.34.56.78).  
+Escape character is '^]'.  
+220 mail.example.com ESMTP Ready on Mon, 21 Mar 2005 16:29:31 -0800 [a.mail]  
+HELO mail.somewhere.com  
+250 a.mail.somewhere.com Hello 98.76.54.32.somewhere.com [98.76.54.32],
+pleased to meet you  
+MAIL FROM:&lt;mike@somewhere.com&gt;  
+250 2.1.0 &lt;mike@somewhere.com&gt;... Sender ok  
+RCPT TO:&lt;someone@example.com&gt;  
+250 2.1.5 &lt;someone@example.com&gt;... Recipient ok  
+DATA  
+354 Enter mail, end with &quot;.&quot; on a line by itself  
+Hello there!  
+OK, bye!  
+.  
+250 2.0.0 0987654321 Message accepted for delivery  
+QUIT  
+221 2.0.0 a.mail.example.com closing connection  
+Connection closed by foreign host.  
+$  
+</code></p>
+
+  <p class="small gray"><time datetime="2005-03-21">Mar 21, 2005</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

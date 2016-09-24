@@ -1,0 +1,73 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-02-15-wanted-cli-eda/" title="Wanted: CLI EDA">Wanted: CLI EDA</a></h1>
+  <p>That&rsquo;s command-line interface electronic design automation.</p>
+
+<p>I&rsquo;m surprised that hardware engineers design schematics and circuit boards
+graphically. By that I mean that they drag shapes around in a GUI editor.
+Behind the scenes all the polygons and line segments are being represented
+much more simply as Component A, Pin 1 being connected to Component B, Pin 2,
+or Component C at position (X, Y) on the surface of the board. Nobody in
+software design seriously uses graphical editors to make software, and if they
+do, it still gets checked into source control as plain-text, diff-able files.</p>
+
+<p>As you can probably tell, I&rsquo;ve gotten sick of
+<a href="http://www.cadsoftusa.com/">EAGLE</a>, and my evening investigating
+<a href="http://kicad.sourceforge.net/">KiCad</a> did not go well, partly because I tried
+it on OS X. I&rsquo;m intrigued by <a href="http://www.gpleda.org/">gEDA</a>, because the
+project origins suggest it has been designed by people who appreciate the
+modularity of Unix tools. The gEDA-generated, human-readable design files of
+the <a href="http://www.evilmadscientist.com/article.php/diavolino">Diavolino</a> suggest
+that it&rsquo;s close to what I have in mind.</p>
+
+<p>I don&rsquo;t know the first thing about autorouting algorithms, but I wonder
+whether schematic and PCB layout could be looked at as a constraint-solving
+problem. Component A scores higher when it&rsquo;s placed toward the middle of the
+board, Capacitor B&rsquo;s traces can&rsquo;t be longer than N millimeters from Component
+C&rsquo;s Vcc/GND pins, etc. A friend suggested I look at
+<a href="http://minion.sourceforge.net/">Minion</a>, which seems to be in the right
+ballpark. I think it&rsquo;d be cool to edit a bunch of text source-code files (just
+like VHDL!), compile them, see a PNG of the schematic and/or PCB, and then
+spit out Gerbers when satisfied. I could fit circuit design more closely into
+the software-design workflow I&rsquo;ve gotten accustomed to.</p>
+
+  <p class="small gray"><time datetime="2012-02-15">Feb 15, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

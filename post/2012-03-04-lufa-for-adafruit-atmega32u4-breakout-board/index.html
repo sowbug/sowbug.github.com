@@ -1,0 +1,78 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-03-04-lufa-for-adafruit-atmega32u4-breakout-board/" title="LUFA for Adafruit ATmega32u4 Breakout Board">LUFA for Adafruit ATmega32u4 Breakout Board</a></h1>
+  <p><a href="http://fourwalledcubicle.com/LUFA.php">LUFA</a> is pretty amazing. If you&rsquo;re
+into that kind of thing, you can make your USB-capable AVR microcontroller be
+100 virtual serial ports, all communicating with other, all at once. I&rsquo;m not
+sure why it took me a few hours to get even one virtual port to appear, but
+once I followed <a href="/post/16644998284/">my own steps</a> to restore my <a href="http://www.adafruit.com/products/296">&lsquo;32u4
+breakout board</a> to factory-fresh
+condition, it worked nicely. Here are my notes:</p>
+
+<ul>
+<li><p>To build any or all of the whole tree, get the source and then<br />
+**<br />
+make MCU=atmega32u4 F_CPU=16000000 BOARD=ADAFRUITU4 FLASH_SIZE_KB=32
+BOOT_SECTION_SIZE_KB=4<br />
+**<br />
+You&rsquo;ll get various errors about missing joysticks, buttons, and ADC channels,
+and you&rsquo;ll have to hack and slash the code to pretend your board has a
+joystick (I used rand() % 4 to simulate someone flipping around the joystick
+wildly) or whatever else is missing. You might decide to give up and build
+just one or two sub-projects.</p></li>
+
+<li><p>To load a demo or project onto your board, cd into the right directory and<br />
+**<br />
+make program MCU=atmega32u4 AVRDUDE_PROGRAMMER=avr109
+AVRDUDE_PORT=/dev/wherever_your_board_shows_up<br />
+**<br />
+You&rsquo;ll need to reset your board so the bootloader is running during this step.</p></li>
+
+<li><p>On my machine (a Mac), I kept System Information open to the USB section, and kept hitting command-R to see what my computer thought was attached to it.</p></li>
+</ul>
+
+<p>I&rsquo;m fiddling with LUFA to get ready for the <a href="/post/18568875922/">AVR
+programmer</a>&rsquo;s arrival in a week or so. I don&rsquo;t expect to
+have ported an ISP by then, but at least I can have a simple CDC serial port
+saying &ldquo;hello, world!&rdquo;</p>
+
+  <p class="small gray"><time datetime="2012-03-04">Mar 04, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

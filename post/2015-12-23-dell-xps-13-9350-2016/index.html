@@ -1,0 +1,75 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2015-12-23-dell-xps-13-9350-2016/" title="Dell XPS 13 9350 (2016)">Dell XPS 13 9350 (2016)</a></h1>
+  <p>These are my notes about what I&rsquo;ve done to my new laptop. It&rsquo;s the non-touch
+i5 8GB/128GB model, whose SSD is SATA and not PCIe.</p>
+
+<ul>
+<li>Threw out the Broadcom WiFi adapter and replaced it with an <a href="http://amzn.to/1QY6l9P">Intel 7265</a>.</li>
+<li>Installed BIOS 1.1.7, which today is available only on the <a href="http://www.dell.com/support/home/uk/en/ukdhs1/product-support/product/xps-13-9350-laptop/drivers">UK site</a>.</li>
+<li>Installed Ubuntu 15.10. I shrank the Windows partition to about 45GB and otherwise went with the installation defaults.</li>
+<li>Installed the <a href="http://kernel.ubuntu.com/~kernel-ppa/mainline/">latest 4.4 kernel release candidate</a>.</li>
+<li><code>sudo apt-get install powertop</code> and then added its recommendations to <code>/etc/rc.local</code>.</li>
+</ul>
+
+<p>The rest of the customizations weren&rsquo;t specific to this hardware.</p>
+
+<p>I think there might be some tearing in the video, but I don&rsquo;t do much of
+anything besides code editing on this machine, so it hasn&rsquo;t bothered me enough
+to try to fix it. I also am not happy with palm detection on the trackpad;
+I&rsquo;ll occasionally be typing and then realize it&rsquo;s decided to move the cursor
+somewhere else and insert my text way over there. I hope there&rsquo;ll be a
+firmware or software update for this.</p>
+
+<p>My quick review of the 9350 is that it&rsquo;s a spectacular computer. The keyboard
+is comfortable with a good amount of travel. The trackpad is huge (see above
+for disadvantage). The matte screen is sharp and bright, though the 1920x1080
+resolution leads to small default text that can be hard on my eyes. The
+machine runs cool and is plenty quick. With the powertop tweaks, the battery
+claims life in the mid-teens (hours), ranging from 3-6 watts, but those
+metrics are highly variable according to small things like whether Chrome&rsquo;s
+running a stupid animated ad on a tab, and I haven&rsquo;t done (and won&rsquo;t do) any
+formal battery-life testing. My previous non-Chromebook computer was a 2009
+MacBook Pro, which lasted for 6+ years and was always reliable. The XPS 13 is
+a very worthy replacement.</p>
+
+  <p class="small gray"><time datetime="2015-12-23">Dec 23, 2015</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

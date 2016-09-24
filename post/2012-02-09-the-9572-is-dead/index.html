@@ -1,0 +1,89 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-02-09-the-9572-is-dead/" title="The &#39;9572 is dead">The &#39;9572 is dead</a></h1>
+  <p><img src="http://65.media.tumblr.com/tumblr_lz45evleBO1qjj3vh.jpg" alt="" /></p>
+
+<p>I killed my <a href="http://dangerousprototypes.com/docs/CPLD:_Complex_programmable_logic_devices">CPLD Breakout
+Board</a>.
+While taking pictures of the &ldquo;successful&rdquo; SRAM-loading VHDL I&rsquo;d written and
+wired up, I noticed that the power LED on the board was off. I checked the
+connections, toggled the power a few times, tried re-running the logic
+analyzer, and eventually concluded that the board was dead. It draws 1.4 amps
+when I plug it in, and the CPLD itself gets pretty hot. As far as I can tell,
+everything else on the board is working (except for the power LED, which now
+appears to be inert).</p>
+
+<p>Here&rsquo;s my VHDL:</p>
+
+<pre><code>architecture Behavioral of SRAM_LOADER is
+  signal REGISTER_TEMP : STD_LOGIC_VECTOR(23 downto 0);
+begin
+  process (CLK)
+  begin
+    if (rising_edge(CLK)) then
+      REGISTER_TEMP &lt;= REGISTER_TEMP(22 downto 0) &amp; LATCH;
+      if OE = '1' then
+        ADDRESS &lt;= REGISTER_TEMP(23 downto 8);
+        DATA &lt;= REGISTER_TEMP(7 downto 0);
+      else
+        ADDRESS &lt;= &quot;ZZZZZZZZZZZZZZZZ&quot;;
+        DATA &lt;= &quot;ZZZZZZZZ&quot;;
+      end if;
+    end if;
+  end process;
+end Behavioral;
+</code></pre>
+
+<p>I think the tri-stated address and data pins are the problem. None of them
+were connected to anything (except four data pins hooked to my logic
+analyzer). But I&rsquo;m not at all sure why that would be a problem. The only
+reason I think it&rsquo;s related is that one of the last things I did was testing
+OE disabled (grounded), but it wasn&rsquo;t the _last_ thing (which was one more OE-
+high run to take a picture of the registers shifting), so even that evidence
+is questionable. If I&rsquo;d obviously shorted something external to the chip, then
+I doubt I&rsquo;d have been able to spend the half-hour or so when I successfully
+tested it. That&rsquo;s why I believe I did something wrong with the tri-stating.</p>
+
+<p>If you know a way that one could destroy an XC9572XL CPLD by programming it
+incorrectly, I&rsquo;d appreciate a tip.</p>
+
+  <p class="small gray"><time datetime="2012-02-09">Feb 09, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

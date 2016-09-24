@@ -1,0 +1,68 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-04-25-hello-world-on-stm32f4-discovery/" title="Hello World on STM32F4 Discovery">Hello World on STM32F4 Discovery</a></h1>
+  <p>I got a blinking LED (the embedded Hello World) on my <a href="http://www.st.com/internet/evalboard/product/252419.jsp">STM32F4
+Discovery</a> board. It
+probably would have been easy to do, except that I was on OS X. Here are the
+steps I took:</p>
+
+<ol>
+<li>Tried a bunch of stuff.</li>
+<li>Switch to Linux.</li>
+<li>Tried a bunch more stuff.</li>
+<li>Took a break.</li>
+<li>Found this <a href="http://www.triplespark.net/elec/pdev/arm/stm32.html">extremely correct page</a>, which helped me build a real ARM toolchain.</li>
+<li>Built <a href="https://github.com/esden/summon-arm-toolchain">stlink</a>.</li>
+<li>Built some of the stlink samples.</li>
+<li>Got gdb going with the stlink gdbserver.</li>
+<li>Stepped through some code in RAM (not flashed).</li>
+<li>Using the stlink flash utility, flashed code I built to the board. Unplugged it and plugged it back in to confirm the code was still there.</li>
+<li>Flashed back the &ldquo;Discovery&rdquo; sample shipped with the board.</li>
+</ol>
+
+<p>From this adventure I can confirm that summon-arm-toolchain does work if you
+switch to the dev branch, and that the ARM version of gdb really and truly
+allows interactive debugging on this tiny little dev board. Quite a step up
+from the AT90S4433 and early avr-gcc toolchain that I first started hacking on
+back in 2002.</p>
+
+  <p class="small gray"><time datetime="2012-04-25">Apr 25, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

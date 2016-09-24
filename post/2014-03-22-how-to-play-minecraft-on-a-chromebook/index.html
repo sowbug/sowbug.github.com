@@ -1,0 +1,78 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2014-03-22-how-to-play-minecraft-on-a-chromebook/" title="How to play Minecraft on a Chromebook">How to play Minecraft on a Chromebook</a></h1>
+  <p><strong>First Time</strong></p>
+
+<ol>
+<li>Get your Chromebook into <a href="http://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices">Developer Mode</a>.</li>
+
+<li><p>Install <a href="https://github.com/dnschneid/crouton">Crouton</a>. This guide will assume the installation command you use is <strong>sudo sh -e ~/Downloads/crouton -t unity -r saucy</strong> and that when you are asked for a new username/password, you enter <strong>user</strong>/<strong>user</strong>.</p></li>
+
+<li><p><strong>sudo apt-get install gnome-terminal</strong> (to avoid going crazy)</p></li>
+
+<li><p>** <strong>sudo apt-get install </strong>python-software-properties software-properties-common**</p></li>
+
+<li><p><strong>sudo add-apt-repository ppa:minecraft-installer-peeps/minecraft-installer</strong></p></li>
+
+<li><p><strong>sudo apt-get update</strong></p></li>
+
+<li><p><strong>sudo apt-get install minecraft-installer</strong></p></li>
+
+<li><p>Just to be sure you start from a good place, reboot your Chromebook at this point.</p></li>
+</ol>
+
+<p><strong>Each Time</strong></p>
+
+<ol>
+<li>Power up your Chromebook.</li>
+<li>Type Control-D at the scary screen or wait 30 seconds.</li>
+<li>Sign in as yourself or guest or whoever. Doesn&rsquo;t matter.</li>
+<li>Control-Alt-T to get into crosh (or better install the <a href="https://chrome.google.com/webstore/detail/crosh-window/nhbmpbdladcchdhkemlojfjdknjadhmh">Crosh Window</a> utility and use that).</li>
+<li><strong>shell</strong></li>
+<li><strong>sudo enter-chroot</strong></li>
+<li><strong>startunity</strong></li>
+<li>Click on the Ubuntu circle in the upper-left and start typing <strong>minecraft</strong>. The icon should appear. Click on it.</li>
+<li>Play Minecraft.</li>
+<li>To switch back and forth between your Linux and ChromeOS environments, use control-alt-shift-back/forward (where back/forward are either the keys between esc and refresh on your Chromebook keyboard, or else F1 and F2 on your standard PC keyboard).</li>
+</ol>
+
+  <p class="small gray"><time datetime="2014-03-22">Mar 22, 2014</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

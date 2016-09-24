@@ -1,0 +1,88 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-02-16-a-very-early-and-surely-broken-board-layout-on/" title="a very early and surely broken board layout on">a very early and surely broken board layout on</a></h1>
+  <p><img src="/tumblr_files/tumblr_lzf4slUlMb1qly645o1_1280.png" alt="" /></p>
+
+<p>A very early and surely broken board layout. On the left are the power jack,
+USB port, and micro-SD slot. The socketed chip in the middle is the SRAM, and
+the one on the right is the 6809E. The middle guys are the CPLD, an
+ATmega32u4, and the frickin&rsquo; huge oscillator that I will no doubt replace with
+an SMD version. A friend has graciously offered to do the layout for real, so
+I&rsquo;m not too concerned about the ugly EAGLE autoroutes. I just want to get an
+idea of how big the board will be.</p>
+
+<p>Known errors in this version:</p>
+
+<ul>
+<li>There&rsquo;s no JTAG header. I intend to program the CPLD with the ATmega, but I&rsquo;d like a backup plan.</li>
+<li>I might want to consider a fuse. This isn&rsquo;t a general-purpose board with wildly varying current needs or likelihood of short-circuits, but still, it&rsquo;d be smart.</li>
+<li>There&rsquo;s no circuitry to choose between USB and jack power sources. I&rsquo;m OK with this; if I plug in both simultaneously, I deserve the consequences.</li>
+<li>I phoned in the capacitor placement. I will read the datasheets and take their advice.</li>
+<li>As-is, any SD card placed in the board would burn up. Voltage-dividing resistors between the 5V &lsquo;32u4 and the 3.3V card signals are needed.</li>
+<li>Like the oscillator, the SRAM could be switched to an SMD version. Only the 6809E is unavailable as an SMD.</li>
+</ul>
+
+<p>Missing functionality:</p>
+
+<ul>
+<li>Video.</li>
+<li>Sound.</li>
+<li>Game inputs.</li>
+<li>Anything that could even theoretically serve as the Williams Special Chip.</li>
+<li>Header sockets for a future stacked board that will eventually contain all of the above.</li>
+</ul>
+
+<p>But this is OK. As long as I add the headers, this will serve as a fairly
+functionally complete 6809E-based computer with persistent storage, huge DRAM,
+huge ROM, and… virtually no way to demonstrate that it&rsquo;s doing anything at all
+except through a logic analyzer or maybe <a href="http://quinndunki.com/blondihacks/?p=610">Quinn&rsquo;s HexOut
+tool</a>. Again, this is OK. I&rsquo;ll add
+the second stackable board, and that&rsquo;s when it&rsquo;ll start to do cool stuff.</p>
+
+<p>Parting thought: if the SRAM is an SMD, the 6809E is rotated 90 degrees, and
+things are scrunched together as closely as possible, then it&rsquo;s starting to
+look a lot like a very special-purpose Arduino shield. The Arduino would
+replace the ATmega, the crystal, the power circuitry, and the ISP header. That
+saves a _lot_ of room on the board. In fact, it might even leave room for v2
+to have everything from the missing-stuff list. Hmmm.</p>
+
+  <p class="small gray"><time datetime="2012-02-16">Feb 16, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-05-09-ok-wake-firmware-status-report-2/" title="OK Wake firmware, status report #2">OK Wake firmware, status report #2</a></h1>
+  <p>Things are looking better.</p>
+
+<p>I wrote a unit test suite that is buildable with regular GCC, so I was able to
+get the arithmetic routines written quickly without coaxing tiny LEDs into
+telling me the microcontroller&rsquo;s entire internal state. This worked well. I
+didn&rsquo;t have to stub or mock out the hardware, but I could see doing that for a
+more complex project.</p>
+
+<p>I briefly dabbled in pure shift-based arithmetic (multiply by 205, shift right
+11 times!) when I ran out of program space and took a hard look at the
+assembly with avr-objdump -S. This didn&rsquo;t work out; doing mod 10 to convert
+from decimal to BCD was eye-crossing and approaching the size of the avr-libc
+mul/div libraries. Instead I took a different approach.</p>
+
+<p>I hated the AVR310 reference I2C code for its size and seemingly needless
+complexity, so I replaced it with Peter Fleury&rsquo;s awesomely tiny <a href="http://homepage.hispeed.ch/peterfleury/group__pfleury__ic2master.html">I2C Master
+library</a>.
+I couldn&rsquo;t believe that it worked perfectly on the first try. Since it uses
+plain GPIOs and doesn&rsquo;t mess with the USI, I could even rework the circuit in
+the future to move the button/INT functionality to the &lsquo;25&rsquo;s INT0 pin, getting
+more precise pin-change interrupt events in the bargain.</p>
+
+<p>This got me well under 0x700 bytes, so I could once again easily afford to use
+*, /, and % (I actually skipped %, preferring to multiply back the division
+result and subtract from the original value).</p>
+
+<p>Code&rsquo;s looking good and starting to feed solid.</p>
+
+  <p class="small gray"><time datetime="2012-05-09">May 09, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

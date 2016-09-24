@@ -1,0 +1,121 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-02-13-maxim-ds1077-programmable-oscillator/" title="Maxim DS1077 Programmable Oscillator">Maxim DS1077 Programmable Oscillator</a></h1>
+  <p>The <a href="http://www.maxim-ic.com/datasheet/index.mvp/id/3359">Maxim DS1077</a> is a
+programmable oscillator. Instead of ordering different oscillators for each
+different project you have, you get just one on a <a href="http://www.sparkfun.com/products/9116">SparkFun breakout
+board</a> and program it, using I2C, for
+whichever frequency you need.</p>
+
+<p><img src="http://66.media.tumblr.com/tumblr_lzbbrywayk1qjj3vh.jpg" alt="" /></p>
+
+<p>And in fact, after some stumbles on my part, yes, it works.</p>
+
+<p><strong>Things I Learned About the DS1077, The Hard Way</strong></p>
+
+<ol>
+<li>The <a href="http://en.wikipedia.org/wiki/I%C2%B2C">I2C interface</a> (a.k.a. TWI or two-wire interface) depends on someone (i.e., you) to pull SCK and SDA high. Toss some pull-up resistors on those lines. I think there&rsquo;s something cool going on with this protocol that I might be able to exploit for 8821&rsquo;s bus arbitration. Must read more.</li>
+<li>The <a href="http://dangerousprototypes.com/bus-pirate-manual/">Bus Pirate</a> doesn&rsquo;t turn on its power supply until you tell it to. This is very much a feature, not a bug.</li>
+<li>SDA and SCK are not interchangeable. I hope you didn&rsquo;t need the internet to tell you that; I almost did.</li>
+<li>The Bus Pirate&rsquo;s MOSI connection isn&rsquo;t labeled for I2C, but it&rsquo;s what drives the SDA line. This makes sense (master-out, slave-in) but I had to look it up to be sure.</li>
+<li>When you&rsquo;re at your wits&rsquo; end and not understanding why your lines are full of random glitches, <em>try changing the wires</em>. Sometimes even simple things like wires can be no good!</li>
+</ol>
+
+<p>For posterity, here&rsquo;s the Bus Pirate sequence I used to program my DS1077 with
+an approximately 4.03MHz signal on OUT1, with the two CTRL inputs disabled:</p>
+
+<p>HiZ&gt;m<br />
+…<br />
+4. I2C<br />
+…</p>
+
+<p>(1)&gt;4<br />
+I2C mode:<br />
+1. Software<br />
+2. Hardware</p>
+
+<p>(1)&gt;2<br />
+Set speed:<br />
+1. 100KHz<br />
+2. 400KHz<br />
+3. 1MHz<br />
+(1)&gt;1<br />
+Ready</p>
+
+<p>I2C&gt;W<br />
+POWER SUPPLIES ON</p>
+
+<p>I2C&gt;[ 0xb0 0x0d 0b00001000 ] <strong>(Don&rsquo;t write every change to EEPROM)</strong><br />
+I2C START BIT<br />
+WRITE: 0xB0 ACK<br />
+WRITE: 0x0D ACK<br />
+WRITE: 0x08 ACK<br />
+I2C STOP BIT</p>
+
+<p>I2C&gt;[ 0xb0 002 0b00011000 0b00000000 ] <strong>(Use just the 10-bit frequency
+divider)</strong><br />
+I2C START BIT<br />
+WRITE: 0xB0 ACK<br />
+WRITE: 0x02 ACK<br />
+WRITE: 0x18 ACK<br />
+WRITE: 0x00 ACK<br />
+I2C STOP BIT</p>
+
+<p>I2C&gt;[0xb0 1 0b00000111 0b11000000] <strong>(Write 31 (133MHz/(31+2)) to
+divider)</strong><br />
+I2C START BIT<br />
+WRITE: 0xB0 ACK<br />
+WRITE: 0x01 ACK<br />
+WRITE: 0x07 ACK<br />
+WRITE: 0xC0 ACK<br />
+I2C STOP BIT</p>
+
+<p>I2C&gt;[0xb0 0x3f] <strong>(Write out the settings to EEPROM)</strong></p>
+
+<p>By the way, this is my first time using the Bus Pirate for a project. I&rsquo;ve
+tried a couple times but bounced off because of v4/v3 incompatibility pains.
+I&rsquo;m not in love with the interactive serial-terminal interface. But I do
+appreciate the idiot-proofing, such as starting up with all signals in high-
+impedance mode. That&rsquo;ll keep me from destroying my equipment someday, for
+sure.</p>
+
+  <p class="small gray"><time datetime="2012-02-13">Feb 13, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2007-4-10-copying-messagebox-text/" title="Copying MessageBox text">Copying MessageBox text</a></h1>
+  <p>It is a small pet peeve of mine that many people in software development use
+screenshots to send around reports of errors in Windows applications. The path
+of least resistance is to press the Print Screen key and paste the resulting
+BMP in email. These files can be multiple megabytes. Even if you use alt-
+PrtScn, which copies just the active window, that&rsquo;s typically 350KB. Moreover,
+it loses critical information: if the recipient actually wants to grep source
+code for the error message, he or she must retype the string in question.</p>
+
+<p>Instead, try pressing control-C. This copies the text of any standard
+messagebox (including assertion failure dialogs) into the clipboard.</p>
+
+<p>Example:</p>
+
+<pre><code>---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+----------
+Microsoft Visual C++ Debug Library
+=---------------------------
+Debug Assertion Failed!
+
+Program: temp_demo_project.exe
+File: c:\foo.cpp
+Line: 40
+
+Expression: 2 == 1
+
+For information on how your program can cause an assertion
+failure, see the Visual C++ documentation on asserts.
+
+(Press Retry to debug the application)
+=---------------------------
+Abort   Retry   Ignore
+=---------------------------
+</code></pre>
+
+<p>Thanks to Adam Dingle for the tip.</p>
+
+  <p class="small gray"><time datetime="2007-04-10">Apr 10, 2007</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

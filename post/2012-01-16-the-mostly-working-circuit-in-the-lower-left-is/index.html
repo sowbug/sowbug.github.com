@@ -1,0 +1,60 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-01-16-the-mostly-working-circuit-in-the-lower-left-is/" title="the mostly working circuit in the lower left is">the mostly working circuit in the lower left is</a></h1>
+  <p><img src="/tumblr_files/tumblr_lxtfmeNz321qly645o1_1280.jpg" alt="" /></p>
+
+<p>The mostly-working circuit. In the lower-left is the ATtiny13A, running on the
+9.6MHz internal RC, and outputting a clock on PB3 as fast as C code can. PB4
+is tied to ground because I added a snippet of code to halt the clock when I
+pressed a button. I then noticed the HALT input on the &lsquo;09, so I will probably
+remove that functionality from the &lsquo;13A.</p>
+
+<p>In the upper-left is the 74HC109. This is a dual JK positive-edge-trigger
+flip-flop. That portion of the circuit is adapted from the MC6809E datasheet&rsquo;s
+recommendation for generating the weird skewed Q/E clock signals.</p>
+
+<p>And on the right, of course, is the &lsquo;09. It&rsquo;s gussied up with logic probes,
+and down at the bottom is a reset button that also happens to provide the
+rising-edge trigger for the logic probe to start capturing. Under the probes
+on the right side are the eight data lines hard-coded to $12.</p>
+
+  <p class="small gray"><time datetime="2012-01-16">Jan 16, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

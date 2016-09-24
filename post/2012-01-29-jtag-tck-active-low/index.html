@@ -1,0 +1,62 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-01-29-jtag-tck-active-low/" title="JTAG TCK: active-low?">JTAG TCK: active-low?</a></h1>
+  <p>Why does it seem like the JTAG clock signal is active low? Consider this
+snippet from Xilinx&rsquo;s <a href="https://github.com/sowbug/xapp058">XAPP058 source
+code</a>.</p>
+
+<blockquote>
+<p>/* toggle tck LH.  No need to modify this code.  It is output via setPort.
+<em>/<br />
+void pulseClock()<br />
+{<br />
+    setPort(TCK,0);  /</em> set the TCK port to low  <em>/<br />
+    setPort(TCK,1);  /</em> set the TCK port to high */<br />
+}</p>
+</blockquote>
+
+<p>This means that when the clock isn&rsquo;t being pulsed, it&rsquo;s high. Right? If so,
+why don&rsquo;t any <a href="http://en.wikipedia.org/wiki/Joint_Test_Action_Group#Electrical_characteristics">descriptions of JTAG&rsquo;s electrical
+characteristics</a>
+say it&rsquo;s active low?</p>
+
+  <p class="small gray"><time datetime="2012-01-29">Jan 29, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

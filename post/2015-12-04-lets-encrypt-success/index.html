@@ -1,0 +1,67 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2015-12-04-lets-encrypt-success/" title="Let’s encrypt: success!">Let’s encrypt: success!</a></h1>
+  <p>Here’s what I did to get <a href="https://z.sowbug.com/">z.sowbug.com</a> running with a
+Let’s Encrypt cert.</p>
+
+<ul>
+<li><code>git clone &lt;https://github.com/letsencrypt/letsencrypt&gt;</code></li>
+<li><code>cd letsencrypt/</code></li>
+<li><code>./letsencrypt-auto certonly --standalone -d z.sowbug.com</code></li>
+<li><code>sudo tar cf etc-letsencrypt.tar.gz /etc/letsencrypt</code></li>
+<li><code>gpg -c etc-letsencrypt.tar.gz</code></li>
+<li>(scp etc-letsencrypt.tar.gz somewhere safe)</li>
+<li><code>sudo su -</code></li>
+<li><code>apt-get install nginx</code></li>
+<li><code>cd /etc/nginx/</code></li>
+<li><code>emacs sites-enabled/default</code></li>
+<li>Shove in results of <a href="https://mozilla.github.io/server-side-tls/ssl-config-generator/">Mozilla SSL Configuration Generator</a>, with nginx/modern/1.4.6 selected.</li>
+<li>Delete <code>ssl_trusted_certificate</code> line (not sure what that is)</li>
+<li>Change to <code>ssl_certificate /etc/letsencrypt/live/z.sowbug.com/fullchain.pem;</code></li>
+<li>Change to <code>ssl_certificate_key /etc/letsencrypt/keys/0000_key-letsencrypt.pem;</code></li>
+<li>exit Emacs</li>
+<li><code>sudo /etc/init.d/nginx reload</code></li>
+</ul>
+
+<p>Looks like a lot of steps, but it was actually pretty easy.</p>
+
+  <p class="small gray"><time datetime="2015-12-04">Dec 04, 2015</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

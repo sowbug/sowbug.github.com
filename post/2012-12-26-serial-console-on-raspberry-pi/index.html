@@ -1,0 +1,67 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-12-26-serial-console-on-raspberry-pi/" title="Serial console on Raspberry Pi">Serial console on Raspberry Pi</a></h1>
+  <p>If you have a
+<a href="http://www.silabs.com/products/interface/usbtouart/Pages/usb-to-uart-
+bridge.aspx">CP2102</a>-based USB-to-serial adapter, it&rsquo;s very likely to use 3.3-volt
+logic levels that are safe for your <a href="http://www.raspberrypi.org/">Raspberry
+Pi</a>. I reviewed the datasheet for the chip, and
+any normal circuit using it would use the internal 3.3-volt regulator powered
+by the 5-volt USB bus, meaning that the I/O levels will be relative to Vdd
+(i.e., 3.3 volts).</p>
+
+<p>A recap of an <a href="http://www.element14.com/community/groups
+/raspberry-pi/blog/2012/07/18/look-ma-no-display-using-the-raspberry-pi-
+serial-console">excellent tutorial</a> explaining how to get a serial console on your Pi:</p>
+
+<ol>
+<li>Hold your <strong>unplugged</strong> Pi so the GPIO header is close to you on the right side of the board, pointing up.</li>
+<li>Connect the TXD pin of your adapter to the fifth pin from the right on the closest row to you.</li>
+<li>Connect the RXD pin to the fourth pin, right next to the other one. So when you look at your Pi, you should see the yellow RCA jack in the middle, then to the right of that eight empty pins, then TXD, then RXD, then three empty pins.</li>
+<li>On your real computer, fire up a serial terminal and connect at 115200 bps. On my Mac, that&rsquo;s <strong>screen /dev/tty.SLAB_USBtoUART 115200</strong>.</li>
+<li>Plug in your Pi, but read this whole step first. I powered mine from my desktop computer&rsquo;s USB port, so I knew both machines were sharing ground. If you&rsquo;re plugging in your Pi from another power source, there&rsquo;s a chance it won&rsquo;t work because the two machines will have a different ground.</li>
+<li>You should see the kernel boot output appearing on your terminal. After a bit you&rsquo;ll get the Pi&rsquo;s login prompt, almost as if you were sshing into it.</li>
+</ol>
+
+<p><strong>Update</strong>: If you make it as far as the login prompt but see inverted diamonds with question marks and can&rsquo;t type in the username, you probably have the flow-control settings wrong. <a href="http://elinux.org/RPi_Serial_Connection">According to elinux.org</a>, the default UART settings use no flow control. To fix this on Ubuntu, I installed minicom, then navigated to its serial-port settings and turned off hardware flow control (which was on). This fixed things for me. You can probably use stty to change the settings without using minicom.</p>
+
+  <p class="small gray"><time datetime="2012-12-26">Dec 26, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-09-24-like-a-g35-v10-is-already-obsolete/" title="Like A G35 v1.0 is already obsolete">Like A G35 v1.0 is already obsolete</a></h1>
+  <p>As discussed <a href="/post/31323978178/like-a-g35-v1-0-is-at-laens">earlier</a>, Like A
+G35 should arrive soon from OSH Park. Even though it&rsquo;s not here yet, I already
+know I blew it with the board design. The board will still work, but it could
+be <em>so much better</em>.</p>
+
+<p>In addition to the G35 protocol that I know and love, this board was supposed
+to support the WS2801 protocol. It turns out that WS2801 happens to work
+really well with hardware SPI, as do lots of other chips, such as the SM16716
+and LPD8806, all of which are supported by the <a href="http://code.google.com/p/fastspi/">FastSPI
+project</a>. Unfortunately, since I hadn&rsquo;t
+played with any of these lights until this weekend, I didn&rsquo;t know this, so I
+wasted the Arduino&rsquo;s hardware SPI on my 1.0 shield design. The shield will
+handle short strands of WS2801 and friends, but it won&rsquo;t be as fast as a
+hardware solution.</p>
+
+<p>I&rsquo;m probably going to wait for 1.0 to arrive so that I can get my home G35
+lights going in time for Halloween (I&rsquo;m thinking spooky orange and green
+inchworms), but after that I&rsquo;ll revise the board to do proper WS2801 support
+over the Arduino&rsquo;s pins 11 and 13. This will actually free up a lot of board
+space, as I&rsquo;ve since figured out that there isn&rsquo;t a real benefit to multiple
+WS2801 outputs. Shifting all WS2801 lights on a single output is just as much
+work as shifting on multiple outputs, whereas the G35 protocol needs multiple
+outputs because one output can&rsquo;t handle more than 63 lights.</p>
+
+  <p class="small gray"><time datetime="2012-09-24">Sep 24, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-01-31-50-33/" title="5.0 != 3.3">5.0 != 3.3</a></h1>
+  <p>I just realized that the XC9572XL&rsquo;s &ldquo;5-volt tolerant I/O pins&rdquo; do not mean
+that the device itself can be powered with 5 volts. It&rsquo;s a 3.3-volt device.
+I&rsquo;ve been running it from the Arduino&rsquo;s 5-volt supply.</p>
+
+<p>Sigh.</p>
+
+<p>With this newly understood information, I hope to discover that the <a href="https://github.com/sowbug/JTAGWhisperer">JTAG
+Whisperer</a> is working correctly, and
+that the incorrect voltage was preventing the CPLD from programming itself.
+Other possibilities are (1) my code is still buggy but the CPLD is happy to be
+finally running at the right voltage, and (2) I&rsquo;ve fried my poor little &lsquo;9572.</p>
+
+  <p class="small gray"><time datetime="2012-01-31">Jan 31, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

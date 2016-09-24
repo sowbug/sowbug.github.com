@@ -1,0 +1,92 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-03-21-the-programmer-works/" title="The programmer works!">The programmer works!</a></h1>
+  <p><img src="http://66.media.tumblr.com/tumblr_m17r107BVZ1qjj3vh.jpg" alt="" /></p>
+
+<p>The boards tagged <a href="https://github.com/sowbug/avr-
+programmer/tags">DORKBOT_1_0_1</a> arrived on Monday. I&rsquo;d somehow forgotten to order the
+NX8045-package crystals, so I had to solder a temporary, silly-looking HC49
+crystal onto the board. But otherwise, assembly went fairly smoothly.</p>
+
+<p>I followed the usual order of PCB population: add the power circuitry first,
+then power it up and read testpoints. All was fine. Then the &ldquo;expensive&rdquo;
+(i.e., two-dollar) parts: the &lsquo;32u2, the buffer, and the sockets. More
+continuity testing, some examination under the USB microscope for solder
+bridges… and then fingers crossed while I plugged it in to USB.</p>
+
+<p><img src="http://67.media.tumblr.com/tumblr_m17ra8fDkJ1qjj3vh.jpg" alt="" /></p>
+
+<p>Success! Or at least, as much success as I could detect at this point, which
+is to say I didn&rsquo;t smell smoke.</p>
+
+<p>I first connected it to my USBtiny and read the default fuses (<a href="http://www.frank-
+zhao.com/fusecalc/fusecalc.php?chip=atmega32u2&amp;LOW=5E&amp;HIGH=D9&amp;EXTENDED=F4&amp;LOCKBIT=FF">5e d9
+f4</a>),
+then tried changing the lfuse to use the internal oscillator (<strong>avrdude -c
+usbtiny -p m32u2 -P usb -U lock:w:0x3F:m</strong>). No luck; avrdude kept reporting
+&ldquo;verification error; content mismatch,&rdquo; and the fuse stayed as-is. I ended up
+looking at some other avrdude command-line invocations on the web and realized
+that (1) the lock fuse had been preset to disallow further programming, and
+(2) I had to erase the chip with a -e flag to undo that fuse. Achievement, and
+fuse, unlocked.</p>
+
+<p>Next, installing the bootloader. I built LUFA&rsquo;s CDCBootloader, then wrote it:
+<strong>avrdude -c usbtiny -p m32u2 -P usb -v -e -U flash:w:BootloaderCDC.hex</strong> (by
+this point I think the -e was implied, but I spelled it out anyway). I then
+disconnected the USBtiny, plugged the programmer into USB, and saw
+/dev/tty.usbmodemfa121! My programmer was running code!</p>
+
+<p>Finally, making the programmer a programmer. I built the LUFA AVRISP mkII
+clone, then wrote it (**avrdude -p m32u2 -P /dev/tty.usbmodemfa121 -c avr109
+*<strong><em>-U </em></strong>*flash:w:AVRISP-MKII.hex**). The serial device vanished, as
+expected. My computer&rsquo;s System Information informed me that an AVRISP mkII had
+just joined us, and I was able to read from and write to a target 328p on an
+<a href="http://evilmadscience.com/productsmenu/tinykitlist/74-atmegaxx8">Evil Mad Science breakout
+board</a>.</p>
+
+<p>I now know that feeling one feels when a fabbed circuit works on the first
+shot. The feeling is mostly surprise… and mostly delight.</p>
+
+<p>P.S. Will someone please tell me why I&rsquo;ve been wasting my time using anything
+but <a href="http://www.obdev.at/products/crosspack/">CrossPack</a>?</p>
+
+  <p class="small gray"><time datetime="2012-03-21">Mar 21, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

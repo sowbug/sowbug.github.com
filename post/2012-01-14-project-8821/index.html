@@ -1,0 +1,100 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-01-14-project-8821/" title="Project 8821">Project 8821</a></h1>
+  <p>Inspired by <a href="http://quinndunki.com/blondihacks/?p=680">Quinn Dunki&rsquo;s Veronica
+project</a> to explore the 6502, I&rsquo;ve
+decided to build a 6809E-based hardware platform for old Williams coin-op
+videogames, such as Defender, Robotron, Stargate, Bubbles, Sinistar, and
+Joust.</p>
+
+<p>Ah, <a href="http://en.wikipedia.org/wiki/Joust_(video_game)">Joust</a>. How many
+first-period high school classes did I miss because of it in 1982? As a result
+of a software bug involving lava trolls and pterodactyls, I got hours and
+hours of experience from a single quarter that should have lasted maybe three
+minutes in a normal game. Williams quickly fixed the bug with a new ROM
+revision, but my skills were established. I was the first kid in my county to
+&ldquo;turn over&rdquo; Joust from a score of ten million back to zero again.</p>
+
+<p>Twenty years later, I found a rare cocktail version of the game for sale, and
+for $800 it was mine. But it didn&rsquo;t last long; like so many Williams games of
+its era, its DRAM died and its video burned out. Today it gathers dust in
+storage. The easy path to playing again (well, other than selling it and
+downloading <a href="http://mamedev.org/">MAME</a>) would be to replace the bad
+components. But that&rsquo;s no fun. It&rsquo;d be just a small matter of online shopping.
+What if instead I started with this:</p>
+
+<p><img src="http://65.media.tumblr.com/tumblr_lxrnmjjkL51qly645o1_500.jpg" alt="Motorola
+MC6809E" /></p>
+
+<p>and built it into a working Joust system? And as long as I was at it, why not
+get the other Williams games that ran on near-identical hardware to run, too?
+It&rsquo;d be a chance for a software guy like me to get a layer or two lower in the
+stack, and I&rsquo;d end up with something presumably more reliable, cooler, and
+cheaper to run than the early-1980s hardware that John Newcomer and Eugene
+Jarvis had to work with. Yeah, that&rsquo;s more like it!</p>
+
+<p>I hereby commence Project 8821 (6809 + 2012… hey, you come up with a better
+name). Here are the ground rules, subject to change on personal whim:</p>
+
+<ul>
+<li>The software portion of the games must remain unchanged. I can use any hardware I want, but the exact bits living in the original ROMs must work on whatever I build. Exceptions: I&rsquo;ll fix Robotron&rsquo;s shot-in-the-corner bug using <a href="http://seanriddle.com/robpatch.txt">Sean Riddle&rsquo;s patch</a>, and I might have to change 3 bits in Defender to work with later hardware, which is OK because I actually never liked that game.</li>
+<li>I&rsquo;ll start with original hardware, such as the real 6809E that I picked up today from <a href="http://www.jameco.com/">Jameco</a>, but where reasonable for cost, availability, pedagogical, elegance, or sanity reasons, I&rsquo;ll substitute newer technology, such as SRAM to replace the 24 individual 4116 chips.</li>
+<li>I have no desire to keep replacing burned-out CRTs, so I&rsquo;ll change the video to use VGA, possibly using the methodology described by the fine folks over at <a href="http://lucidscience.com/pro-vga%20video%20generator-1.aspx">Lucid Science</a>.</li>
+<li>This isn&rsquo;t a reverse-engineering project where I&rsquo;m pretending to work in a clean room. I fully plan to take advantage of all information available, including anything I get can out of <a href="http://www.jrok.com/hardware/wms/">existing</a> <a href="http://www.jrok.com/hardware/wsf/">similar</a> <a href="http://www.msarnoff.org/projects/6809/">projects</a>. (Unfortunately, jrok seems to have dropped off the face of the earth, so I&rsquo;m not sure how much help his work will be.)</li>
+<li>No processor emulation unless I write the emulator myself. That rules out MAME on a <a href="http://www.raspberrypi.org/">Raspberry Pi</a>, which would otherwise be a very sensible approach to replacement hardware in the original cabinet, if I wanted to complete the project in an afternoon and didn&rsquo;t care about the educational aspects.</li>
+</ul>
+
+<p>Before you think I&rsquo;ve gone off the retro deep end, understand that the
+ultimate goal of this project, once I have a hardware copy running, is to move
+as much of it as possible to software. That means FPGA, which in my mind
+counts as hardware and doesn&rsquo;t break the no-emulation rule. The current
+<a href="http://papilio.cc/">Papilio One</a> platform isn&rsquo;t quite capable enough for this
+project because of BRAM limits, but the forthcoming Papilio Plus, with a
+separate SRAM chip, ought to fit everything quite comfortably. When you can
+buy a generic FPGA development board and download the entirety of this project
+(minus ROMs for legal reasons) from <a href="https://github.com/sowbug/8821/">GitHub</a>,
+the project will be complete.</p>
+
+<p>This is a big job that&rsquo;ll probably take a year. But I think it&rsquo;ll be fun, and
+I hope you&rsquo;ll enjoy following along.</p>
+
+  <p class="small gray"><time datetime="2012-01-14">Jan 14, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

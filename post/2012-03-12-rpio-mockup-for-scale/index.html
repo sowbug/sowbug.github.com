@@ -1,0 +1,79 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-03-12-rpio-mockup-for-scale/" title="RPio mockup for scale">RPio mockup for scale</a></h1>
+  <p><img src="http://67.media.tumblr.com/tumblr_m0t37bWXlV1qjj3vh.jpg" alt="" /></p>
+
+<p>Some reference objects for
+<a href="http://www.sowbug.com/post/19162096061/rpio-a-raspberry-pi-breakout-
+board">RPio</a> scale. That&rsquo;s a credit card (<a href="http://en.wikipedia.org/wiki/ISO/IEC_7810">85.60 x 53.98
+millimeters</a>), which is the exact
+size of the Raspberry Pi. Next to it is a piece of card stock cut to the same
+53.98-mm length, with the width the same as a 28-pin Atmel ATmega328, which is
+about 0.1 inches longer than the 26-pin GPIO header on the RPi. In case you
+couldn&rsquo;t identify the other items, they&rsquo;re a die and a U.S. quarter dollar.</p>
+
+<p>Our <a href="https://github.com/sowbug/rpio">current board</a> is almost square, but
+we&rsquo;re still playing around with the dimensions. It would be interesting to
+make the RPio stackable like an Arduino shield. The north end could be raw
+GPIO pinouts, and the bottom pins 5-volt level-shifted with extra 3.3-volt
+power. I could see many projects being built on those foundations.</p>
+
+<p><img src="http://66.media.tumblr.com/tumblr_m0t37pje211qjj3vh.jpg" alt="" /></p>
+
+<p>As it happens, the board would fit inside an Arduino proto shield. But I&rsquo;m not
+sure why that is useful; unless the RPio&rsquo;s headers were soldered so that it
+were plugged in beneath the RPi, it wouldn&rsquo;t be easy to connect the two at the
+same time. And I&rsquo;m having a hard time thinking of a use case where so many I/O
+pins would need simultaneous connections between an RPi and an RPio.</p>
+
+<p><img src="http://67.media.tumblr.com/tumblr_m0t3b5tDAF1qjj3vh.jpg" alt="" /></p>
+
+<p>If we moved the headers to be separated by exactly 1.0 inch horizontally, then
+the board would fit on a standard breadboard with room for a single column of
+pins on the left. But unless we routed away the board on the right, it would
+be a hassle to reach the breadboard holes on that side. For some reason, I do
+see this as slightly more useful than the proto-shield case. You could design
+a board that plugged in underneath the RPi for certain functions, then it
+would also plug into the breadboard, maybe for testing, or programming, or
+diagnostics.</p>
+
+  <p class="small gray"><time datetime="2012-03-12">Mar 12, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-05-07-avr-gcc-and-static-initializers/" title="avr-gcc and static initializers">avr-gcc and static initializers</a></h1>
+  <p>In the <a href="http://www.nongnu.org/avr-libc/user-manual/FAQ.html">avr-gcc FAQ</a>, the
+question &ldquo;Shouldn&rsquo;t I initialize all my variables?&rdquo; gives a hint why your
+nonzero static initializers aren&rsquo;t working:</p>
+
+<blockquote>
+<p>[G]lobal and static variables that have an initializer go into the .data
+section of the file.</p>
+</blockquote>
+
+<p>I had been seeing static variables without a declared assignment correctly
+initialized to zero, but any nonzero initialization didn&rsquo;t seem to be doing
+anything. But reading the FAQ led me to examine my makefile, where I found
+this interesting section:</p>
+
+<blockquote>
+<p><code>%.hex : main.obj  
+ $(OBJ2HEX) -j .text -O ihex $&lt; $@</code></p>
+</blockquote>
+
+<p>Aha! So avr-gcc was likely putting the initialized variables into .data, but I
+was omitting that section when generating the Intel hexfile. Adding another -j
+section for .data fixed it.</p>
+
+  <p class="small gray"><time datetime="2012-05-07">May 07, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

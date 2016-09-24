@@ -1,0 +1,87 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2005-6-30-dns-fun/" title="DNS fun">DNS fun</a></h1>
+  <p>Diagnosing DNS trouble is especially fun because of caching. If you keep doing
+<code>dig sowbug.org</code> over and over, all you&rsquo;re usually doing is reading the cached
+value from your local DNS server, rather than confirming that the changes
+you&rsquo;ve made at your registrar are taking effect. So I came up with the
+following method to try to trace exactly what was happening. It might be
+wrong, but it seems to make sense.</p>
+
+<ol>
+<li><p><code>dig sldfkjalfkajdfldsj.com</code>: The hope in doing this was that I&rsquo;d get an NXDOMAIN error from the highest possible authority (i.e., farthest from my local DNS). This returned the following:</p>
+
+<pre><code>;; AUTHORITY SECTION:
+</code></pre>
+
+<p>com.      10800   IN  SOA     a.gtld-servers.net. <br />
+nstld.verisign-grs.com. 1120164931 1800 900 604800 900</p></li>
+
+<li><p><code>dig @a.gtld-servers.net sowbug.org</code>: In other words, ask a.gtld-servers.net what it thinks about sowbug.org:</p>
+
+<pre><code>;; AUTHORITY SECTION:
+</code></pre>
+
+<p>.         172800  IN      NS      k.root-servers.net.
+.         172800  IN      NS      d.root-servers.net.</p></li>
+
+<li><p><code>dig @k.root-servers.net sowbug.org</code>: Lather, rinse, repeat:</p>
+
+<pre><code>;; AUTHORITY SECTION:
+</code></pre>
+
+<p>org.      172800  IN      NS      tld1.ultradns.net.</p></li>
+
+<li><p><code>dig @tld1.ultradns.net sowbug.org</code>: Ah, now we&rsquo;re getting somewhere:</p>
+
+<pre><code>;; AUTHORITY SECTION:
+</code></pre>
+
+<p>sowbug.org.   86400   IN  NS  park4.secureserver.net.
+sowbug.org.   86400   IN  NS  park3.secureserver.net.</p></li>
+</ol>
+
+<p>At this point I figured out that the root nameservers had the wrong
+nameservers listed for my domain. So I continued to fiddle with the
+registrar&rsquo;s self-service web page, and eventually got it right.</p>
+
+  <p class="small gray"><time datetime="2005-06-30">Jun 30, 2005</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

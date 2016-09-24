@@ -1,0 +1,86 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2013-01-29-ssh-keys-on-git/" title="SSH keys on Git">SSH keys on Git</a></h1>
+  <p>Long ago on a Q&amp;A site I used to frequent, I asked why GitHub didn&rsquo;t let
+me associate a single SSH public key with two accounts. I had a work account
+and a personal account on GitHub, I wanted to use them both on one computer,
+and it&rsquo;s a pain in the neck to get Git to use the right one of multiple SSH
+keys to connect to a single host. (It&rsquo;s solvable; you have to change your ssh
+configuration to define different Hosts, each with a different key, that
+resolve to the same hostname, and then tell Git to connect to a Host rather
+than a hostname.) I imagined that GitHub should be able to say that if I&rsquo;m
+connecting to Repository X with Key A, I&rsquo;d be recognized as Person M, but I&rsquo;d
+be recognized as Person N with the same key in Repository Y. Why couldn&rsquo;t
+GitHub do this?</p>
+
+<p>I got a perfectly reasonable answer right away on the Q&amp;A site that GitHub
+uses SSH to tell who you were, so it can&rsquo;t be done from a technical
+perspective. I found the answer wanting, though - why did GitHub use SSH? Why
+couldn&rsquo;t the SSH identity map to a different concept? Wasn&rsquo;t this SSH-owns-
+identity thing a big price to pay?</p>
+
+<p>I got the answer while reading <a href="http://git-scm.com/book/en/Git-on-
+the-Server-The-Protocols">Pro Git</a>. It turns out that Git doesn&rsquo;t know anything about
+authentication, and SSH is the only practical wrapper protocol that allows
+write access to a repository. (The other protocols are local file access, the
+completely anonymous Git protocol, and HTTP, but none easily allows
+authenticated access.) So it&rsquo;s likely that on a given server, the git process
+is running as &ldquo;you&rdquo; (whoever you are who ssh&rsquo;ed into the server), and the
+sysadmin has set up standard Unix permissions on the .git repo directory to
+control who has read/write access. Thus Git read/write operations are
+automatically permitted or not without a single line of code in Git. Very
+Unix-y.</p>
+
+<p>Does this mean that my original feature request (SSH Key A means you&rsquo;re Person
+M in Repo X and Person N in Repo Y) is impossible? No; there is probably a way
+to map an SSH user to a specific machine user based on contextual clues like
+the directory you&rsquo;re trying to access. But the way it is today, where SSH Key
+M means you&rsquo;re Person M only and nobody else, is a lot easier from the
+perspective of someone hacking together a young service like GitHub and making
+a bunch of shell scripts that set access properly across repositories.
+Moreover, it avoids the edge case where Person M joins Person N&rsquo;s company and
+now has access to Repo Y, so the already-weirdish heuristic to determine who
+you are breaks down. The higher-level solution GitHub came up with,
+Organizations, solves the problem more elegantly without requiring (or
+allowing) a single person to assume multiple identities on the system.</p>
+
+  <p class="small gray"><time datetime="2013-01-29">Jan 29, 2013</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-02-02-ttl-voltage-and-current-cookbook-recipe/" title="TTL Voltage and Current Cookbook Recipe">TTL Voltage and Current Cookbook Recipe</a></h1>
+  <p>Now that I&rsquo;m able to <a href="/post/16850810843/">do something</a> with this CPLD, I&rsquo;ve
+been concerned about replacing $10 of discrete logic chips with a $2 chip that
+needs $8 of level shifters. Though the Xilinx XC9572XL is a fairly modern
+3.3-volt device, I know its I/O pins are 5-volt tolerant, meaning that I can
+send in a 5-volt signal from my circa-1980s 5-volt 6809E. But the &lsquo;72&rsquo;s
+_output_ voltage is selectable at either 3.3v or 1.8v, and not 5v. And <a href="/post/16828497482">as
+established earlier</a>, 5 volts do not equal 3.3 volts. What
+to do? Some inspired laziness (&ldquo;maybe it&rsquo;ll just work&rdquo;) led me to read the &lsquo;09
+datasheet, and then do a bit more general research.</p>
+
+<p>And I have concluded that yes, maybe it&rsquo;ll just work. TTL logic levels define
+a low as zero to 0.8 volts, and a high as 2 to 5 volts. Why not exactly zero
+and exactly five? Well, there needs to be some margin for error. We software
+engineers like to think of pure concepts like binary zeroes and ones. But on
+the oscilloscope, real-world logic values sometimes look like a <a href="http://www.xilinx.com/support/documentation/application_notes/xapp429.pdf">nervous
+driver on a twisty road at
+night</a>.
+(Sorry, that link is a PDF, but it nicely illustrates what the 45- and
+90-degree angles in datasheets really look like.) So low is a range, and high
+is a range, and 3.3-volt digital logic values are entirely consistent with
+5-volt ranges. It&rsquo;s… as if… (concentrating very hard now)… when The Powers
+That Be wanted to move to lower-voltage - and thus lower-power - electronics,
+they <em>didn&rsquo;t come up with a new standard so much as pick tighter tolerances
+for the old one</em>. 3.3 is almost exactly in the middle of the old 2- to 5-volt
+range, and there&rsquo;s probably some other practical reason why it&rsquo;s easier to
+generate 3.3 volts than 3.5 volts.</p>
+
+<p>Anyway, speculative history lessons aside, I&rsquo;m pretty sure the 6809E will
+recognize signals from the 3.3-volt I/O lines of the CPLD. I&rsquo;ll wire something
+up before committing it to a PCB, of course, but everything I&rsquo;ve read suggests
+this will work.</p>
+
+<p>Here&rsquo;s the current ingredient list for Prototype Board #1:</p>
+
+<ol>
+<li>Two power supplies: 5 and 3.3 volts.</li>
+<li>6809E.</li>
+<li>128KB SRAM.</li>
+<li>MicroSD card slot.</li>
+<li>ATmega32u4.</li>
+<li>16MHz crystal.</li>
+<li>XC9572XL.</li>
+<li><a href="http://en.wikipedia.org/wiki/Delta-sigma_modulation">DAC</a> for audio, with an audio jack.</li>
+<li><a href="http://en.wikipedia.org/wiki/Resistor_ladder">DAC</a> for video, with a video-out header.</li>
+<li>Game-control input header.</li>
+<li>[Placeholder for generating the digital side of the video signals.]</li>
+</ol>
+
+<p>The &lsquo;32u4 is the star of the show. I think it can do all these things:</p>
+
+<ul>
+<li>As a <a href="https://github.com/sowbug/JTAGWhisperer">JTAG Whisperer</a>, program the CPLD during development.</li>
+<li>Read the SD card and set up part of the SRAM as ROM from the perspective of the 6809E.</li>
+<li>Assert the 6809E&rsquo;s reset line when everything&rsquo;s set up.</li>
+<li>Handle all the 6821 game-control PIA duties.</li>
+<li>Depending on what&rsquo;s left, maybe even output sound using PWM.</li>
+</ul>
+
+<p>Meanwhile, the CPLD should be able to do this:</p>
+
+<ul>
+<li>Manage the address and data bus.</li>
+<li>Turn the 16MHz crystal into the &lsquo;32u4&rsquo;s clock, and into the Q/E signals. I don&rsquo;t yet know whether a CPLD can turn a crystal into an oscillating signal.</li>
+<li>In a dream world where I&rsquo;m much smarter than I am, fit the Williams Special Chip blitter into the 72 macrocells.</li>
+<li>Feed the digital video signals into the resistor ladder.</li>
+</ul>
+
+<p>And of course the several-dozen other jobs I&rsquo;ve forgotten. Phew!</p>
+
+  <p class="small gray"><time datetime="2012-02-02">Feb 02, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

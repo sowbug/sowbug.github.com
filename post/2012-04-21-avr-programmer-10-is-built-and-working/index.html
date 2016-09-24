@@ -1,0 +1,81 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-04-21-avr-programmer-10-is-built-and-working/" title="AVR Programmer 1.0 is Built and Working">AVR Programmer 1.0 is Built and Working</a></h1>
+  <p><img src="http://67.media.tumblr.com/tumblr_m2u5baMHvi1qjj3vh.jpg" alt="" /></p>
+
+<p>The boards arrived from <a href="http://dorkbotpdx.org/wiki/pcb_order">Dorkbot</a>
+yesterday. I learned my lesson from last time and assembled all three in
+parallel (taking the risk that the circuit was bad and that I&rsquo;d waste 3x the
+materials). I flashed the bootloader to the first one using the alpha version
+of the board (in the back with the blue shunt), then self-programmed it over
+USB with the <a href="http://www.fourwalledcubicle.com/LUFA.php">AVRISP mkII</a>
+firmware. Final test:</p>
+
+<p><img src="http://66.media.tumblr.com/tumblr_m2u5l9djG01qjj3vh.jpg" alt="" /></p>
+
+<p>I read the fuses from my <a href="/post/20906913903/the-hypna-go-go">Hypna Go Go</a>&rsquo;s
+ATtiny13A, and I got the lovely <code>Device signature = 0x1e9007</code> that seems to
+play a critical role in many dreams I recall nowadays. Success!</p>
+
+<p>Bringing up the other two boards was a bit more difficult. The first would
+program and would blink its bootloader status LED, but it wouldn&rsquo;t program. A
+cold solder joint on the &lsquo;32u2&rsquo;s core GND pin was the cause. The last board
+was a more serious case: the &lsquo;32u2 got hot when I plugged in the USB, and
+other than being ISP-programmable, it was dead to the world. I never found the
+short, but I did scrub off the flux more carefully, and I resoldered a couple
+capacitors that looked slightly suspicious, and when I plugged it back in
+again, it was fine.</p>
+
+<p>Next steps:</p>
+
+<ul>
+<li>Validate that the new HWBE jumper works.</li>
+<li>Port over the <a href="https://github.com/sowbug/JTAGWhisperer/">JTAG Whisperer</a>.</li>
+<li>Expose the USB-TTL serial functionality.</li>
+<li>Fix a few layout issues (obscured labels, component placement that is inconvenient for assembly).</li>
+<li>Switch to a version of the USB socket that has pegs. I can already tell a high-use application like this is going to need a little more strength than just SMD solder pads.</li>
+<li>Replacement of the current-limiting resistor on the LED. Someone please remind me why I picked 1K ohms. My gorgeous purple LEDs are hardly visible!</li>
+</ul>
+
+<p><strong>(Update: <a href="http://redd.it/sle0a">linked to this post</a> on Reddit.)</strong></p>
+
+  <p class="small gray"><time datetime="2012-04-21">Apr 21, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

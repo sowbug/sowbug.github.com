@@ -1,0 +1,67 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>sowbug.com</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">sowbug.com</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://www.sowbug.com/post/2012-05-04-dont-make-this-mistake-with-arduino-streaming/" title="Don&#39;t make this mistake with Arduino streaming APIs">Don&#39;t make this mistake with Arduino streaming APIs</a></h1>
+  <p>This happened to me. Don&rsquo;t let it happen to you.</p>
+
+<ol>
+<li>Write a constant somewhere, like Wire.write(0x06). In my case, this was sending an address to an I2C chip, but it could be Serial.write() or something else like that.</li>
+<li>Confirm everything&rsquo;s working great.</li>
+<li>Later on, change to Wire.write(0x00).</li>
+<li>Get a compile error about how the function signature is now ambiguous because zero can be any of multiple types.</li>
+<li>Be specific: Wire.write(0x00, HEX).</li>
+<li>Confirm everything&rsquo;s working great.</li>
+<li>Now copy your earlier code somewhere else: Wire.write(0x04, HEX).</li>
+<li>Your I2C device begins emitting lethal radiation focused on nearby kittens.</li>
+</ol>
+
+<p>The mistake started with step 4 (misinterpreting the compile error) and its
+fate was sealed with step 5. The problem is that the Arduino&rsquo;s print/println
+methods are slightly different in that they take an optional format argument
+as the second parameter if the first doesn&rsquo;t fit a single function signature.
+The streaming APIs, on the other hand, take a pointer and a length. So my
+Wire.write(0, HEX) was actually Wire.write(address 0, 16 bytes). In Step 6 I
+just got lucky that whatever I wrote to the device didn&rsquo;t change behavior
+much, but Step 7 my luck ran out.</p>
+
+<p><strong>TL;DR: print takes a format specifier. Streaming libraries take a length. If you mix them up, it still builds.</strong></p>
+
+  <p class="small gray"><time datetime="2012-05-04">May 04, 2012</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>
