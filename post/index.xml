@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Post-rsses on sowbug.com</title>
-    <link>https://www.sowbug.com/post/index.xml</link>
-    <description>Recent content in Post-rsses on sowbug.com</description>
+    <title>Post-rsses on github/sowbug</title>
+    <link>https://sowbug.github.io/post/index.xml</link>
+    <description>Recent content in Post-rsses on github/sowbug</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 04 Jun 2016 19:36:46 -0700</lastBuildDate>
-    <atom:link href="https://www.sowbug.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://sowbug.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Scaling the Supercharger network</title>
-      <link>https://www.sowbug.com/post/2016-06-04-scaling-the-supercharger-network/</link>
+      <link>https://sowbug.github.io/post/2016-06-04-scaling-the-supercharger-network/</link>
       <pubDate>Sat, 04 Jun 2016 19:36:46 -0700</pubDate>
       
-      <guid>https://www.sowbug.com/post/2016-06-04-scaling-the-supercharger-network/</guid>
+      <guid>https://sowbug.github.io/post/2016-06-04-scaling-the-supercharger-network/</guid>
       <description>
 
 &lt;p&gt;The arrival of the Tesla Model 3 is the the electric-vehicle ecosystem&amp;rsquo;s make-
@@ -107,10 +107,10 @@ commons&lt;/a&gt;.&lt;/p&gt;
     
     <item>
       <title>Self-imposed level playing fields</title>
-      <link>https://www.sowbug.com/post/2016-05-08-self-imposed-level-playing-fields/</link>
+      <link>https://sowbug.github.io/post/2016-05-08-self-imposed-level-playing-fields/</link>
       <pubDate>Sun, 08 May 2016 18:34:42 -0700</pubDate>
       
-      <guid>https://www.sowbug.com/post/2016-05-08-self-imposed-level-playing-fields/</guid>
+      <guid>https://sowbug.github.io/post/2016-05-08-self-imposed-level-playing-fields/</guid>
       <description>&lt;p&gt;A theme develops.&lt;/p&gt;
 
 &lt;p&gt;Taxi operators &lt;a href=&#34;http://taxitruths.org/nyc-wants-a-level-playing-
@@ -147,11 +147,11 @@ prices higher and keep competition out.&lt;/p&gt;
     
     <item>
       <title>latest weblight interesting features of this spin</title>
-      <link>https://www.sowbug.com/post/2016-02-02-latest-weblight-interesting-features-of-this-spin/</link>
+      <link>https://sowbug.github.io/post/2016-02-02-latest-weblight-interesting-features-of-this-spin/</link>
       <pubDate>Tue, 02 Feb 2016 10:58:41 -0800</pubDate>
       
-      <guid>https://www.sowbug.com/post/2016-02-02-latest-weblight-interesting-features-of-this-spin/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://www.sowbug.com/tumblr_files/tumblr_o1xopt63tL1qly645o1_1280.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+      <guid>https://sowbug.github.io/post/2016-02-02-latest-weblight-interesting-features-of-this-spin/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://sowbug.github.io/tumblr_files/tumblr_o1xopt63tL1qly645o1_1280.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Latest &lt;a href=&#34;https://github.com/sowbug/weblight&#34;&gt;WebLight&lt;/a&gt;.&lt;/p&gt;
 
@@ -176,10 +176,10 @@ this version could be the one that gets produced at scale.&lt;/p&gt;
     
     <item>
       <title>Dell XPS 13 9350 doesn’t charge from USB</title>
-      <link>https://www.sowbug.com/post/2015-12-29-dell-xps-13-9350-doesnt-charge-from-usb/</link>
+      <link>https://sowbug.github.io/post/2015-12-29-dell-xps-13-9350-doesnt-charge-from-usb/</link>
       <pubDate>Tue, 29 Dec 2015 18:54:02 -0800</pubDate>
       
-      <guid>https://www.sowbug.com/post/2015-12-29-dell-xps-13-9350-doesnt-charge-from-usb/</guid>
+      <guid>https://sowbug.github.io/post/2015-12-29-dell-xps-13-9350-doesnt-charge-from-usb/</guid>
       <description>&lt;p&gt;As far as I can tell, the latest 1.1.7 BIOS update for the XPS 13 removes the
 ability to charge via USB Power Delivery at 5 volts. I didn’t do a lot of
 testing, but I know that when I first got the machine, it did charge from a
@@ -201,10 +201,10 @@ phone charger available (like me).&lt;/p&gt;
     
     <item>
       <title>Dell XPS 13 9350 (2016)</title>
-      <link>https://www.sowbug.com/post/2015-12-23-dell-xps-13-9350-2016/</link>
+      <link>https://sowbug.github.io/post/2015-12-23-dell-xps-13-9350-2016/</link>
       <pubDate>Wed, 23 Dec 2015 21:05:57 -0800</pubDate>
       
-      <guid>https://www.sowbug.com/post/2015-12-23-dell-xps-13-9350-2016/</guid>
+      <guid>https://sowbug.github.io/post/2015-12-23-dell-xps-13-9350-2016/</guid>
       <description>&lt;p&gt;These are my notes about what I&amp;rsquo;ve done to my new laptop. It&amp;rsquo;s the non-touch
 i5 8GB/128GB model, whose SSD is SATA and not PCIe.&lt;/p&gt;
 
@@ -241,10 +241,10 @@ a very worthy replacement.&lt;/p&gt;
     
     <item>
       <title>Request: hobbyist remote control</title>
-      <link>https://www.sowbug.com/post/2015-12-23-request-hobbyist-remote-control/</link>
+      <link>https://sowbug.github.io/post/2015-12-23-request-hobbyist-remote-control/</link>
       <pubDate>Wed, 23 Dec 2015 09:07:13 -0800</pubDate>
       
-      <guid>https://www.sowbug.com/post/2015-12-23-request-hobbyist-remote-control/</guid>
+      <guid>https://sowbug.github.io/post/2015-12-23-request-hobbyist-remote-control/</guid>
       <description>&lt;p&gt;I want a device that looks nice enough to keep on a coffee table, that has a
 small number of buttons, that emits well-documented RF signals in response to
 those buttons, that has some kind of reasonable security story, and that is
@@ -268,11 +268,11 @@ ugly.&lt;/p&gt;
     
     <item>
       <title>Homemade solder stencils</title>
-      <link>https://www.sowbug.com/post/2015-12-06-homemade-solder-stencils/</link>
+      <link>https://sowbug.github.io/post/2015-12-06-homemade-solder-stencils/</link>
       <pubDate>Sun, 06 Dec 2015 17:23:43 -0800</pubDate>
       
-      <guid>https://www.sowbug.com/post/2015-12-06-homemade-solder-stencils/</guid>
-      <description>&lt;p&gt;There are eight new &lt;a href=&#34;https://www.sowbug.com/post/133445471621/weblight&#34;&gt;WebLights&lt;/a&gt; in the world as
+      <guid>https://sowbug.github.io/post/2015-12-06-homemade-solder-stencils/</guid>
+      <description>&lt;p&gt;There are eight new &lt;a href=&#34;https://sowbug.github.io/post/133445471621/weblight&#34;&gt;WebLights&lt;/a&gt; in the world as
 of today!&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://66.media.tumblr.com/488e05ad2656d50b975e54b41afa1fd5/tumblr_inline_nyyracZqQy1qjj3vh_540.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
@@ -304,7 +304,7 @@ over them again.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://65.media.tumblr.com/68f5bb205e8556f8671cbd175cf27c4d/tumblr_inline_nyyre35Ien1qjj3vh_540.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;After &lt;a href=&#34;https://www.sowbug.com/post/133444522781/hot-plate-soldering&#34;&gt;reflow&lt;/a&gt;, only one piece failed:
+&lt;p&gt;After &lt;a href=&#34;https://sowbug.github.io/post/133444522781/hot-plate-soldering&#34;&gt;reflow&lt;/a&gt;, only one piece failed:
 the reset switch on the very end hadn’t reflowed, so it fell off while I was
 moving the boards around. I touched up with a regular soldering iron, and it
 was fine.&lt;/p&gt;
@@ -325,10 +325,10 @@ upside-down 0805 resistor in this picture.)&lt;/p&gt;
     
     <item>
       <title>Let’s encrypt: success!</title>
-      <link>https://www.sowbug.com/post/2015-12-04-lets-encrypt-success/</link>
+      <link>https://sowbug.github.io/post/2015-12-04-lets-encrypt-success/</link>
       <pubDate>Fri, 04 Dec 2015 13:52:13 -0800</pubDate>
       
-      <guid>https://www.sowbug.com/post/2015-12-04-lets-encrypt-success/</guid>
+      <guid>https://sowbug.github.io/post/2015-12-04-lets-encrypt-success/</guid>
       <description>&lt;p&gt;Here’s what I did to get &lt;a href=&#34;https://z.sowbug.com/&#34;&gt;z.sowbug.com&lt;/a&gt; running with a
 Let’s Encrypt cert.&lt;/p&gt;
 
@@ -357,10 +357,10 @@ Let’s Encrypt cert.&lt;/p&gt;
     
     <item>
       <title>USB Type C</title>
-      <link>https://www.sowbug.com/post/2015-11-25-usb-type-c/</link>
+      <link>https://sowbug.github.io/post/2015-11-25-usb-type-c/</link>
       <pubDate>Wed, 25 Nov 2015 09:33:09 -0800</pubDate>
       
-      <guid>https://www.sowbug.com/post/2015-11-25-usb-type-c/</guid>
+      <guid>https://sowbug.github.io/post/2015-11-25-usb-type-c/</guid>
       <description>&lt;p&gt;I’m getting close to declaring USB Type C Flag Day in my house. After that
 day, no new devices are to be purchased unless they use the new USB form
 factor. This includes not just phones and tablets, but also laptops.&lt;/p&gt;
@@ -371,10 +371,10 @@ factor. This includes not just phones and tablets, but also laptops.&lt;/p&gt;
     
     <item>
       <title>WebLight</title>
-      <link>https://www.sowbug.com/post/2015-11-17-weblight/</link>
+      <link>https://sowbug.github.io/post/2015-11-17-weblight/</link>
       <pubDate>Tue, 17 Nov 2015 20:14:11 -0800</pubDate>
       
-      <guid>https://www.sowbug.com/post/2015-11-17-weblight/</guid>
+      <guid>https://sowbug.github.io/post/2015-11-17-weblight/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;http://66.media.tumblr.com/ea687d95a3716da4797db82f947e00ec/tumblr_inline_nxzsmxjBBs1qjj3vh_540.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/sowbug/weblight/&#34;&gt;WebLight&lt;/a&gt; is a
@@ -408,10 +408,10 @@ a status light on their desk.&lt;/p&gt;
     
     <item>
       <title>Hot Plate Soldering</title>
-      <link>https://www.sowbug.com/post/2015-11-17-hot-plate-soldering/</link>
+      <link>https://sowbug.github.io/post/2015-11-17-hot-plate-soldering/</link>
       <pubDate>Tue, 17 Nov 2015 19:57:14 -0800</pubDate>
       
-      <guid>https://www.sowbug.com/post/2015-11-17-hot-plate-soldering/</guid>
+      <guid>https://sowbug.github.io/post/2015-11-17-hot-plate-soldering/</guid>
       <description>&lt;p&gt;All the articles on the web are true. It’s possible to do high-quality SMD
 soldering at home. And it’s easy.&lt;/p&gt;
 
@@ -459,10 +459,10 @@ probably be very happy with the outcome.&lt;/p&gt;
     
     <item>
       <title>SMD Rework Station Works!</title>
-      <link>https://www.sowbug.com/post/2015-11-17-smd-rework-station-works/</link>
+      <link>https://sowbug.github.io/post/2015-11-17-smd-rework-station-works/</link>
       <pubDate>Tue, 17 Nov 2015 19:29:57 -0800</pubDate>
       
-      <guid>https://www.sowbug.com/post/2015-11-17-smd-rework-station-works/</guid>
+      <guid>https://sowbug.github.io/post/2015-11-17-smd-rework-station-works/</guid>
       <description>&lt;p&gt;I got a &lt;a href=&#34;http://amzn.to/1ltUgxE&#34;&gt;$58 Hot Air Rework Station&lt;/a&gt; tonight, after
 obsolete WebLight prototypes were building up on my work bench as I was
 running out of ATtiny85s. Here’s the successful result.&lt;/p&gt;
@@ -473,30 +473,30 @@ running out of ATtiny85s. Here’s the successful result.&lt;/p&gt;
     
     <item>
       <title>TP-Link TL-WR703N configurations</title>
-      <link>https://www.sowbug.com/post/2015-10-28-tp-link-tl-wr703n-configurations/</link>
+      <link>https://sowbug.github.io/post/2015-10-28-tp-link-tl-wr703n-configurations/</link>
       <pubDate>Wed, 28 Oct 2015 19:02:40 -0700</pubDate>
       
-      <guid>https://www.sowbug.com/post/2015-10-28-tp-link-tl-wr703n-configurations/</guid>
+      <guid>https://sowbug.github.io/post/2015-10-28-tp-link-tl-wr703n-configurations/</guid>
       <description>&lt;p&gt;Two of them are &lt;a href=&#34;https://github.com/sowbug/703n&#34;&gt;here&lt;/a&gt;. They’re both useful.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>any idea on how to config the Eth0 on a 3com  Audrey? thanks</title>
-      <link>https://www.sowbug.com/post/2015-10-20-any-idea-on-how-to-config-the-eth0-on-a-3com/</link>
+      <link>https://sowbug.github.io/post/2015-10-20-any-idea-on-how-to-config-the-eth0-on-a-3com/</link>
       <pubDate>Tue, 20 Oct 2015 16:48:18 -0700</pubDate>
       
-      <guid>https://www.sowbug.com/post/2015-10-20-any-idea-on-how-to-config-the-eth0-on-a-3com/</guid>
+      <guid>https://sowbug.github.io/post/2015-10-20-any-idea-on-how-to-config-the-eth0-on-a-3com/</guid>
       <description>&lt;p&gt;No, sorry. I haven’t played around with the Audrey since 2001.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Huge thanks for allowing others to use your code to run G35 Christmas lights. I do have one question I hope you can help me out with. I am unable to use six strings of 50 lights. They enumerate and complete a test pattern but the programs wont run correctly, usually just the first string will run. If I use just five strings everything works great. Tried an Arduino Uno and a Mega2560.</title>
-      <link>https://www.sowbug.com/post/2015-10-20-huge-thanks-for-allowing-others-to-use-your-code/</link>
+      <link>https://sowbug.github.io/post/2015-10-20-huge-thanks-for-allowing-others-to-use-your-code/</link>
       <pubDate>Tue, 20 Oct 2015 16:48:00 -0700</pubDate>
       
-      <guid>https://www.sowbug.com/post/2015-10-20-huge-thanks-for-allowing-others-to-use-your-code/</guid>
+      <guid>https://sowbug.github.io/post/2015-10-20-huge-thanks-for-allowing-others-to-use-your-code/</guid>
       <description>&lt;p&gt;I’m 99% sure that the problem is that 50 x 6 is greater than 255, which is the
 highest value of an unsigned 8-bit octet. The G35 protocol wasn’t designed for
 really long strings.&lt;/p&gt;
