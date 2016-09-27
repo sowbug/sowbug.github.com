@@ -1,0 +1,57 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>github/sowbug</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">github/sowbug</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://sowbug.github.io/post/debugging-a-g35-installation/" title="Debugging a G35 Installation">Debugging a G35 Installation</a></h1>
+  <p><em>Editor&rsquo;s Note: This draft post was discovered tonight. It was probably written in 2012.</em></p>
+
+<p>&ldquo;Once you eliminate the impossible, whatever remains, no matter how improbable, must be the truth.&rdquo; – Sherlock Holmes</p>
+
+<p>My home Christmas light installation is operational after debugging for several hours over the past week. They&rsquo;d work for a while, but reset every few programs, and then freeze with odd colors. This was unexpected, as this physical deployment usually runs only my production-quality code, installed only after a bunch of testing in my office. Moreover, these lights had run flawlessly for every applicable holiday (Christmas, Halloween, Valentine&rsquo;s Day, and even a brief run to congratulate the SF Giants) since 2011.</p>
+
+<p>The lights seemed cursed. I first suspected a bad power supply, which typically explains all unreliability with my electronics projects. Nope, swapping in a new one didn&rsquo;t change anything. OK, so my <a href="https://github.com/sowbug/like-a-g35">Like A G35</a> shield was flaky? Again, swapping in a second exhibited the same behavior. One strand has a short? Either strand flaked out the same way when run alone. And because my workflow normally involves swapping one of two Arduinos into the installation, I&rsquo;d ruled out a bad board, too.</p>
+
+<p>I was about to revert to an earlier Git commit (though there weren&rsquo;t any relevant changes since last known good), when I thought that <em>maybe this was that once-in-a-blue-moon situation where the toolchain was to blame</em>. This happened a lot when I was a junior engineer, and has happened much less now that experience has replaced my own super powers. I remembered that a few weeks ago I&rsquo;d installed a beta build of the Arduino IDE for the <a href="http://pjrc.com/store/teensy3.html">Teensy 3</a> that I got via Kickstarter. That beta added an ARM compiler&hellip; but could it have introduced a regression?</p>
+
+<p>I downloaded stock Arduino 1.0.2 and rebuilt. The lights have been running about an hour now without issue. They&rsquo;d have reset many times by now.</p>
+
+<p>I&rsquo;m not sure what lesson to learn here, or how I could have figured this out sooner. It&rsquo;s a very healthy attitude to suspect one&rsquo;s own work as the source of errors. That&rsquo;s almost always where the bug is. But after you&rsquo;ve eliminated yourself as a possible cause, it&rsquo;s time to suspect invariants, such as your toolchain.</p>
+
+  <p class="small gray"><time datetime="2016-09-26">Sep 26, 2016</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html> 
+<html lang="en-us"> 
+<head>
+  <meta charset="utf-8">
+  <title>github/sowbug</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+  
+  
+  <link rel="stylesheet" href="/style.css" />
+  
+  
+
+</head>
+
+<body class="">
+
+  
+
+  <div class="wrap">
+    <header class="mb">
+      <h1 class="h2 m-0"><a href="/">github/sowbug</a></h1>
+      <p class="site-description"></p>
+    </header>
+
+
+<main>
+<article class="post">
+  <h1><a href="https://sowbug.github.io/post/bus-ninja-vs-bus-pirate/" title="Bus Ninja vs. Bus Pirate">Bus Ninja vs. Bus Pirate</a></h1>
+  <p><em>Editor&rsquo;s Note: This draft post was discovered tonight. It was probably written in 2012.</em></p>
+
+<p>I recently wrote about <a href="/post/17569794220/">my first experience with the Bus Pirate</a>. I’ve been thinking more about the interactive menu-driven interface. I’m starting to come around to the idea that it’s the best approach. Not a great approach, but the best. Consider the alternatives.</p>
+
+<p>First choice: no UI at all. Hook up your logic analyzer or oscilloscope like a real engineer. This is the default UI, because it exists even in the absence of anything else. But as competition with a low-cost hacker tool, it’s not really even in the same category (though it is, of course, incredibly powerful).</p>
+
+<p>Second choice: <a href="https://en.wikipedia.org/wiki/Blinkenlights">blinkenlights</a>. Works well, but (a) they’re expensive, (b) they take time to wire up, and © you still have to build and debug the lights without blowenfusen.</p>
+
+<p>Third choice: a custom desktop tool like I wrote for the <a href="https://github.com/sowbug/JTAGWhisperer">JTAG Whisperer</a>. Having tried as an exercise to get this running on a pristine Windows machine, I now recognize that this is a crappy solution. Yes, it’s better than requiring someone to find a toolchain to compile a C program, but you can’t get around the fact that desktop software is a pain to install and configure.</p>
+
+<p>Fourth choice: a desktop “browser,” if you will, that displays content sent from the device, allowing the user to send commands using desktop input devices like a keyboard.</p>
+
+<p>Choice #4 sounds nice… but that’s what the Bus Pirate is! The “browser” is a terminal program (one that already exists and doesn’t have to be developed for this tool), and it’s a simple menu-driven interface. Yes, <a href="http://dangerousprototypes.com/docs/Bus_Pirate">Ian</a> made the right decision. I’m convinced.</p>
+
+<p>But I’m still not satisfied. Here’s what I’d like:</p>
+
+<ul>
+<li>A device based on an open toolchain. Or whatever criterion lets me keep working with AVRs.</li>
+<li>Just a little more eye candy. Don’t most serial terminals do VT100?</li>
+<li>A way to upload files to the device without ditching the terminal program. Hmmm… why, that’s <a href="https://en.wikipedia.org/wiki/ZMODEM">ZMODEM</a>! Supported by Minicom, probably hackable into screen, and YES! I just checked and Hyperterminal has it.</li>
+<li>An option to have a reduced-functionality version running on an Arduino.</li>
+</ul>
+
+  <p class="small gray"><time datetime="2016-09-26">Sep 26, 2016</time></p>
+</article>
+</main>
+</div>
+
+
+
+</body>
+</html>
