@@ -1,80 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on github/sowbug</title>
-    <link>https://sowbug.github.io/post/</link>
-    <description>Recent content in Posts on github/sowbug</description>
+    <title>Post-rsses on github/sowbug</title>
+    <link>https://sowbug.github.io/post/index.xml</link>
+    <description>Recent content in Post-rsses on github/sowbug</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 26 Sep 2016 20:28:21 -0700</lastBuildDate>
+    <lastBuildDate>Sat, 04 Jun 2016 19:36:46 -0700</lastBuildDate>
     <atom:link href="https://sowbug.github.io/post/index.xml" rel="self" type="application/rss+xml" />
-    
-    <item>
-      <title>Debugging a G35 Installation</title>
-      <link>https://sowbug.github.io/post/debugging-a-g35-installation/</link>
-      <pubDate>Mon, 26 Sep 2016 20:28:21 -0700</pubDate>
-      
-      <guid>https://sowbug.github.io/post/debugging-a-g35-installation/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Editor&amp;rsquo;s Note: This draft post was discovered tonight. It was probably written in 2012.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&amp;ldquo;Once you eliminate the impossible, whatever remains, no matter how improbable, must be the truth.&amp;rdquo; – Sherlock Holmes&lt;/p&gt;
-
-&lt;p&gt;My home Christmas light installation is operational after debugging for several hours over the past week. They&amp;rsquo;d work for a while, but reset every few programs, and then freeze with odd colors. This was unexpected, as this physical deployment usually runs only my production-quality code, installed only after a bunch of testing in my office. Moreover, these lights had run flawlessly for every applicable holiday (Christmas, Halloween, Valentine&amp;rsquo;s Day, and even a brief run to congratulate the SF Giants) since 2011.&lt;/p&gt;
-
-&lt;p&gt;The lights seemed cursed. I first suspected a bad power supply, which typically explains all unreliability with my electronics projects. Nope, swapping in a new one didn&amp;rsquo;t change anything. OK, so my &lt;a href=&#34;https://github.com/sowbug/like-a-g35&#34;&gt;Like A G35&lt;/a&gt; shield was flaky? Again, swapping in a second exhibited the same behavior. One strand has a short? Either strand flaked out the same way when run alone. And because my workflow normally involves swapping one of two Arduinos into the installation, I&amp;rsquo;d ruled out a bad board, too.&lt;/p&gt;
-
-&lt;p&gt;I was about to revert to an earlier Git commit (though there weren&amp;rsquo;t any relevant changes since last known good), when I thought that &lt;em&gt;maybe this was that once-in-a-blue-moon situation where the toolchain was to blame&lt;/em&gt;. This happened a lot when I was a junior engineer, and has happened much less now that experience has replaced my own super powers. I remembered that a few weeks ago I&amp;rsquo;d installed a beta build of the Arduino IDE for the &lt;a href=&#34;http://pjrc.com/store/teensy3.html&#34;&gt;Teensy 3&lt;/a&gt; that I got via Kickstarter. That beta added an ARM compiler&amp;hellip; but could it have introduced a regression?&lt;/p&gt;
-
-&lt;p&gt;I downloaded stock Arduino 1.0.2 and rebuilt. The lights have been running about an hour now without issue. They&amp;rsquo;d have reset many times by now.&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;m not sure what lesson to learn here, or how I could have figured this out sooner. It&amp;rsquo;s a very healthy attitude to suspect one&amp;rsquo;s own work as the source of errors. That&amp;rsquo;s almost always where the bug is. But after you&amp;rsquo;ve eliminated yourself as a possible cause, it&amp;rsquo;s time to suspect invariants, such as your toolchain.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Mike&#39;s Law of Too-Cheap Computers</title>
-      <link>https://sowbug.github.io/post/mikes-law-of-too-cheap-computers/</link>
-      <pubDate>Mon, 26 Sep 2016 20:26:43 -0700</pubDate>
-      
-      <guid>https://sowbug.github.io/post/mikes-law-of-too-cheap-computers/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Editor&amp;rsquo;s Note: This draft post was discovered tonight. It was probably written in 2012.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;The announcement of any suitably cheap computer will always generate intense demand. However, their actual availability will be delayed until the point where they cease to be suitably cheap.&amp;nbsp;Examples: the &lt;a href=&#34;http://en.wikipedia.org/wiki/OLPC_XO-1&#34;&gt;$100 OLPC&lt;/a&gt;. The original &lt;a href=&#34;http://en.wikipedia.org/wiki/Asus_Eee_PC&#34;&gt;$399 Eee PC&lt;/a&gt;. By the time either was purchasable through normal channels, either the price had risen or competitors offered comparable or better values, such that their pricing was no longer interesting.&lt;/p&gt;
-
-&lt;p&gt;Will the Raspberry Pi break this rule?&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Bus Ninja vs. Bus Pirate</title>
-      <link>https://sowbug.github.io/post/bus-ninja-vs-bus-pirate/</link>
-      <pubDate>Mon, 26 Sep 2016 20:20:49 -0700</pubDate>
-      
-      <guid>https://sowbug.github.io/post/bus-ninja-vs-bus-pirate/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Editor&amp;rsquo;s Note: This draft post was discovered tonight. It was probably written in 2012.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;I recently wrote about &lt;a href=&#34;https://sowbug.github.io/post/17569794220/&#34;&gt;my first experience with the Bus Pirate&lt;/a&gt;. I’ve been thinking more about the interactive menu-driven interface. I’m starting to come around to the idea that it’s the best approach. Not a great approach, but the best. Consider the alternatives.&lt;/p&gt;
-
-&lt;p&gt;First choice: no UI at all. Hook up your logic analyzer or oscilloscope like a real engineer. This is the default UI, because it exists even in the absence of anything else. But as competition with a low-cost hacker tool, it’s not really even in the same category (though it is, of course, incredibly powerful).&lt;/p&gt;
-
-&lt;p&gt;Second choice: &lt;a href=&#34;https://en.wikipedia.org/wiki/Blinkenlights&#34;&gt;blinkenlights&lt;/a&gt;. Works well, but (a) they’re expensive, (b) they take time to wire up, and © you still have to build and debug the lights without blowenfusen.&lt;/p&gt;
-
-&lt;p&gt;Third choice: a custom desktop tool like I wrote for the &lt;a href=&#34;https://github.com/sowbug/JTAGWhisperer&#34;&gt;JTAG Whisperer&lt;/a&gt;. Having tried as an exercise to get this running on a pristine Windows machine, I now recognize that this is a crappy solution. Yes, it’s better than requiring someone to find a toolchain to compile a C program, but you can’t get around the fact that desktop software is a pain to install and configure.&lt;/p&gt;
-
-&lt;p&gt;Fourth choice: a desktop “browser,” if you will, that displays content sent from the device, allowing the user to send commands using desktop input devices like a keyboard.&lt;/p&gt;
-
-&lt;p&gt;Choice #4 sounds nice… but that’s what the Bus Pirate is! The “browser” is a terminal program (one that already exists and doesn’t have to be developed for this tool), and it’s a simple menu-driven interface. Yes, &lt;a href=&#34;http://dangerousprototypes.com/docs/Bus_Pirate&#34;&gt;Ian&lt;/a&gt; made the right decision. I’m convinced.&lt;/p&gt;
-
-&lt;p&gt;But I’m still not satisfied. Here’s what I’d like:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;A device based on an open toolchain. Or whatever criterion lets me keep working with AVRs.&lt;/li&gt;
-&lt;li&gt;Just a little more eye candy. Don’t most serial terminals do VT100?&lt;/li&gt;
-&lt;li&gt;A way to upload files to the device without ditching the terminal program. Hmmm… why, that’s &lt;a href=&#34;https://en.wikipedia.org/wiki/ZMODEM&#34;&gt;ZMODEM&lt;/a&gt;! Supported by Minicom, probably hackable into screen, and YES! I just checked and Hyperterminal has it.&lt;/li&gt;
-&lt;li&gt;An option to have a reduced-functionality version running on an Arduino.&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
     
     <item>
       <title>Scaling the Supercharger network</title>
@@ -536,6 +469,45 @@ obsolete WebLight prototypes were building up on my work bench as I was
 running out of ATtiny85s. Here’s the successful result.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://67.media.tumblr.com/2ecdfe47d30368f95f9bfda1ba7ad62d/tumblr_inline_nxzr19l7NX1qjj3vh_540.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>TP-Link TL-WR703N configurations</title>
+      <link>https://sowbug.github.io/post/2015-10-28-tp-link-tl-wr703n-configurations/</link>
+      <pubDate>Wed, 28 Oct 2015 19:02:40 -0700</pubDate>
+      
+      <guid>https://sowbug.github.io/post/2015-10-28-tp-link-tl-wr703n-configurations/</guid>
+      <description>&lt;p&gt;Two of them are &lt;a href=&#34;https://github.com/sowbug/703n&#34;&gt;here&lt;/a&gt;. They’re both useful.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>any idea on how to config the Eth0 on a 3com  Audrey? thanks</title>
+      <link>https://sowbug.github.io/post/2015-10-20-any-idea-on-how-to-config-the-eth0-on-a-3com/</link>
+      <pubDate>Tue, 20 Oct 2015 16:48:18 -0700</pubDate>
+      
+      <guid>https://sowbug.github.io/post/2015-10-20-any-idea-on-how-to-config-the-eth0-on-a-3com/</guid>
+      <description>&lt;p&gt;No, sorry. I haven’t played around with the Audrey since 2001.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Huge thanks for allowing others to use your code to run G35 Christmas lights. I do have one question I hope you can help me out with. I am unable to use six strings of 50 lights. They enumerate and complete a test pattern but the programs wont run correctly, usually just the first string will run. If I use just five strings everything works great. Tried an Arduino Uno and a Mega2560.</title>
+      <link>https://sowbug.github.io/post/2015-10-20-huge-thanks-for-allowing-others-to-use-your-code/</link>
+      <pubDate>Tue, 20 Oct 2015 16:48:00 -0700</pubDate>
+      
+      <guid>https://sowbug.github.io/post/2015-10-20-huge-thanks-for-allowing-others-to-use-your-code/</guid>
+      <description>&lt;p&gt;I’m 99% sure that the problem is that 50 x 6 is greater than 255, which is the
+highest value of an unsigned 8-bit octet. The G35 protocol wasn’t designed for
+really long strings.&lt;/p&gt;
+
+&lt;p&gt;You’re next going to ask why the test patterns run. I’m 1% sure it’s because
+you’re hitting memory limits with the 328p. The test patterns are algorithmic
+and don’t consume per-light memory, but most of the patterns do allocate a
+certain number of bytes per light.&lt;/p&gt;
+
+&lt;p&gt;Good luck!&lt;/p&gt;
 </description>
     </item>
     
