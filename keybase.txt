@@ -1,0 +1,52 @@
+https://keybase.io/sowbug
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://sowbug.github.io
+  * I am sowbug (https://keybase.io/sowbug) on keybase.
+  * I have a public key ASD9gxG0Dc1lN_QIE4XE8tGT2a6j-Wxon0TfMcfnm_qMCgo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "012079440f7fbab3a776d8b9cb3d4f0f7c93b12fdd2a7003ad954f08b4cc77963bfb0a",
+      "host": "keybase.io",
+      "kid": "0120fd8311b40dcd6537f4081385c4f2d193d9aea3f96c689f44df31c7e79bfa8c0a0a",
+      "uid": "df5669176d4f55c01837b082a3ca5e19",
+      "username": "sowbug"
+    },
+    "merkle_root": {
+      "ctime": 1507172779,
+      "hash": "8768cbcec6076ee4a8ccd1e55990269fedb37d45ecbc63a3e13a8a03efe01c8892cedc57e43c3443dcd5ccc926ee7f477d9b43a8fb1a9fb033ebbcc4985301ba",
+      "hash_meta": "c6ec725a9130cc6ac8d827886f7f383024a4a508bf592695839a3c521ac4ac36",
+      "seqno": 1505302
+    },
+    "service": {
+      "hostname": "sowbug.github.io",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "1.0.33"
+  },
+  "ctime": 1507172805,
+  "expire_in": 504576000,
+  "prev": "b198aa02a65ca310295b57ddb1d235bdd3f63e5d2249c6977adb74e69db3c2d2",
+  "seqno": 22,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEg/YMRtA3NZTf0CBOFxPLRk9muo/lsaJ9E3zHH55v6jAoKp3BheWxvYWTFA0d7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTIwNzk0NDBmN2ZiYWIzYTc3NmQ4YjljYjNkNGYwZjdjOTNiMTJmZGQyYTcwMDNhZDk1NGYwOGI0Y2M3Nzk2M2JmYjBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwZmQ4MzExYjQwZGNkNjUzN2Y0MDgxMzg1YzRmMmQxOTNkOWFlYTNmOTZjNjg5ZjQ0ZGYzMWM3ZTc5YmZhOGMwYTBhIiwidWlkIjoiZGY1NjY5MTc2ZDRmNTVjMDE4MzdiMDgyYTNjYTVlMTkiLCJ1c2VybmFtZSI6InNvd2J1ZyJ9LCJtZXJrbGVfcm9vdCI6eyJjdGltZSI6MTUwNzE3Mjc3OSwiaGFzaCI6Ijg3NjhjYmNlYzYwNzZlZTRhOGNjZDFlNTU5OTAyNjlmZWRiMzdkNDVlY2JjNjNhM2UxM2E4YTAzZWZlMDFjODg5MmNlZGM1N2U0M2MzNDQzZGNkNWNjYzkyNmVlN2Y0NzdkOWI0M2E4ZmIxYTlmYjAzM2ViYmNjNDk4NTMwMWJhIiwiaGFzaF9tZXRhIjoiYzZlYzcyNWE5MTMwY2M2YWM4ZDgyNzg4NmY3ZjM4MzAyNGE0YTUwOGJmNTkyNjk1ODM5YTNjNTIxYWM0YWMzNiIsInNlcW5vIjoxNTA1MzAyfSwic2VydmljZSI6eyJob3N0bmFtZSI6InNvd2J1Zy5naXRodWIuaW8iLCJwcm90b2NvbCI6Imh0dHBzOiJ9LCJ0eXBlIjoid2ViX3NlcnZpY2VfYmluZGluZyIsInZlcnNpb24iOjF9LCJjbGllbnQiOnsibmFtZSI6ImtleWJhc2UuaW8gZ28gY2xpZW50IiwidmVyc2lvbiI6IjEuMC4zMyJ9LCJjdGltZSI6MTUwNzE3MjgwNSwiZXhwaXJlX2luIjo1MDQ1NzYwMDAsInByZXYiOiJiMTk4YWEwMmE2NWNhMzEwMjk1YjU3ZGRiMWQyMzViZGQzZjYzZTVkMjI0OWM2OTc3YWRiNzRlNjlkYjNjMmQyIiwic2Vxbm8iOjIyLCJ0YWciOiJzaWduYXR1cmUifaNzaWfEQPDGN+N0JY9luR7AtL5UN3iHMk5v2M+P/4xY3tvtK4lzbO0rttUCFXGZOIFryclzR7NbA9fnycsz3Z7TPZ0hcQuoc2lnX3R5cGUgpGhhc2iCpHR5cGUIpXZhbHVlxCAv03bqr7E+kaQ0TB8olqb788nJMfWTPHs1mS/McbgE3KN0YWfNAgKndmVyc2lvbgE=
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/sowbug
